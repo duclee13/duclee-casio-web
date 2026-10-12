@@ -1,0 +1,8055 @@
+{
+  "source": "all.pdf + ba ảnh bảng ký tự",
+  "formula2_context": "Cần bộ chuyển đổi FDFD; trang 21 dẫn sang tài liệu viết chữ IN HOA 1–4 dòng để lấy bộ chuyển đổi.",
+  "characters": [
+    {
+      "hex": "10",
+      "char": "𝓍",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "3",
+          "4"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 1,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "11",
+      "char": "𝓎",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "1",
+          "DMS"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 1,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "12",
+      "char": "𝓏",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "1",
+          "RECIPROCAL"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 1,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "13",
+      "char": "…",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "1",
+          "2"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 1,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "14",
+      "char": "▴",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "1",
+          "1"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 1,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "15",
+      "char": "▾",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "4",
+          "1"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 1,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "16",
+      "char": "▸",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "4",
+          "2"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 1,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "17",
+      "char": "₋",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "4",
+          "3"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 1,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "18",
+      "char": "$",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "ALPHA",
+          "8",
+          "4",
+          "4"
+        ],
+        [
+          "SHIFT",
+          "DOT"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 1,
+      "correction": null,
+      "source_note": "Giữ nguyên cả hai phương án trong PDF; phương án đầu ghi ALPHA (không phải SHIFT).",
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "19",
+      "char": "◁",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 1,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "1A",
+      "char": "&",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "2",
+          "2"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "1B",
+      "char": "𝓽",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "2",
+          "3"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "1C",
+      "char": "ᴛ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "2",
+          "4"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "1D",
+      "char": "ₜ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "4",
+          "1"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "1E",
+      "char": "ₕ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "4",
+          "2"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "1F",
+      "char": "₅",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "2",
+          "5"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "20",
+      "char": " ",
+      "group": "base",
+      "display": "𝒊",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "2",
+          "6"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": {
+        "keys": [
+          "SHIFT",
+          "8",
+          "3",
+          "4"
+        ],
+        "bytes": 2,
+        "source": "Quy tắc spell một dòng đã thống nhất"
+      }
+    },
+    {
+      "hex": "21",
+      "char": "!",
+      "group": "base",
+      "display": "e",
+      "formula1": [
+        [
+          "ALPHA",
+          "EXP"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "3",
+          "1"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "EXP"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "22",
+      "char": "\"",
+      "group": "base",
+      "display": "π",
+      "formula1": [
+        [
+          "SHIFT",
+          "EXP"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "3",
+          "2"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "EXP"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "23",
+      "char": "#",
+      "group": "base",
+      "display": ":",
+      "formula1": [
+        [
+          "ALPHA",
+          "INTEGRAL"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "2",
+          "7"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "INTEGRAL"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "24",
+      "char": "×",
+      "group": "base",
+      "display": "$",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "2",
+          "8"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 2,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "25",
+      "char": "%",
+      "group": "base",
+      "display": "?",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "UP",
+          "1",
+          "2"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "26",
+      "char": "÷",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "UP",
+          "1",
+          "1"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "27",
+      "char": "'",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "3",
+          "4"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "28",
+      "char": "(",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "8",
+          "DOWN",
+          "3",
+          "3"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "29",
+      "char": ")",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "2A",
+      "char": "·",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "2B",
+      "char": "+",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "2C",
+      "char": ",",
+      "group": "base",
+      "display": ",",
+      "formula1": [
+        [
+          "SHIFT",
+          "RPAREN"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "RPAREN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "2D",
+      "char": "—",
+      "group": "base",
+      "display": "×10",
+      "formula1": [
+        [
+          "EXP"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "EXP"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "2E",
+      "char": ".",
+      "group": "base",
+      "display": ".",
+      "formula1": [
+        [
+          "DOT"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "DOT"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "2F",
+      "char": "/",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 3,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "30",
+      "char": "0",
+      "group": "base",
+      "display": "0",
+      "formula1": [
+        [
+          "0"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "1"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "0"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "31",
+      "char": "1",
+      "group": "base",
+      "display": "1",
+      "formula1": [
+        [
+          "1"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "2"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "1"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "32",
+      "char": "2",
+      "group": "base",
+      "display": "2",
+      "formula1": [
+        [
+          "2"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "3"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "2"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "33",
+      "char": "3",
+      "group": "base",
+      "display": "3",
+      "formula1": [
+        [
+          "3"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "4"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "3"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "34",
+      "char": "4",
+      "group": "base",
+      "display": "4",
+      "formula1": [
+        [
+          "4"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "5"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "4"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "35",
+      "char": "5",
+      "group": "base",
+      "display": "5",
+      "formula1": [
+        [
+          "5"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "1",
+          "1"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "5"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "36",
+      "char": "6",
+      "group": "base",
+      "display": "6",
+      "formula1": [
+        [
+          "6"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "2",
+          "1"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "6"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "37",
+      "char": "7",
+      "group": "base",
+      "display": "7",
+      "formula1": [
+        [
+          "7"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "2",
+          "2"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "7"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "38",
+      "char": "8",
+      "group": "base",
+      "display": "8",
+      "formula1": [
+        [
+          "8"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "1",
+          "2"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "8"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "39",
+      "char": "9",
+      "group": "base",
+      "display": "9",
+      "formula1": [
+        [
+          "9"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "6"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "9"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "3A",
+      "char": ":",
+      "group": "base",
+      "display": "A",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "7"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 4,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "3B",
+      "char": ";",
+      "group": "base",
+      "display": "B",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "8"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "3C",
+      "char": "<",
+      "group": "base",
+      "display": "C",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "9"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "3D",
+      "char": "=",
+      "group": "base",
+      "display": "D",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "NEG"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "3E",
+      "char": ">",
+      "group": "base",
+      "display": "E",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "DMS"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "3F",
+      "char": "?",
+      "group": "base",
+      "display": "F",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "RECIPROCAL"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "40",
+      "char": "@",
+      "group": "base",
+      "display": "M",
+      "formula1": [
+        [
+          "ALPHA",
+          "M_PLUS"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "4",
+          "1"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "M_PLUS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "41",
+      "char": "A",
+      "group": "base",
+      "display": "Ans",
+      "formula1": [
+        [
+          "ANS"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "SIN"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ANS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "42",
+      "char": "B",
+      "group": "base",
+      "display": "A",
+      "formula1": [
+        [
+          "ALPHA",
+          "NEG"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "COS"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "NEG"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "43",
+      "char": "C",
+      "group": "base",
+      "display": "B",
+      "formula1": [
+        [
+          "ALPHA",
+          "DMS"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "TAN"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "DMS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "44",
+      "char": "D",
+      "group": "base",
+      "display": "C",
+      "formula1": [
+        [
+          "ALPHA",
+          "RECIPROCAL"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "M_PLUS"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "RECIPROCAL"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "45",
+      "char": "E",
+      "group": "base",
+      "display": "D",
+      "formula1": [
+        [
+          "ALPHA",
+          "SIN"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "4",
+          "2"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "SIN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 5,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "46",
+      "char": "F",
+      "group": "base",
+      "display": "E",
+      "formula1": [
+        [
+          "ALPHA",
+          "COS"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "2",
+          "3"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "COS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "47",
+      "char": "G",
+      "group": "base",
+      "display": "F",
+      "formula1": [
+        [
+          "ALPHA",
+          "TAN"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "4",
+          "3"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "TAN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "48",
+      "char": "H",
+      "group": "base",
+      "display": "𝓍",
+      "formula1": [
+        [
+          "X"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "4",
+          "4"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "X"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "49",
+      "char": "I",
+      "group": "base",
+      "display": "𝓎",
+      "formula1": [
+        [
+          "ALPHA",
+          "RPAREN"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "4",
+          "5"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "RPAREN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "4A",
+      "char": "J",
+      "group": "base",
+      "display": "PreAns",
+      "formula1": [
+        [
+          "SHIFT",
+          "ANS"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "4",
+          "6"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "ANS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": "PDF ghi SHIFT + Ans, trùng với hex D7 (%). Ảnh bàn phím: PreAns thuộc ALPHA + Ans. Bộ sinh phím dùng ALPHA + Ans cho J.",
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "4B",
+      "char": "K",
+      "group": "base",
+      "display": "z",
+      "formula1": [
+        [
+          "ALPHA",
+          "S_D"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "1",
+          "3"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "S_D"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "4C",
+      "char": "L",
+      "group": "base",
+      "display": "θ",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "4",
+          "7"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "4D",
+      "char": "M",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "4",
+          "8"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "4E",
+      "char": "N",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "4",
+          "9"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "4F",
+      "char": "O",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "1",
+          "4"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "50",
+      "char": "P",
+      "group": "base",
+      "display": "Σ(",
+      "formula1": [
+        [
+          "SHIFT",
+          "X"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "1",
+          "5"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "X"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 6,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "51",
+      "char": "Q",
+      "group": "base",
+      "display": "∫",
+      "formula1": [
+        [
+          "INTEGRAL"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "2",
+          "4"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "INTEGRAL"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "52",
+      "char": "R",
+      "group": "base",
+      "display": "d/dx(",
+      "formula1": [
+        [
+          "SHIFT",
+          "INTEGRAL"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "DOWN",
+          "1",
+          "1"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "INTEGRAL"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "53",
+      "char": "S",
+      "group": "base",
+      "display": "Π(",
+      "formula1": [
+        [
+          "ALPHA",
+          "X"
+        ]
+      ],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "2",
+          "5"
+        ]
+      ],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "X"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "54",
+      "char": "T",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "1",
+          "6"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "55",
+      "char": "U",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "DOWN",
+          "2",
+          "1"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "56",
+      "char": "V",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "1",
+          "7"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "57",
+      "char": "W",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "DOWN",
+          "1",
+          "2"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "58",
+      "char": "X",
+      "group": "base",
+      "display": "Min(",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "1",
+          "8"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "59",
+      "char": "Y",
+      "group": "base",
+      "display": "Max(",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "1",
+          "9"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "5A",
+      "char": "Z",
+      "group": "base",
+      "display": "Mean(",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "2",
+          "6"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "5B",
+      "char": "[",
+      "group": "base",
+      "display": "Sum(",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "2",
+          "7"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 7,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "5C",
+      "char": "▫",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "3",
+          "X"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "5D",
+      "char": "]",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "DOWN",
+          "1",
+          "3"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "5E",
+      "char": "^",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [
+        [
+          "SHIFT",
+          "7",
+          "DOWN",
+          "1",
+          "4"
+        ]
+      ],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": "FDFD",
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "5F",
+      "char": "_",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "60",
+      "char": "-",
+      "group": "base",
+      "display": "(",
+      "formula1": [
+        [
+          "LPAREN"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "LPAREN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "61",
+      "char": "a",
+      "group": "base",
+      "display": "P(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "62",
+      "char": "b",
+      "group": "base",
+      "display": "Q(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "63",
+      "char": "c",
+      "group": "base",
+      "display": "R(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "64",
+      "char": "d",
+      "group": "base",
+      "display": "Not(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "65",
+      "char": "e",
+      "group": "base",
+      "display": "Neg(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "66",
+      "char": "f",
+      "group": "base",
+      "display": "Conjg(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 8,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "67",
+      "char": "g",
+      "group": "base",
+      "display": "Arg(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "68",
+      "char": "h",
+      "group": "base",
+      "display": "Abs(",
+      "formula1": [
+        [
+          "SHIFT",
+          "LPAREN"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "LPAREN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "69",
+      "char": "i",
+      "group": "base",
+      "display": "Rnd(",
+      "formula1": [
+        [
+          "SHIFT",
+          "0"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "0"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "6A",
+      "char": "j",
+      "group": "base",
+      "display": "Det(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "6B",
+      "char": "k",
+      "group": "base",
+      "display": "Trn(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "6C",
+      "char": "l",
+      "group": "base",
+      "display": "sinh(",
+      "formula1": [
+        [
+          "OPTN",
+          "1",
+          "1"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "1",
+          "1"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "6D",
+      "char": "m",
+      "group": "base",
+      "display": "cosh(",
+      "formula1": [
+        [
+          "OPTN",
+          "1",
+          "2"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "1",
+          "2"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "6E",
+      "char": "n",
+      "group": "base",
+      "display": "tanh(",
+      "formula1": [
+        [
+          "OPTN",
+          "1",
+          "3"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "1",
+          "3"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "6F",
+      "char": "o",
+      "group": "base",
+      "display": "sinh⁻¹(",
+      "formula1": [
+        [
+          "OPTN",
+          "1",
+          "4"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "1",
+          "4"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "70",
+      "char": "p",
+      "group": "base",
+      "display": "cosh⁻¹(",
+      "formula1": [
+        [
+          "OPTN",
+          "1",
+          "5"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "1",
+          "5"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "71",
+      "char": "q",
+      "group": "base",
+      "display": "tanh⁻¹(",
+      "formula1": [
+        [
+          "OPTN",
+          "1",
+          "6"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "1",
+          "6"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 9,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "72",
+      "char": "r",
+      "group": "base",
+      "display": "e^(",
+      "formula1": [
+        [
+          "SHIFT",
+          "LN"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "LN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "73",
+      "char": "s",
+      "group": "base",
+      "display": "10^(",
+      "formula1": [
+        [
+          "SHIFT",
+          "LOG"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "LOG"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "74",
+      "char": "t",
+      "group": "base",
+      "display": "√(",
+      "formula1": [
+        [
+          "SQRT"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SQRT"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "75",
+      "char": "u",
+      "group": "base",
+      "display": "ln(",
+      "formula1": [
+        [
+          "LN"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "LN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "76",
+      "char": "v",
+      "group": "base",
+      "display": "³√(",
+      "formula1": [
+        [
+          "SHIFT",
+          "SQRT"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "SQRT"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "77",
+      "char": "w",
+      "group": "base",
+      "display": "sin(",
+      "formula1": [
+        [
+          "SIN"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SIN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "78",
+      "char": "x",
+      "group": "base",
+      "display": "cos(",
+      "formula1": [
+        [
+          "COS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "COS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "79",
+      "char": "y",
+      "group": "base",
+      "display": "tan(",
+      "formula1": [
+        [
+          "TAN"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "TAN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "7A",
+      "char": "z",
+      "group": "base",
+      "display": "sin⁻¹(",
+      "formula1": [
+        [
+          "SHIFT",
+          "SIN"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "SIN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "7B",
+      "char": "{",
+      "group": "base",
+      "display": "cos⁻¹(",
+      "formula1": [
+        [
+          "SHIFT",
+          "COS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "COS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "7C",
+      "char": "|",
+      "group": "base",
+      "display": "tan⁻¹(",
+      "formula1": [
+        [
+          "SHIFT",
+          "TAN"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "TAN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 10,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "7D",
+      "char": "}",
+      "group": "base",
+      "display": "log(",
+      "formula1": [
+        [
+          "LOG"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "LOG"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "7E",
+      "char": "~",
+      "group": "base",
+      "display": "Pol(",
+      "formula1": [
+        [
+          "SHIFT",
+          "PLUS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "PLUS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "7F",
+      "char": "⊢",
+      "group": "base",
+      "display": "Rec(",
+      "formula1": [
+        [
+          "SHIFT",
+          "MINUS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "MINUS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "80",
+      "char": "𝒊",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "81",
+      "char": "𝓮",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "82",
+      "char": "ₓ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "83",
+      "char": "¹⁰",
+      "group": "base",
+      "display": "Int(",
+      "formula1": [
+        [
+          "ALPHA",
+          "PLUS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "PLUS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "84",
+      "char": "∞",
+      "group": "base",
+      "display": "Intg(",
+      "formula1": [
+        [
+          "ALPHA",
+          "MINUS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "MINUS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "85",
+      "char": "°",
+      "group": "base",
+      "display": "Ref(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "86",
+      "char": "ʳ",
+      "group": "base",
+      "display": "Rref(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "87",
+      "char": "ᵍ",
+      "group": "base",
+      "display": "RanInt#(",
+      "formula1": [
+        [
+          "ALPHA",
+          "DOT"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "DOT"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 11,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "88",
+      "char": "∠",
+      "group": "base",
+      "display": "GCD(",
+      "formula1": [
+        [
+          "ALPHA",
+          "MULTIPLY"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "MULTIPLY"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "89",
+      "char": "𝑥̄",
+      "group": "base",
+      "display": "LCM(",
+      "formula1": [
+        [
+          "ALPHA",
+          "DIVIDE"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "DIVIDE"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "8A",
+      "char": "𝑦̄",
+      "group": "base",
+      "display": "RndFix(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "8B",
+      "char": "𝑥̂",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "8C",
+      "char": "𝑦̂",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "8D",
+      "char": "→",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "8E",
+      "char": "∏",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "8F",
+      "char": "⇒",
+      "group": "base",
+      "display": "ReP(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "90",
+      "char": "ˣ",
+      "group": "base",
+      "display": "ImP(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "91",
+      "char": "₁₀",
+      "group": "base",
+      "display": "Identity(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "92",
+      "char": "▔",
+      "group": "base",
+      "display": "UnitV(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 12,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "93",
+      "char": "┘",
+      "group": "base",
+      "display": "Angle(",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "94",
+      "char": "≤",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "95",
+      "char": "≠",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "96",
+      "char": "≥",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "97",
+      "char": "⇩",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "98",
+      "char": "√",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "99",
+      "char": "∫",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "9A",
+      "char": "ᴀ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "9B",
+      "char": "ʙ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "9C",
+      "char": "ᴄ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "9D",
+      "char": "ₙ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 13,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "9E",
+      "char": "▶",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "9F",
+      "char": "◀",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "A0",
+      "char": "₀",
+      "group": "base",
+      "display": "or",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "A1",
+      "char": "₁",
+      "group": "base",
+      "display": "xor",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "A2",
+      "char": "₂",
+      "group": "base",
+      "display": "xnor",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "A3",
+      "char": "₃",
+      "group": "base",
+      "display": "and",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "A4",
+      "char": "₄",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "A5",
+      "char": "₅",
+      "group": "base",
+      "display": "=",
+      "formula1": [
+        [
+          "ALPHA",
+          "CALC"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "CALC"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "A6",
+      "char": "₆",
+      "group": "base",
+      "display": "+",
+      "formula1": [
+        [
+          "PLUS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "PLUS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "A7",
+      "char": "₇",
+      "group": "base",
+      "display": "−",
+      "formula1": [
+        [
+          "MINUS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "MINUS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "A8",
+      "char": "₈",
+      "group": "base",
+      "display": "×",
+      "formula1": [
+        [
+          "MULTIPLY"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "MULTIPLY"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 14,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "A9",
+      "char": "₉",
+      "group": "base",
+      "display": "÷",
+      "formula1": [
+        [
+          "DIVIDE"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "DIVIDE"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "AA",
+      "char": "⁻¹",
+      "group": "base",
+      "display": "÷R",
+      "formula1": [
+        [
+          "ALPHA",
+          "FRACTION"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "ALPHA",
+          "FRACTION"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "AB",
+      "char": "ˣ",
+      "group": "base",
+      "display": "•",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "AC",
+      "char": "¹⁰",
+      "group": "base",
+      "display": "∠",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "AD",
+      "char": "₍",
+      "group": "base",
+      "display": "P",
+      "formula1": [
+        [
+          "SHIFT",
+          "MULTIPLY"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "MULTIPLY"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "AE",
+      "char": "₎",
+      "group": "base",
+      "display": "C",
+      "formula1": [
+        [
+          "SHIFT",
+          "DIVIDE"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "DIVIDE"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "AF",
+      "char": "±",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "B0",
+      "char": "₀",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "B1",
+      "char": "₁",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "B2",
+      "char": "₂",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "B3",
+      "char": "₋₁",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 15,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "B4",
+      "char": "ꜰ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "B5",
+      "char": "ɴ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "B6",
+      "char": "ᴘ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "B7",
+      "char": "μ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "B8",
+      "char": "𝐀",
+      "group": "base",
+      "display": "x̂",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "B9",
+      "char": "𝐁",
+      "group": "base",
+      "display": "ŷ",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "BA",
+      "char": "𝐂",
+      "group": "base",
+      "display": "x̂₁",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "BB",
+      "char": "𝐃",
+      "group": "base",
+      "display": "x̂₂",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "BC",
+      "char": "𝐄",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "BD",
+      "char": "𝐅",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "BE",
+      "char": "ℙ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 16,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "BF",
+      "char": "▷",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "C0",
+      "char": "Σ",
+      "group": "base",
+      "display": "−",
+      "formula1": [
+        [
+          "NEG"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "NEG"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "C1",
+      "char": "α",
+      "group": "base",
+      "display": "b",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "C2",
+      "char": "γ",
+      "group": "base",
+      "display": "o",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "C3",
+      "char": "ε",
+      "group": "base",
+      "display": "d",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "C4",
+      "char": "θ",
+      "group": "base",
+      "display": "h",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "C5",
+      "char": "λ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "C6",
+      "char": "μ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "C7",
+      "char": "π",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "C8",
+      "char": "σ",
+      "group": "base",
+      "display": "┘",
+      "formula1": [
+        [
+          "FRACTION"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "FRACTION"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "C9",
+      "char": "φ",
+      "group": "base",
+      "display": "^(",
+      "formula1": [
+        [
+          "POWER"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "POWER"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 17,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "CA",
+      "char": "ℓ",
+      "group": "base",
+      "display": "ˣ√(",
+      "formula1": [
+        [
+          "SHIFT",
+          "POWER"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "POWER"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "CB",
+      "char": "ℏ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "CC",
+      "char": "▮",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "CD",
+      "char": "▯",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "CE",
+      "char": "₃",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "CF",
+      "char": "▁",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "D0",
+      "char": "f",
+      "group": "base",
+      "display": ")",
+      "formula1": [
+        [
+          "RPAREN"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "RPAREN"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "D1",
+      "char": "p",
+      "group": "base",
+      "display": "▸t",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "D2",
+      "char": "n",
+      "group": "base",
+      "display": "▸a+bi",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "D3",
+      "char": "μ",
+      "group": "base",
+      "display": "▸r∠θ",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "D4",
+      "char": "m",
+      "group": "base",
+      "display": "⁻¹",
+      "formula1": [
+        [
+          "RECIPROCAL"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "RECIPROCAL"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 18,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "D5",
+      "char": "k",
+      "group": "base",
+      "display": "²",
+      "formula1": [
+        [
+          "SQUARE"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SQUARE"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "D6",
+      "char": "M",
+      "group": "base",
+      "display": "³",
+      "formula1": [
+        [
+          "SHIFT",
+          "SQUARE"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "SQUARE"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "D7",
+      "char": "G",
+      "group": "base",
+      "display": "%",
+      "formula1": [
+        [
+          "SHIFT",
+          "ANS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "ANS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "D8",
+      "char": "T",
+      "group": "base",
+      "display": "!",
+      "formula1": [
+        [
+          "SHIFT",
+          "RECIPROCAL"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "SHIFT",
+          "RECIPROCAL"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "D9",
+      "char": "P",
+      "group": "base",
+      "display": "°",
+      "formula1": [
+        [
+          "OPTN",
+          "2",
+          "1"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "2",
+          "1"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "DA",
+      "char": "E",
+      "group": "base",
+      "display": "ʳ",
+      "formula1": [
+        [
+          "OPTN",
+          "2",
+          "2"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "2",
+          "2"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "DB",
+      "char": "F",
+      "group": "base",
+      "display": "ᵍ",
+      "formula1": [
+        [
+          "OPTN",
+          "2",
+          "3"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "2",
+          "3"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "DC",
+      "char": "ₚ",
+      "group": "base",
+      "display": "°",
+      "formula1": [
+        [
+          "DMS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "DMS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "DD",
+      "char": "ₑ",
+      "group": "base",
+      "display": "E",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "DMS"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "DMS"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "DE",
+      "char": "ⱼ",
+      "group": "base",
+      "display": "P",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "NEG"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "NEG"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "DF",
+      "char": "ₖ",
+      "group": "base",
+      "display": "T",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "9"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "9"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 19,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "E0",
+      "char": "τ",
+      "group": "base",
+      "display": "G",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "8"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "8"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "E1",
+      "char": "ᵤ",
+      "group": "base",
+      "display": "M",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "7"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "7"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "E2",
+      "char": "₉",
+      "group": "base",
+      "display": "k",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "6"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "6"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "E3",
+      "char": "Å",
+      "group": "base",
+      "display": "m",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "1"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "1"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "E4",
+      "char": "ₘ",
+      "group": "base",
+      "display": "μ",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "2"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "2"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "E5",
+      "char": "ɪ",
+      "group": "base",
+      "display": "n",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "3"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "3"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "E6",
+      "char": "₄",
+      "group": "base",
+      "display": "p",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "4"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "4"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "E7",
+      "char": null,
+      "group": "base",
+      "display": "f",
+      "formula1": [
+        [
+          "OPTN",
+          "3",
+          "5"
+        ]
+      ],
+      "formula2": [],
+      "effective_formula1": [
+        [
+          "OPTN",
+          "3",
+          "5"
+        ]
+      ],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "E8",
+      "char": null,
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "E9",
+      "char": "└",
+      "group": "base",
+      "display": "▸Simp",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "EA",
+      "char": "↶",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 20,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "EB",
+      "char": "↥",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 21,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "EC",
+      "char": "ⁿ",
+      "group": "base",
+      "display": "@",
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "documented",
+      "source": "all.pdf",
+      "source_page": 21,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": false,
+      "spell_override": null
+    },
+    {
+      "hex": "F010",
+      "char": "c",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F011",
+      "char": "a",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F012",
+      "char": "Lₜ",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F013",
+      "char": "ₕ",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F014",
+      "char": "ℳ",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F015",
+      "char": "g",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F016",
+      "char": "℧",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F017",
+      "char": "▶",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F018",
+      "char": "ℳ",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F019",
+      "char": "k",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F01A",
+      "char": "g",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F01B",
+      "char": "℧",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F01C",
+      "char": "尺",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F01D",
+      "char": "寸",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F01E",
+      "char": "分",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F01F",
+      "char": "間",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F020",
+      "char": "町",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F021",
+      "char": "里",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F022",
+      "char": "海",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F023",
+      "char": "丈",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F024",
+      "char": "毛",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F025",
+      "char": "厘",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F026",
+      "char": "歩",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F027",
+      "char": "勺",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F028",
+      "char": "坪",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F029",
+      "char": "畝",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F02A",
+      "char": "反",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F02B",
+      "char": "升",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F02C",
+      "char": "合",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F02D",
+      "char": "斗",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F02E",
+      "char": "石",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F02F",
+      "char": "貫",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F030",
+      "char": "匁",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F031",
+      "char": "斤",
+      "group": "f0",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "Ảnh bảng F0",
+      "source_page": null,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F410",
+      "char": "Ạ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F411",
+      "char": "Ắ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F412",
+      "char": "Ằ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F413",
+      "char": "Ặ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F414",
+      "char": "Ấ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F415",
+      "char": "Ầ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F416",
+      "char": "Ẩ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F417",
+      "char": "Ậ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F418",
+      "char": "Ẽ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F419",
+      "char": "Ẹ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F41A",
+      "char": "Ế",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F41B",
+      "char": "Ề",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F41C",
+      "char": "Ể",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F41D",
+      "char": "Ễ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F41E",
+      "char": "Ệ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F41F",
+      "char": "Ố",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F420",
+      "char": "Ồ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F421",
+      "char": "Ổ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F422",
+      "char": "Ỗ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F423",
+      "char": "Ộ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F424",
+      "char": "Ợ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F425",
+      "char": "Ớ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F426",
+      "char": "Ờ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F427",
+      "char": "Ở",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F428",
+      "char": "Ị",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F429",
+      "char": "Ỏ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F42A",
+      "char": "Ọ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F42B",
+      "char": "Ỉ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F42C",
+      "char": "Ủ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F42D",
+      "char": "Ũ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F42E",
+      "char": "Ụ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F42F",
+      "char": "Ỳ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F430",
+      "char": "Õ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F431",
+      "char": "ắ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F432",
+      "char": "ằ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F433",
+      "char": "ặ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F434",
+      "char": "ấ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F435",
+      "char": "ầ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F436",
+      "char": "ẩ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F437",
+      "char": "ậ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F438",
+      "char": "ẽ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F439",
+      "char": "ẹ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F43A",
+      "char": "ế",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F43B",
+      "char": "ề",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F43C",
+      "char": "ể",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F43D",
+      "char": "ễ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F43E",
+      "char": "ệ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F43F",
+      "char": "ố",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F440",
+      "char": "ồ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F441",
+      "char": "ổ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F442",
+      "char": "ỗ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F443",
+      "char": "Ỡ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F444",
+      "char": "Ơ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F445",
+      "char": "ộ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F446",
+      "char": "ờ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F447",
+      "char": "ở",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F448",
+      "char": "ị",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F449",
+      "char": "Ự",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F44A",
+      "char": "Ứ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F44B",
+      "char": "Ừ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F44C",
+      "char": "Ử",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F44D",
+      "char": "ơ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F44E",
+      "char": "ớ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F44F",
+      "char": "Ư",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F450",
+      "char": "À",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F451",
+      "char": "Á",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F452",
+      "char": "Â",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F453",
+      "char": "Ã",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F454",
+      "char": "Ả",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F455",
+      "char": "Ă",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F456",
+      "char": "ẳ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F457",
+      "char": "ẵ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F458",
+      "char": "È",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F459",
+      "char": "É",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F45A",
+      "char": "Ê",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F45B",
+      "char": "Ẻ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F45C",
+      "char": "Ì",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F45D",
+      "char": "Í",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F45E",
+      "char": "Ĩ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F45F",
+      "char": "ỳ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F460",
+      "char": "Đ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F461",
+      "char": "ứ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F462",
+      "char": "Ò",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F463",
+      "char": "Ó",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F464",
+      "char": "Ô",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F465",
+      "char": "ạ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F466",
+      "char": "ỷ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F467",
+      "char": "ừ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F468",
+      "char": "ử",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F469",
+      "char": "Ù",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F46A",
+      "char": "Ú",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F46B",
+      "char": "ỹ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F46C",
+      "char": "ỵ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F46D",
+      "char": "Ý",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F46E",
+      "char": "ỡ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F46F",
+      "char": "ư",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F470",
+      "char": "à",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F471",
+      "char": "á",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F472",
+      "char": "â",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F473",
+      "char": "ã",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F474",
+      "char": "ả",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F475",
+      "char": "ă",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F476",
+      "char": "ữ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F477",
+      "char": "ẫ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F478",
+      "char": "è",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F479",
+      "char": "é",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F47A",
+      "char": "ê",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F47B",
+      "char": "ẻ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F47C",
+      "char": "ì",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F47D",
+      "char": "í",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F47E",
+      "char": "ĩ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F47F",
+      "char": "ỉ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F480",
+      "char": "đ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F481",
+      "char": "ự",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F482",
+      "char": "ò",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F483",
+      "char": "ó",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F484",
+      "char": "ô",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F485",
+      "char": "õ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F486",
+      "char": "ỏ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F487",
+      "char": "ọ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F488",
+      "char": "ụ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F489",
+      "char": "ù",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F48A",
+      "char": "ú",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F48B",
+      "char": "ũ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F48C",
+      "char": "ủ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F48D",
+      "char": "ý",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F48E",
+      "char": "ợ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F48F",
+      "char": "Ữ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F490",
+      "char": "Ẳ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F491",
+      "char": "Ẵ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F492",
+      "char": "Ẫ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F493",
+      "char": "Ỷ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F494",
+      "char": "Ỹ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    },
+    {
+      "hex": "F495",
+      "char": "Ỵ",
+      "group": "f4",
+      "display": null,
+      "formula1": [],
+      "formula2": [],
+      "effective_formula1": [],
+      "formula_status": "not_listed",
+      "source": "all.pdf",
+      "source_page": 24,
+      "correction": null,
+      "source_note": null,
+      "formula2_requires": null,
+      "must_pack": true,
+      "spell_override": null
+    }
+  ]
+}
