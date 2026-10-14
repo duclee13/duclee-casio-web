@@ -1,0 +1,30 @@
+/* Offline restoration · 2026-10-14 */
+[hidden] { display:none !important; }
+.guide-meta { padding:10px 20px; border-bottom:1px solid var(--line); color:var(--muted); font-size:13px; }
+.step-actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.step-head .step-done { min-height:36px; border:1px solid var(--line); border-radius:8px; padding:6px 10px; }
+.step.is-complete { border-color:var(--accent); }
+.step-head .step-done[aria-pressed="true"] { background:var(--accent); color:var(--paper); }
+.step-head h3 { overflow-wrap:anywhere; }
+.print-heading { display:none; }
+textarea { min-height:112px; resize:vertical; }
+.guide-options[open] { z-index:30; }
+button:disabled { cursor:not-allowed; }
+.preview-wrap { min-height:76px; display:flex; align-items:center; justify-content:center; }
+@media screen and (max-width:600px) {
+ .step-head { gap:10px; }
+ .step-actions { width:100%; justify-content:space-between; }
+ .step-head .step-actions button { min-height:40px; }
+ .guide-meta { font-size:12px; padding:10px 12px; }
+ .guide-scroll { max-height:none; overflow:visible; }
+ .guide-options-content { max-width:calc(100vw - 40px); }
+}
+@media print {
+ .guide-meta,.step-actions { display:none !important; }
+ .print-heading { display:block; margin:0 0 22px; padding:0 0 16px; border-bottom:1px solid #aaa; }
+ .print-heading h1 { font-size:17px; margin:0 0 18px; color:#111; }
+ .print-preview { --glyph-size:22px; margin:0; color:#111; }
+ .step.is-complete { border-color:#ccc; }
+ .step { break-inside:avoid; }
+ .step-keys { overflow:visible; }
+}

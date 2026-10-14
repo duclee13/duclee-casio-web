@@ -1,8 +1,33 @@
-/* Verified display-only mapping: Casio hex -> Unicode in the supplied font.
- * PUA code points are specific to ClassWizXDisplay-Regular.otf.
- * Unlisted addresses deliberately retain their original PNG. Never use this
- * table for insertion, parsing, packing or key generation. */
+/* Exact 389-character source supplied by the user, indexed by code point.
+ * Display only: never use font aliases for input, packing or key generation.
+ * Each bank includes every position, including the blank at 20. */
+globalThis.SPELL_CHARACTER_BANKS = Object.freeze({
+  "base": {
+    "start": "10",
+    "end": "EC",
+    "characters": "𝒙𝒚𝒛…▲▼▸₋$◁&𝑡ᴛₜₕ₅ !\"#×%÷'()⋅+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[▫]^_−abcdefghijklmnopqrstuvwxyz{|}~├𝒊𝒆°ʳᵍ∠→∏⇒⌟≤≠≥√∫ᴀʙᴄₙ▶◀⁰¹²³⁴⁵⁶⁷⁸⁹₍₎₀₁₂ꜰɴᴘ𝗔𝗕𝗖𝗗𝗘𝗙𝗣▷∑𝛼𝛾𝜀𝜃𝜆𝜇𝜋𝜎𝜙ℓℏ▮▯₃＿𝐟𝐩𝐧𝝁𝐦𝐤𝐌𝐆𝐓𝐏𝐄𝐹ₚₑᴊᴋ₉Åₘɪ₄∟⟲↻ⁿ"
+  },
+  "f0": {
+    "start": "F010",
+    "end": "F031",
+    "characters": "尺寸分間町里海丈毛厘歩勺坪畝反升合斗石貫匁斤"
+  },
+  "f4": {
+    "start": "F410",
+    "end": "F495",
+    "characters": "ẠẮẰẶẤẦẨẬẼẸẾỀỂỄỆỐỒỔỖỘỢỚỜỞỊỎỌỈỦŨỤỲÕắằặấầẩậẽẹếềểễệốồổỗỠƠộờởịỰỨỪỬơớƯÀÁÂÃẢĂẳẵÈÉÊẺÌÍĨỳĐứÒÓÔạỷừửÙÚỹỵÝỡưàáâãảăữẫèéêẻìíĩỉđựòóôõỏọụùúũủýợỮẲẴẪỶỸỴ"
+  }
+});
+globalThis.SPELL_PALETTE_CHARACTERS = Object.freeze(Object.fromEntries(
+ Object.values(globalThis.SPELL_CHARACTER_BANKS).flatMap(bank =>
+  Array.from(bank.characters, (char, i) => [(parseInt(bank.start,16)+i).toString(16).toUpperCase(),char]))
+));
+/* Font cmap differs from the source page. These are verified display aliases.
+ * Unlisted addresses retain PNG: 5C, 7F. */
 globalThis.SPELL_PALETTE_FONT = Object.freeze({
+ "90": "", // U+E00E; verified against original PNG
+ "84": "", // U+E017; verified against original PNG
+ "82": "", // U+E00C; verified against original PNG
  "10": "𝒙", // U+1D499
  "11": "𝒚", // U+1D49A
  "12": "𝒛", // U+1D49B
@@ -32,7 +57,7 @@ globalThis.SPELL_PALETTE_FONT = Object.freeze({
  "2A": "⋅", // U+22C5
  "2B": "+", // U+002B
  "2C": ",", // U+002C
- "2D": "−", // U+2212
+ "2D": "-", // U+002D
  "2E": ".", // U+002E
  "2F": "/", // U+002F
  "30": "0", // U+0030
@@ -82,7 +107,7 @@ globalThis.SPELL_PALETTE_FONT = Object.freeze({
  "5D": "]", // U+005D
  "5E": "^", // U+005E
  "5F": "_", // U+005F
- "60": "-", // U+002D
+ "60": "−", // U+2212
  "61": "a", // U+0061
  "62": "b", // U+0062
  "63": "c", // U+0063
@@ -115,27 +140,31 @@ globalThis.SPELL_PALETTE_FONT = Object.freeze({
  "7E": "~", // U+007E
  "80": "𝒊", // U+1D48A
  "81": "𝒆", // U+1D486
- "83": "", // U+E010
+ "83": "", // U+E010 (source U+E083)
  "85": "°", // U+00B0
  "86": "ʳ", // U+02B3
  "87": "ᵍ", // U+1D4D
  "88": "∠", // U+2220
- "89": "", // U+E008
- "8A": "", // U+E00A
- "8B": "", // U+E009
- "8C": "", // U+E00B
+ "89": "", // U+E008 (source U+E089)
+ "8A": "", // U+E00A (source U+E08A)
+ "8B": "", // U+E009 (source U+E08B)
+ "8C": "", // U+E00B (source U+E08C)
  "8D": "→", // U+2192
  "8E": "∏", // U+220F
  "8F": "⇒", // U+21D2
- "91": "", // U+E00D
- "92": "", // U+E00F
- "93": "", // U+E024
+ "91": "", // U+E00D (source U+E091)
+ "92": "", // U+E00F (source U+E092)
+ "93": "⌟", // U+231F
  "94": "≤", // U+2264
  "95": "≠", // U+2260
  "96": "≥", // U+2265
- "97": "⇩", // U+21E9
+ "97": "⇩", // U+21E9 (source U+E097)
  "98": "√", // U+221A
  "99": "∫", // U+222B
+ "9A": "ᴀ", // U+1D00
+ "9B": "ʙ", // U+0299
+ "9C": "ᴄ", // U+1D04
+ "9D": "ₙ", // U+2099
  "9E": "▶", // U+25B6
  "9F": "◀", // U+25C0
  "A0": "⁰", // U+2070
@@ -148,24 +177,27 @@ globalThis.SPELL_PALETTE_FONT = Object.freeze({
  "A7": "⁷", // U+2077
  "A8": "⁸", // U+2078
  "A9": "⁹", // U+2079
- "AA": "", // U+E011
- "AB": "", // U+E013
- "AC": "", // U+E012
+ "AA": "", // U+E011 (source U+E0AA)
+ "AB": "", // U+E013 (source U+E0AB)
+ "AC": "", // U+E012 (source U+E0AC)
  "AD": "₍", // U+208D
  "AE": "₎", // U+208E
- "AF": "", // U+E016
+ "AF": "", // U+E016 (source U+E0AF)
  "B0": "₀", // U+2080
  "B1": "₁", // U+2081
  "B2": "₂", // U+2082
- "B3": "", // U+E000
- "B7": "", // U+E015
- "B8": "", // U+E001
- "B9": "", // U+E002
- "BA": "", // U+E003
- "BB": "", // U+E004
- "BC": "", // U+E005
- "BD": "", // U+E006
- "BE": "", // U+E007
+ "B3": "", // U+E000 (source U+E0B3)
+ "B4": "ꜰ", // U+A730
+ "B5": "ɴ", // U+0274
+ "B6": "ᴘ", // U+1D18
+ "B7": "", // U+E015 (source U+E0B7)
+ "B8": "", // U+E001 (source U+1D5D4)
+ "B9": "", // U+E002 (source U+1D5D5)
+ "BA": "", // U+E003 (source U+1D5D6)
+ "BB": "", // U+E004 (source U+1D5D7)
+ "BC": "", // U+E005 (source U+1D5D8)
+ "BD": "", // U+E006 (source U+1D5D9)
+ "BE": "", // U+E007 (source U+1D5E3)
  "BF": "▷", // U+25B7
  "C0": "∑", // U+2211
  "C1": "𝛼", // U+1D6FC
@@ -179,10 +211,10 @@ globalThis.SPELL_PALETTE_FONT = Object.freeze({
  "C9": "𝜙", // U+1D719
  "CA": "ℓ", // U+2113
  "CB": "ℏ", // U+210F
- "CC": "■", // U+25A0
- "CD": "□", // U+25A1
+ "CC": "■", // U+25A0 (source U+25AE)
+ "CD": "□", // U+25A1 (source U+25AF)
  "CE": "₃", // U+2083
- "CF": "", // U+E026
+ "CF": "", // U+E026 (source U+FF3F)
  "D0": "𝐟", // U+1D41F
  "D1": "𝐩", // U+1D429
  "D2": "𝐧", // U+1D427
@@ -197,53 +229,55 @@ globalThis.SPELL_PALETTE_FONT = Object.freeze({
  "DB": "𝐹", // U+1D439
  "DC": "ₚ", // U+209A
  "DD": "ₑ", // U+2091
- "E0": "", // U+E014
- "E1": "ᵤ", // U+1D64
+ "DE": "ᴊ", // U+1D0A
+ "DF": "ᴋ", // U+1D0B
+ "E0": "", // U+E014 (source U+E0E0)
+ "E1": "ᵤ", // U+1D64 (source U+E0E1)
  "E2": "₉", // U+2089
- "E3": "Å", // U+00C5
+ "E3": "Å", // U+212B
  "E4": "ₘ", // U+2098
  "E5": "ɪ", // U+026A
  "E6": "₄", // U+2084
- "E7": "", // U+E029
- "E8": "", // U+E02A
- "E9": "", // U+E02C
- "EA": "↺", // U+21BA
- "EB": "", // U+E02D
+ "E7": "", // U+E029 (source U+E0E7)
+ "E8": "", // U+E02A (source U+E0E8)
+ "E9": "", // U+E02C (source U+221F)
+ "EA": "↺", // U+21BA (source U+27F2)
+ "EB": "", // U+E02D (source U+21BB)
  "EC": "ⁿ", // U+207F
- "F010": "", // U+E018
- "F011": "", // U+E019
- "F012": "", // U+E01A
- "F013": "", // U+E01B
- "F014": "", // U+E01C
- "F015": "", // U+E01D
- "F016": "", // U+E01E
- "F017": "", // U+E01F
- "F018": "", // U+E020
- "F019": "", // U+E021
- "F01A": "", // U+E022
- "F01B": "", // U+E023
- "F01C": "", // U+E100
- "F01D": "", // U+E101
- "F01E": "", // U+E102
- "F01F": "", // U+E103
- "F020": "", // U+E104
- "F021": "", // U+E105
- "F022": "", // U+E106
- "F023": "", // U+E107
- "F024": "", // U+E108
- "F025": "", // U+E109
- "F026": "", // U+E10A
- "F027": "", // U+E10B
- "F028": "", // U+E10C
- "F029": "", // U+E10D
- "F02A": "", // U+E10E
- "F02B": "", // U+E10F
- "F02C": "", // U+E110
- "F02D": "", // U+E111
- "F02E": "", // U+E112
- "F02F": "", // U+E113
- "F030": "", // U+E114
- "F031": "", // U+E115
+ "F010": "", // U+E018 (source U+F010)
+ "F011": "", // U+E019 (source U+F011)
+ "F012": "", // U+E01A (source U+F012)
+ "F013": "", // U+E01B (source U+F013)
+ "F014": "", // U+E01C (source U+F014)
+ "F015": "", // U+E01D (source U+F015)
+ "F016": "", // U+E01E (source U+F016)
+ "F017": "", // U+E01F (source U+F017)
+ "F018": "", // U+E020 (source U+F018)
+ "F019": "", // U+E021 (source U+F019)
+ "F01A": "", // U+E022 (source U+F01A)
+ "F01B": "", // U+E023 (source U+F01B)
+ "F01C": "", // U+E100 (source U+5C3A)
+ "F01D": "", // U+E101 (source U+5BF8)
+ "F01E": "", // U+E102 (source U+5206)
+ "F01F": "", // U+E103 (source U+9593)
+ "F020": "", // U+E104 (source U+753A)
+ "F021": "", // U+E105 (source U+91CC)
+ "F022": "", // U+E106 (source U+6D77)
+ "F023": "", // U+E107 (source U+4E08)
+ "F024": "", // U+E108 (source U+6BDB)
+ "F025": "", // U+E109 (source U+5398)
+ "F026": "", // U+E10A (source U+6B69)
+ "F027": "", // U+E10B (source U+52FA)
+ "F028": "", // U+E10C (source U+576A)
+ "F029": "", // U+E10D (source U+755D)
+ "F02A": "", // U+E10E (source U+53CD)
+ "F02B": "", // U+E10F (source U+5347)
+ "F02C": "", // U+E110 (source U+5408)
+ "F02D": "", // U+E111 (source U+6597)
+ "F02E": "", // U+E112 (source U+77F3)
+ "F02F": "", // U+E113 (source U+8CAB)
+ "F030": "", // U+E114 (source U+5301)
+ "F031": "", // U+E115 (source U+65A4)
  "F410": "Ạ", // U+1EA0
  "F411": "Ắ", // U+1EAE
  "F412": "Ằ", // U+1EB0

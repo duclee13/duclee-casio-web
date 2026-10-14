@@ -79,3 +79,27 @@ html[data-suspended="true"] .motion-backdrop span{animation-play-state:paused}
 @media(max-width:740px){.top-right{gap:8px}.motion-toggle{padding:5px 7px}.top-right .model{display:none}.motion-backdrop span{width:340px;height:340px}.glyph-flight{border-radius:3px}}
 @media(max-width:380px){.motion-toggle span{display:none}.motion-toggle{padding:6px}.topbar{padding:0 12px}.top-right{gap:9px}}
 @media print{.motion-backdrop,.glyph-flight,.toast,.palette-sweep,.guide-progress,.press-ripple{display:none!important}}
+
+/* Night motion: ambient depth, focused hover light and one-shot LCD scans. */
+.motion-backdrop:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#8198750a 1px,transparent 1px),linear-gradient(90deg,#8198750a 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(black,transparent 85%)}
+.motion-backdrop span:nth-child(3){width:420px;height:420px;left:35%;top:40%;right:auto;bottom:auto;animation-duration:28s}
+.card:after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(ellipse at 50% 0,#a8d98512,transparent 55%);opacity:0;transition:opacity 350ms ease}
+.card:hover:after,.card:focus-within:after{opacity:1}
+.preview-scan{position:absolute;inset:0;pointer-events:none;background:linear-gradient(100deg,transparent 25%,#f5ffe79c 49%,#fff9 50%,transparent 72%);z-index:2}
+.theme-toggle{transition:transform 180ms var(--motion-ease),background-color 180ms ease}
+.section-nav a{transition:background-color 180ms ease,color 180ms ease}
+.step-head h3{position:relative}
+.step-head h3:after{content:"";display:block;position:absolute;left:0;bottom:-5px;width:36px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 260ms var(--motion-ease)}
+html[data-motion="full"] .step:hover .step-head h3:after{transform:scaleX(1)}
+html[data-motion="full"] .theme-toggle:hover{transform:translateY(-2px)}
+html[data-motion="full"] .theme-toggle:active{transform:scale(.94)}
+html[data-motion="full"] .pdf-fixed:not(:disabled):hover svg{transform:translateY(2px)}
+.pdf-fixed svg{transition:transform 200ms var(--motion-ease)}
+@media screen and (hover:hover) and (pointer:fine){
+ html[data-motion="full"] .keycap{transition:transform 140ms var(--motion-ease),color 140ms ease}
+ html[data-motion="full"] .keycap:hover{transform:translateY(-2px);color:var(--accent)}
+}
+html[data-motion="reduced"] :is(.theme-toggle,.pdf-fixed svg,.keycap){transition:none;transform:none}
+html[data-motion="reduced"] .step-head h3:after{transition:none}
+@media(prefers-reduced-motion:reduce){.theme-toggle,.pdf-fixed svg,.keycap{transition:none!important;transform:none!important}.step-head h3:after{transition:none}}
+@media print{.preview-scan,.card:after{display:none!important}}

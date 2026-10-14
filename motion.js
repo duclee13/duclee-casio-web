@@ -62,7 +62,13 @@
   if(!booted)return;
   cancel('palette');const grid=$('glyph-grid');
   play(grid,[{opacity:.65,transform:changed?'translateY(5px)':'none'},{opacity:1,transform:'none'}],{duration:changed?260:140},{scope:'palette'});
-  if(changed)sweep(grid);
+  if(changed){
+   sweep(grid);
+   // Eight axis markers carry the wave; avoid promoting 240 glyphs to layers.
+   [...grid.querySelectorAll('.hex-axis')].slice(1,9).forEach((node,i)=>
+    play(node,[{opacity:.35,transform:'translateY(-5px)'},{opacity:1,transform:'translateY(0)'}],
+     {duration:330,delay:i*18},{scope:'palette',decorative:true}));
+  }
  }
  function keyedCells(){
   const counts=new Map();return [...$('preview').children].filter(cell=>cell.dataset.hex&&cell.dataset.hex!=='20').map(cell=>{
@@ -105,15 +111,37 @@
   cancel('guide');if(!booted)return;
   const items=doc.querySelectorAll('#guide .assign-block, #guide .step');
   items.forEach((node,i)=>fadeIn(node,{scope:'guide',duration:250,delay:Math.min(i*35,180),y:8}));
+  [...doc.querySelectorAll('#guide .step-keys p')].slice(0,6).forEach((node,i)=>
+   fadeIn(node,{scope:'guide',duration:360,delay:Math.min(90+i*30,300),y:5}));
   queueProgress();
  }
+ function scan(){
+  if(reduced()||doc.hidden)return;
+  const layer=doc.createElement('span');layer.className='preview-scan';layer.setAttribute('aria-hidden','true');
+  doc.querySelector('.preview-wrap')?.append(layer);
+  play(layer,[{transform:'translateX(-110%)',opacity:0},{opacity:1,offset:.25},{transform:'translateX(110%)',opacity:0}],
+   {duration:800},{scope:'celebrate',decorative:true,dispose:()=>layer.remove()});
+ }
+ function theme(){
+  cancel('theme');
+  const button=$('theme-toggle'),icon=button?.querySelector(html.dataset.theme==='dark'?'.theme-sun':'.theme-moon');
+  play(icon,[{opacity:0,transform:'rotate(-65deg) scale(.6)'},{opacity:1,transform:'rotate(0) scale(1)'}],
+   {duration:420},{scope:'theme'});
+  // Short panel fades soften the palette switch without hiding the document.
+  doc.querySelectorAll('.card').forEach(node=>play(node,[{opacity:.78},{opacity:1}],{duration:230},{scope:'theme'}));
+ }
  function generated(){
+  cancel('celebrate');scan();
+  play($('export-pdf'),[{opacity:.6,transform:'translateY(8px) scale(.96)'},{opacity:1,transform:'translateY(0) scale(1)'}],
+   {duration:400},{scope:'celebrate'});
   const button=$('generate');button.classList.add('is-generated');
   cancel('check');play(button.querySelector('.generate-check'),[{strokeDashoffset:1},{strokeDashoffset:0}],{duration:260},{scope:'check',decorative:true});
  }
- function invalidate(){cancel('guide');$('generate')?.classList.remove('is-generated');queueProgress();}
+ function invalidate(){cancel('guide');cancel('celebrate');$('generate')?.classList.remove('is-generated');queueProgress();}
  function reference(){
-  if(!booted)return;cancel('reference');fadeIn(doc.querySelector('.reference-heading'),{scope:'reference',duration:160,y:3});
+  if(!booted)return;cancel('reference');
+  ['.reference-heading','.formula-list','.reference-note'].forEach((selector,i)=>
+   fadeIn(doc.querySelector(selector),{scope:'reference',duration:260,delay:i*40,y:5}));
  }
  function toast(){cancel('toast');play($('toast'),[{opacity:0,transform:'translate(-50%, 9px)'},{opacity:1,transform:'translate(-50%, 0)'}],{duration:200},{scope:'toast'});}
  function toastExit(done){cancel('toast');play($('toast'),[{opacity:1,transform:'translate(-50%, 0)'},{opacity:0,transform:'translate(-50%, 5px)'}],{duration:130,easing:'ease-in'},{scope:'toast',done});}
@@ -132,7 +160,7 @@
  function boot(){
   if(booted)return;booted=true;syncPreference();tab(false);
   const intro=[doc.querySelector('.brand-mark'),doc.querySelector('.brand-word'),doc.querySelector('.brand-light'),doc.querySelector('.palette'),doc.querySelector('.composer'),$('guide-section')];
-  intro.forEach((node,i)=>fadeIn(node,{scope:'intro',duration:440,delay:i*45,y:i<3?4:12}));
+  intro.forEach((node,i)=>fadeIn(node,{scope:'intro',duration:580,delay:i*65,y:i<3?6:18}));
   play(doc.querySelector('.logo-stroke'),[{strokeDashoffset:1},{strokeDashoffset:0}],{duration:550,delay:80},{scope:'intro',decorative:true});
   palette(true);preview(new Map());
   $('motion-toggle')?.addEventListener('click',()=>{
@@ -145,11 +173,15 @@
   doc.addEventListener('click',event=>{
    const button=event.target.closest('button');
    if(!button||button.disabled||reduced()||button.classList.contains('glyph-button'))return;
-   if(!button.matches('.primary,.secondary,.examples button,.motion-toggle'))return;
+   if(!button.matches('.primary,.secondary,.examples button,.motion-toggle,.theme-toggle'))return;
    const rect=button.getBoundingClientRect(),ripple=doc.createElement('i');ripple.className='press-ripple';ripple.setAttribute('aria-hidden','true');
    ripple.style.left=(event.detail?event.clientX-rect.left:rect.width/2)+'px';ripple.style.top=(event.detail?event.clientY-rect.top:rect.height/2)+'px';button.append(ripple);
    play(ripple,[{transform:'scale(.2)',opacity:1},{transform:`scale(${Math.max(rect.width,rect.height)/12})`,opacity:0}],{duration:380},{scope:'ripple',decorative:true,dispose:()=>ripple.remove()});
   });
+  doc.querySelectorAll('.section-nav a').forEach(link=>link.addEventListener('click',()=>{
+   doc.querySelectorAll('.section-nav a').forEach(item=>item.classList.toggle('is-current',item===link));
+   cancel('nav');play(link,[{opacity:.6,transform:'scale(.96)'},{opacity:1,transform:'scale(1)'}],{duration:260},{scope:'nav'});
+  }));
   $('reference-panel')?.addEventListener('toggle',()=>{if($('reference-panel').open)reference();});
   $('guide-scroll')?.addEventListener('scroll',queueProgress,{passive:true});root.addEventListener('scroll',queueProgress,{passive:true});
   root.addEventListener('resize',()=>{tab(false);queueProgress();},{passive:true});
@@ -158,7 +190,7 @@
   root.__ready=true;
  }
  // Small deterministic harness: ?t=0 / ?t=.3 / ?t=1, plus ?reduce=1.
- root.SpellMotion={boot,tab,palette,capturePreview,preview,captureGlyph,fly,guide,generated,invalidate,reference,toast,toastExit,error};
+ root.SpellMotion={boot,tab,palette,capturePreview,preview,captureGlyph,fly,guide,generated,invalidate,reference,toast,toastExit,error,theme};
  root.__spellMotion={get activeCount(){return active.size;},get reduced(){return reduced();}};
  syncPreference();
 })(globalThis);

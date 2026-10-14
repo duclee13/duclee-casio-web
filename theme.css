@@ -1,0 +1,57 @@
+/* Casio night palette. All dark overrides are screen-only for white PDF pages. */
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;min-width:44px;padding:8px 12px;border:1px solid var(--line);border-radius:22px;background:var(--soft);color:var(--ink);font-size:13px;position:relative;overflow:hidden}
+.theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.theme-toggle .theme-sun{display:none}
+html[data-theme="dark"] .theme-toggle .theme-sun{display:block}
+html[data-theme="dark"] .theme-toggle .theme-moon{display:none}
+@media screen{
+ html[data-theme="dark"]{color-scheme:dark;--ink:#e3ece2;--muted:#a3b3a5;--paper:#0c1211;--surface:#131d1a;--soft:#1a2822;--line:#2c4035;--accent:#b4e18a}
+ html[data-theme="dark"] .topbar{background:#101916f5}
+ html[data-theme="dark"] .brand-mark{background:#c3eb95;color:#172510}
+ html[data-theme="dark"] .card{box-shadow:0 12px 40px #0003}
+ html[data-theme="dark"] .card:before{box-shadow:inset 0 0 0 1px #b4e18a50}
+ html[data-theme="dark"] textarea{background:#0d1612;color:var(--ink);border-color:#456048;caret-color:#d0f4a7}
+ html[data-theme="dark"] textarea::placeholder{color:#91a090}
+ html[data-theme="dark"] :where(button,a,input,textarea,select,summary):focus-visible{outline-color:#b4e18a}
+ html[data-theme="dark"] .search:focus-within{outline-color:#b4e18a}
+ html[data-theme="dark"] :is(.search,.font-control select,.secondary){border-color:#48614a}
+ html[data-theme="dark"] :is(.secondary,.step-head button){background:#1a2822;color:#c6e9a8}
+ html[data-theme="dark"] .step-head button:hover{background:#2b3e2e;color:#e9f8d8}
+ html[data-theme="dark"] .primary{background:linear-gradient(115deg,#c9ec9c,#a8d980);color:#14210f}
+ html[data-theme="dark"] .primary:hover:not(:disabled){background:#d0f1a7}
+ html[data-theme="dark"] .pdf-fixed:disabled{background:#203027;color:#a3b3a5;border-color:#405444}
+ html[data-theme="dark"] .motion-toggle{background:#1a2822;color:#bfd4ae;border-color:#3a513e}
+ html[data-theme="dark"] .motion-toggle[aria-pressed="false"]{color:#a3b3a5}
+ html[data-theme="dark"] .toggle input{background:#354639;border-color:#4d6251}
+ html[data-theme="dark"] .toggle input:checked{background:#b4e18a;border-color:#b4e18a}
+ html[data-theme="dark"] .toggle input:before{background:#ecf4e7}
+ html[data-theme="dark"] .toggle input:checked:before{background:#1d3017}
+ html[data-theme="dark"] .tabs{background:#0c1511}
+ html[data-theme="dark"] :is(.tab-indicator,.tabs button.active){background:#31432c;color:#ddf4be}
+ html[data-theme="dark"] .tabs.motion-tabs button.active{background:transparent}
+ html[data-theme="dark"] .preview-wrap{background:linear-gradient(120deg,#cedcba,#e6eecf 55%,#c6d6b1);border-color:#95ab79;box-shadow:inset 0 2px 8px #34492226}
+ html[data-theme="dark"] .preview-wrap:after{border-color:#f5ffe3}
+ html[data-theme="dark"] .assign-block{background:#1c2b1d;color:#d1edb7;border-color:#3f5636;border-left-color:#abd37d}
+ html[data-theme="dark"] .step-keys p{color:#dce9d9}
+ html[data-theme="dark"] .key-pattern-bracket{color:#ff9a8e}
+ html[data-theme="dark"] .step:hover{border-color:#72945c}
+ html[data-theme="dark"] .error{background:#35241b;border-color:#8d5b38;color:#ffd5ae}
+ html[data-theme="dark"] #character-count{color:var(--muted)}
+ html[data-theme="dark"] #character-count.over-limit{color:#ffad9d}
+ html[data-theme="dark"] .section-nav{background:#101b16f5}
+ html[data-theme="dark"] .section-nav a:hover,html[data-theme="dark"] .section-nav a:focus-visible{background:#2a3b29}
+ html[data-theme="dark"] .guide-scroll,html[data-theme="dark"] .matrix-wrap{scrollbar-color:#57734b #131d1a}
+ html[data-theme="dark"] .toast{background:#c5e6a6;color:#172613;border:1px solid #dcf8bc;box-shadow:0 8px 32px #0005}
+ html[data-theme="dark"] .toast:before{color:#263e1b;border-color:#55743f}
+ html[data-theme="dark"] .motion-backdrop span{background:radial-gradient(circle,#72b64d28,transparent 68%)}
+ html[data-theme="dark"] .motion-backdrop span+span{background:radial-gradient(circle,#3a9f8626,transparent 68%)}
+ html[data-theme="dark"] .motion-backdrop span:nth-child(3){background:radial-gradient(circle,#b5cf6620,transparent 65%)}
+ html[data-theme="dark"] ::selection{background:#b4e18a;color:#10200d}
+ html[data-theme="dark"] .section-nav a.is-current{background:#2c4029;color:#d3efb4}
+ .section-nav a.is-current{background:#e0ead5}
+ .top-right{flex-wrap:nowrap}
+ .motion-toggle{min-height:44px}
+}
+@media screen and (max-width:600px){.theme-toggle{padding:8px}.theme-toggle span{display:none}.top-right{gap:6px}.topbar{flex-wrap:nowrap}}
+@media screen and (max-width:400px){.top-right{display:flex;gap:6px}.brand{font-size:16px}}
+@media print{.theme-toggle{display:none!important}html{color-scheme:light}}

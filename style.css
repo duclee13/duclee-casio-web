@@ -7,11 +7,12 @@
   --soft: #f7f9f3;
   --line: #dce3d5;
   --accent: #36562b;
-  --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --casio-text: 'ClassWiz X Display', ui-monospace, Consolas, monospace;
+  --mono: var(--casio-text);
   --key-size: 18px;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--casio-text); font-size: 16px; line-height: 1.65; font-synthesis: none; }
 button, input, textarea, select { font: inherit; }
 button, select { cursor: pointer; }
 button, a, input, select, summary { touch-action: manipulation; }
@@ -52,8 +53,10 @@ textarea { display: block; background: #fafbf8; color: var(--ink); width: 100%; 
 .examples button { background: var(--surface); border: 1px solid var(--line); border-radius: 7px; color: var(--muted); padding: 6px 10px; min-height: 36px; font-size: 13px; }
 .examples button:hover { background: var(--soft); color: var(--ink); }
 .preview-wrap { width: 100%; container-type: inline-size; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 18px 0; margin-bottom: 16px; overflow: hidden; }
-.spell-line { --glyph-size: min(32px,calc(100cqw / 17.3333333333)); width: calc(var(--glyph-size) * 17.3333333333); height: var(--glyph-size); display: flex; margin: 0 auto; overflow: hidden; }
-.spell-cell { display: flex; align-items: center; justify-content: center; flex: 0 0 var(--glyph-size); height: var(--glyph-size); overflow: hidden; }
+/* Font advance = 110/140 em; font size = .875 × glyph height.
+   A display cell is therefore .6875 × height, not a square. */
+.spell-line { --glyph-size: min(32px,calc(100cqw / (var(--line-cells,17) * .6875))); --cell-width: calc(var(--glyph-size) * .6875); width: calc(var(--cell-width) * var(--line-cells,17)); height: var(--glyph-size); display: flex; gap: 0; margin: 0 auto; overflow: hidden; }
+.spell-cell { display: flex; align-items: center; justify-content: center; flex: 0 0 var(--cell-width); min-width: 0; height: var(--glyph-size); overflow: visible; }
 .spell-cell .glyph { width: var(--glyph-size); height: var(--glyph-size); }
 .glyph-defs { position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none; }
 .preview-glyph { display: block; overflow: hidden; background: none; filter: none; mix-blend-mode: normal; }
@@ -81,6 +84,10 @@ textarea { display: block; background: #fafbf8; color: var(--ink); width: 100%; 
 .glyph-button.dimmed { opacity: .16; }
 .glyph-button.matched { background: #344727; box-shadow: inset 0 0 0 1px #8ca76e; }
 .glyph { flex-shrink: 0; display: inline-block; background-repeat: no-repeat; image-rendering: pixelated; mix-blend-mode: screen; pointer-events: none; }
+/* Source PNG background is #121212. Convert it to alpha so the actual cell
+   background shows through, including hover, focus and search highlighting. */
+.glyph-button > .glyph:not(.narrow-marker) { filter: url(#palette-png-ink); mix-blend-mode: normal; }
+.palette-font-ready .glyph-button > .glyph-font-candidate { filter: none; }
 @font-face {
   font-family: 'ClassWiz X Display';
   src: url('fonts/ClassWizXDisplay-Regular.otf') format('opentype');
@@ -133,6 +140,15 @@ textarea { display: block; background: #fafbf8; color: var(--ink); width: 100%; 
 .guide-placeholder { padding: 44px 24px; text-align: center; color: var(--muted); font-size: 16px; line-height: 1.7; }
 #guide { padding: 20px; }
 .assign-block { font: var(--key-size)/1.8 var(--mono); padding: 16px; background: #eff4e8; color: #294320; border: 1px solid #dce6cf; border-radius: 10px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0 0 20px; }
+@font-face {
+  font-family: 'ClassWiz Hex';
+  src: url('fonts/ClassWizXDisplay-Hex.otf?v=2') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+1D400-1D405, U+02E3;
+}
+.assignment-hex-letter,.assignment-exponent { font-family: 'ClassWiz Hex', var(--casio-text); font-weight: 400; font-synthesis: none; }
 .step { border: 1px solid var(--line); border-radius: 10px; margin: 16px 0 0; overflow: hidden; }
 .step-head { padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--soft); border-bottom: 1px solid var(--line); }
 .step-head h3 { margin: 0; font-size: 16px; font-weight: 650; line-height: 1.5; }
@@ -185,10 +201,61 @@ textarea { display: block; background: #fafbf8; color: var(--ink); width: 100%; 
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 @media print {
-  .topbar,.palette,.composer,.guide-actions,.step-head button { display: none; }
+  @page { size: A4 portrait; margin: 14mm; }
+  body { background: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .topbar,.palette,.composer,.guide-actions,.step-head button,.assign-block,.motion-backdrop,.toast,.guide-progress { display: none !important; }
   .workspace { display: block; min-height: 0; padding: 0; }
-  .guide-section { border: 0; }
+  .guide-section { display: block; border: 0; overflow: visible; }
   .guide-scroll { overflow: visible; max-height: none; }
-  .step { break-inside: avoid; }
+  #guide { padding: 0; }
+  #guide,.guide-section,.step,.step-head,.step-keys,.step-keys p { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+  .step { break-inside: auto; overflow: visible; }
+  .step-head { break-after: avoid; }
+  .step-keys p { orphans: 2; widows: 2; }
   .guide-top { border: 0; }
 }
+
+.editor-meter { display: flex; justify-content: flex-end; margin-top: 7px; min-height: 20px; }
+#character-count { color: #53604c; font: 500 14px/1.4 var(--mono); font-variant-numeric: tabular-nums; }
+#character-count.over-limit { color: #a62d26; font-weight: 700; }
+.spell-cell.narrow-cell { flex-basis: calc(var(--cell-width) / 3); }
+.spell-cell .narrow-space { width: 100%; min-width: 0; height: 100%; }
+.glyph.preview-font { mix-blend-mode: normal; }
+.palette-font-ready .preview-font > .glyph-fallback { display: none; }
+.palette-font-ready .preview-font > .glyph-font-text { color: #242e1f; }
+/* Keep PNG fallback glyphs at their existing height inside the narrower cell. */
+.spell-cell > .preview-glyph,.preview-font > .glyph-fallback { width: var(--glyph-size) !important; height: var(--glyph-size) !important; }
+.preview-font > .glyph-fallback { position: absolute; left: 50%; transform: translateX(-50%); }
+
+.glyph-grid { grid-template-rows: repeat(var(--grid-rows,16),minmax(0,1fr)); aspect-ratio: 17 / var(--grid-rows,16); }
+.glyph-cell.nonstandard { background: #542626; color: #ffc4c4; font: 11px var(--mono); cursor: not-allowed; }
+.narrow-marker { display: grid; place-items: center; color: #dbe8cc; font: 16px var(--mono); mix-blend-mode: normal; }
+
+@font-face {
+  font-family: 'CASIO Keycaps';
+  src: url('fonts/CASIO-ClassWiz.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+/* The font already draws each key's border. Do not add a second CSS border. */
+.keycap { display: inline; }
+.keycap::before { display: none; }
+.key-font-ready .keycap { display: inline-block; vertical-align: middle; margin: .12em 0; line-height: 1; }
+.key-gap { display: none; }
+.key-pattern-bracket { display: inline-block; color: #b42318; font-size: 2em; line-height: 1; vertical-align: middle; }
+.key-font-ready .keycap::before {
+  content: attr(data-glyph); display: inline;
+  font-family: 'CASIO Keycaps'; font-size: 1.5em; font-weight: 400;
+  font-style: normal; font-synthesis: none; letter-spacing: 0; line-height: 1;
+}
+.key-font-ready .key-label { display: none; }
+.topbar,.top-right { flex-wrap: wrap; }
+.top-right { row-gap: 4px; }
+.brand,h1,h2 { letter-spacing: 0; }
+.section-top,.step-head { flex-wrap: wrap; }
+.step-head h3 { flex: 1 1 180px; overflow-wrap: anywhere; }
+.step-keys p { line-height: 2.2; font-weight: 400; }
+.formula-list dd .keycap::before { font-size: 1.6em; }
+
+.unknown-glyph{display:grid;place-items:center;width:100%;height:100%;color:#242e1f;border:1px dashed #6d805c;font:16px var(--mono)}

@@ -1,42 +1,47 @@
 <!doctype html>
-<html lang="vi">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="vi"><head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Soạn ký tự và tạo hướng dẫn spell cho Casio fx-580VN X.">
+<meta name="theme-color" content="#0c1211">
+<script src="theme.js?v=20261014"></script>
 <title>Spell Studio · fx-580VN X</title>
-<link rel="stylesheet" href="style.css?v=palette-font-1">
-<link rel="stylesheet" href="motion.css?v=layout-readable-1">
-<script defer src="data.js"></script><script defer src="pdf-reference.js"></script><script defer src="engine.js?v=preview-fhex-1"></script><script defer src="motion.js"></script><script defer src="palette-font.js?v=1"></script><script defer src="app.js?v=palette-font-1"></script>
-</head>
+<link rel="stylesheet" href="style.css?v=20261014">
+<link rel="stylesheet" href="motion.css?v=20261014">
+<link rel="stylesheet" href="responsive.css?v=20261014">
+<link rel="stylesheet" href="theme.css?v=20261014">
+<script defer src="data.js?v=20261014"></script><script defer src="pdf-reference.js?v=20261014"></script><script defer src="engine.js?v=20261014"></script><script defer src="motion.js?v=20261014"></script><script defer src="palette-font.js?v=20261014"></script><script defer src="key-font.js?v=20261014"></script><script defer src="app.js?v=20261014"></script>
+<link rel="stylesheet" href="refinements.css?v=20261014"></head>
 <body>
-<svg class="glyph-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false"><defs><filter id="spell-preview-ink" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 .14  0 0 0 0 .18  0 0 0 0 .12  1.0714285714 0 0 0 -.0714285714"/></filter></defs></svg>
-<div class="motion-backdrop" aria-hidden="true"><span></span><span></span></div>
-<header class="topbar"><a class="brand" href="#" aria-label="Spell Studio"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path class="logo-stroke" pathLength="1" d="M22 8H12a5 5 0 0 0 0 10h4a4 4 0 0 1 0 8H6"/><path class="logo-cursor" d="M22 26h6"/></svg></span><span><span class="brand-word">spell</span><span class="brand-light">studio</span></span></a><div class="top-right"><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="true" aria-label="Hiệu ứng chuyển động"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 10h3l3-6 4 12 3-6h3"/></svg><span>Hiệu ứng</span><i aria-hidden="true"></i></button><span class="model"><i></i> fx-580VN X</span><a href="casio-spell-web.zip" download>Mã nguồn ↗</a></div></header>
+<svg class="glyph-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false"><defs><filter id="spell-preview-ink" color-interpolation-filters="sRGB"><fecolormatrix type="matrix" values="0 0 0 0 .14  0 0 0 0 .18  0 0 0 0 .12  1.0714285714 0 0 0 -.0714285714"></fecolormatrix></filter><filter id="palette-png-ink" color-interpolation-filters="sRGB"><fecolormatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.0759493671 0 0 0 -.0759493671"></fecolormatrix></filter></defs></svg>
+<div class="motion-backdrop" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="topbar"><a class="brand" href="#" aria-label="Spell Studio"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path class="logo-stroke" d="M22 8H12a5 5 0 0 0 0 10h4a4 4 0 0 1 0 8H6" pathLength="1"></path><path class="logo-cursor" d="M22 26h6"></path></svg></span><span><span class="brand-word">spell</span><span class="brand-light">studio</span></span></a><div class="top-right"><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="true" aria-label="Bật giao diện sáng" title="Chuyển sang sáng"><svg class="theme-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4 19 5"></path></svg><svg class="theme-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z"></path></svg><span>Sáng / tối</span></button><button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false" aria-label="Hiệu ứng chuyển động" title="Chuyển động đã được giảm theo cài đặt hệ thống"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M2 10h3l3-6 4 12 3-6h3"></path></svg><span>Hiệu ứng</span><i aria-hidden="true"></i></button><span class="model"><i></i> fx-580VN X</span></div></header>
+<nav class="section-nav" aria-label="Chuyển nhanh"><a href="#composer">Soạn chữ</a><a href="#palette">Ký tự</a><a href="#guide-section">Hướng dẫn</a></nav>
 <main class="workspace">
-<section class="composer card" aria-label="Soạn văn bản">
+<section id="composer" class="composer card" aria-label="Soạn văn bản">
 <div class="section-top"><h1>Văn bản spell</h1><button id="clear" class="text-button">Xóa hết</button></div>
-<label class="sr-only" for="editor">Nội dung cần spell</label><textarea aria-describedby="error" id="editor" rows="2" spellcheck="false" placeholder="Gõ văn bản hoặc chọn ký tự…">ChatGPT</textarea>
-<div class="editor-options"><label class="toggle" for="center">Căn giữa: <input id="center" type="checkbox" checked></label><div class="examples"><button data-example="ChatGPT">ChatGPT</button><button data-example="Việt Nam">Việt Nam</button></div></div>
+<label class="sr-only" for="editor">Nội dung cần spell</label><textarea aria-describedby="character-count error" id="editor" rows="2" spellcheck="false" placeholder="Gõ văn bản hoặc chọn ký tự…" aria-invalid="false" autocomplete="off" autocapitalize="off"></textarea>
+<div class="editor-meter"><span id="character-count" role="status" aria-live="polite" aria-atomic="true" title=""></span></div>
+<div class="editor-options"><label class="toggle" for="center">Căn giữa: <input id="center" type="checkbox" checked></label><label class="toggle" for="compress-spaces"><input id="compress-spaces" type="checkbox" checked> Tự co dấu cách</label></div>
 <div class="preview-wrap"><div id="preview" class="spell-line" role="img" aria-label="Chữ sẽ spell"></div></div>
-<div id="error" class="error" role="alert" hidden></div>
-<button id="generate" class="primary"><span class="button-label">Tạo hướng dẫn</span><span class="generate-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="generate-arrow" d="M6 18 18 6M6 6h12v12"/><path class="generate-check" pathLength="1" d="m5 12 4 4L19 6"/></svg></span></button>
+<div id="error" class="error" role="alert" hidden=""></div>
+<button id="generate" class="primary" disabled title="Tạo hướng dẫn · Ctrl+Enter"><span class="button-label">Tạo hướng dẫn</span><span class="generate-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="generate-arrow" d="M6 18 18 6M6 6h12v12"></path><path class="generate-check" d="m5 12 4 4L19 6" pathLength="1"></path></svg></span></button>
 </section>
-<section class="palette card" aria-label="Bảng ký tự Casio">
-<div class="section-top"><h2>Bảng ký tự</h2><a class="reference" href="https://cwh.ca510.com/2-level-font/" target="_blank" rel="noopener">Bảng gốc ↗</a></div>
+<section id="palette" class="palette card" aria-label="Bảng ký tự Casio">
+<div class="section-top"><h2>Bảng ký tự</h2></div>
 <div class="palette-tools"><div class="tabs" role="group" aria-label="Chọn bảng ký tự"><span id="tab-indicator" class="tab-indicator" aria-hidden="true"></span><button data-group="base" aria-pressed="true" class="active">00</button><button data-group="f0" aria-pressed="false">F0</button><button data-group="f4" aria-pressed="false">F4 · Tiếng Việt</button></div><label class="search"><span>⌕</span><input id="search" type="search" aria-label="Tìm ký tự hoặc mã hex" placeholder="Ký tự / hex"></label></div>
-<div class="matrix-wrap"><div id="glyph-grid" class="glyph-grid" aria-label="Bảng hex, hàng và cột từ 0 đến F"></div></div>
-<div class="palette-bottom"><span id="shown"></span><span id="glyph-info">Chạm ký tự để chèn</span></div>
+<div id="palette-viewport" class="matrix-wrap fit-palette" tabindex="0" role="region" aria-label="Bảng ký tự"><div id="glyph-grid" class="glyph-grid without-f-row" aria-label="Bảng hex, hàng và cột từ 0 đến F"></div></div>
+<div class="palette-bottom"><span id="shown">222 ký tự</span><span id="glyph-info">6 · 36</span></div>
 <details id="reference-panel" class="reference-panel">
-<summary><span>Hex &amp; công thức</span><span id="reference-selected">41 · A</span></summary>
-<div class="reference-heading"><div id="reference-glyph" aria-hidden="true"></div><div><strong id="reference-title"></strong><div id="reference-token" class="reference-token"></div></div><a id="reference-source" href="reference/all.pdf" target="_blank" rel="noopener">PDF ↗</a></div>
+<summary><span>Hex &amp; công thức</span><span id="reference-selected">36 · 6</span></summary>
+<div class="reference-heading"><div id="reference-glyph" aria-hidden="true"></div><div><strong id="reference-title"></strong><div id="reference-token" class="reference-token"></div></div><a id="reference-source" href="reference/all.pdf#page=4" target="_blank" rel="noopener noreferrer">PDF · tr. 4 ↗</a></div>
 <dl class="formula-list"><dt>Công thức 1</dt><dd id="formula-one"></dd><dt>Công thức 2</dt><dd id="formula-two"></dd></dl>
 <div id="reference-note" class="reference-note"></div>
-<div class="reference-actions"><button id="copy-formulas" class="text-button">Sao chép công thức</button><a href="all-hex.json" download>Bảng JSON ↓</a></div>
+<div class="reference-actions"><button id="copy-formulas" class="text-button">Sao chép công thức</button><a class="reference" href="https://cwh.ca510.com/2-level-font/" target="_blank" rel="noopener noreferrer">Bảng gốc ↗</a></div>
 </details>
 </section>
-<section id="guide-section" class="guide-section card" aria-label="Hướng dẫn nút bấm">
-<div class="guide-top"><h2>Nút bấm</h2><div class="guide-actions"><label class="font-control" for="key-font-size">Cỡ chữ <select id="key-font-size"><option value="16">16px</option><option value="18" selected>18px</option><option value="20">20px</option><option value="22">22px</option></select></label><label class="toggle"><input id="compact" type="checkbox" checked> Gộp nút</label><button id="copy-all" class="secondary" disabled>Sao chép</button><button id="download" class="secondary" disabled>TXT ↓</button></div><span id="guide-progress" class="guide-progress" aria-hidden="true"></span></div>
-<div class="guide-scroll" id="guide-scroll"><div id="guide-placeholder" class="guide-placeholder">Nhấn “Tạo hướng dẫn” để xem gán biến và nút bấm.</div><div id="guide" hidden></div></div>
+<section id="guide-section" class="guide-section card" aria-label="Hướng dẫn nút bấm" tabindex="-1">
+<div class="guide-top"><h2>Nút bấm</h2><div class="guide-actions"><button id="copy-all" class="secondary" disabled>Sao chép</button><details class="guide-options"><summary>Tùy chọn</summary><div class="guide-options-content"><label class="font-control" for="key-font-size">Cỡ chữ <select id="key-font-size"><option value="16">16px</option><option value="18" selected>18px</option><option value="20">20px</option><option value="22">22px</option></select></label><label class="toggle"><input id="compact" type="checkbox" checked> Gộp nút</label><button id="download" class="secondary" disabled>TXT ↓</button></div></details></div><span id="guide-progress" class="guide-progress" aria-hidden="true"></span></div>
+<div id="guide-meta" class="guide-meta" aria-live="polite" hidden=""></div><div class="guide-scroll" id="guide-scroll"><div id="guide-placeholder" class="guide-placeholder">Nhấn “Tạo hướng dẫn” để xem gán biến và nút bấm.</div><div id="guide" hidden=""></div></div>
 </section>
-</main><div id="toast" role="status" class="toast" hidden></div>
+</main><button id="export-pdf" class="primary pdf-fixed" type="button" title="Tạo hướng dẫn, rồi chọn Lưu thành PDF trong hộp thoại in" disabled><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"></path></svg><span>Tải PDF</span></button><div id="toast" role="status" class="toast" hidden=""></div>
 </body></html>
