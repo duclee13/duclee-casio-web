@@ -1,31 +1,28 @@
-SPELL STUDIO — BẢN KHÔI PHỤC 14/10/2026
+SPELL STUDIO — ZIP MỘT CẤP — 14/10/2026
 
-CÁCH MỞ
-1. Giải nén toàn bộ ZIP vào một thư mục.
-2. Mở index.html bằng Chrome hoặc Edge. Không mở HTML khi vẫn ở trong ZIP.
-3. Nhập chữ hoặc chọn ký tự, rồi bấm Tạo hướng dẫn (Ctrl+Enter).
-4. Bấm Đánh dấu xong ở mỗi bước để theo dõi thao tác trên máy.
-5. Tải PDF mở hộp thoại in: chọn Lưu thành PDF. Nếu không muốn in URL/ngày,
-   tắt Đầu trang và chân trang trong hộp thoại in.
+CÁCH DÙNG
+Giải nén ZIP. Mọi file nằm cùng một cấp, không có thư mục con.
+Mở index.html để dùng offline.
 
-ĐƯA LÊN HOSTING
-Đưa toàn bộ nội dung thư mục chứa index.html lên hosting web tĩnh.
-Không cần build hoặc cài thư viện. Giữ nguyên các thư mục fonts và reference.
+UPLOAD GITHUB / VERCEL
+1. Mở thư mục vừa giải nén, chọn TẤT CẢ 25 file.
+2. Upload vào thư mục gốc của repository GitHub đang kết nối với Vercel.
+3. Thay các file trùng tên, rồi Commit changes vào nhánh Vercel đang dùng.
+4. Chờ deployment Ready. Tải lại web bằng Ctrl+F5.
+Không upload riêng file ZIP. Không di chuyển font/PDF sang thư mục khác.
 
-NỘI DUNG
-- Mã thuật toán lấy từ bản web người dùng lưu: CT1/CT2, F4F4/F0F0/F4F0/F0F4,
-  tối ưu lần bấm, tận dụng 01 và tự co dấu cách đến 17⅓ ô.
-- Giữ bước chặn ký tự không hợp lệ, dark mode, responsive và xuất PDF.
-- Đầy đủ font, ảnh ký tự và PDF tra cứu để sử dụng offline.
-- Khôi phục font Hex từ các glyph gốc trong ClassWizXDisplay-Regular.otf:
-  U+1D400–U+1D405 dùng HexA–HexF; U+02E3 dùng x.itc.superior.
-- Thêm tiến độ thao tác, đánh dấu bước đã làm và phím tắt Ctrl+Enter.
-- Loại bỏ mã tiện ích trình duyệt và thanh công cụ của trang hosting khỏi bản lưu.
+Các file cần có ngay cạnh index.html:
+- ClassWizXDisplay-Regular.otf
+- ClassWizXDisplay-Hex.otf
+- CASIO-ClassWiz.ttf
+- all.pdf
 
-KIỂM TRA
-Đã kiểm tra cú pháp JavaScript, tài nguyên nội bộ, ánh xạ font và các ví dụ
-sinh phím. Chưa kiểm tra trực quan trong trình duyệt hoặc trên Casio thật.
-Engine được giữ nguyên từ bản web đã gửi; không khẳng định tối ưu toàn cục.
+TÍNH NĂNG
+Giữ nguyên thuật toán và giao diện của bản khôi phục trước: F4F4/FxFx,
+CT1/CT2, tự co dấu cách, chặn ký tự không hợp lệ, dark mode, đánh dấu bước.
+Ctrl+Enter: tạo hướng dẫn. Tải PDF: chọn Lưu thành PDF trong hộp thoại in.
+Bản một cấp chỉ đổi vị trí file, đường dẫn và mã phiên bản tải tài nguyên.
 
-Font và bảng mã giữ nguồn gốc từ các tệp người dùng cung cấp. Bản này không
-bao gồm bộ kiểm thử cũ vốn dành cho phiên bản thuật toán trước đó.
+Font Hex được khôi phục từ các glyph có sẵn trong font Display người dùng
+cung cấp. Dữ liệu/thuật toán không thay đổi so với bản khôi phục trước.
+Đã kiểm tra các đường dẫn nội bộ và tính toàn vẹn ZIP. Chưa thử trên Casio thật.

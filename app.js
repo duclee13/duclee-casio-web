@@ -190,7 +190,7 @@ function showReference(hex){
  else notes.push('Dùng công thức 1 khi viết token, không cần gán hex.');
  $('reference-note').textContent=notes.join(' ');
  $('reference-source').hidden=!r.source_page;
- if(r.source_page){$('reference-source').href='reference/all.pdf#page='+r.source_page;$('reference-source').textContent='PDF · tr. '+r.source_page+' ↗';}
+ if(r.source_page){$('reference-source').href='all.pdf#page='+r.source_page;$('reference-source').textContent='PDF · tr. '+r.source_page+' ↗';}
 }
 $('copy-formulas').addEventListener('click',()=>{const r=S.referenceFor(S.byHex.get(selectedHex)),absent=r.formula_status==='documented'?'Không':'PDF không nêu';copy('Hex '+r.hex+' · '+(r.char||'Ký hiệu')+'\nCông thức 1: '+(formulasText(r.formula1)||absent)+'\nCông thức 2 (cần FDFD): '+(formulasText(r.formula2)||absent)+(r.correction?'\n'+r.correction:'')+(r.spell_override?'\nDấu cách trong spell: '+S.formatKeys(r.spell_override.keys):''));});
 $('editor').addEventListener('beforeinput',e=>{

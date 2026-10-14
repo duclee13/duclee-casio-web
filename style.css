@@ -90,7 +90,7 @@ textarea { display: block; background: #fafbf8; color: var(--ink); width: 100%; 
 .palette-font-ready .glyph-button > .glyph-font-candidate { filter: none; }
 @font-face {
   font-family: 'ClassWiz X Display';
-  src: url('fonts/ClassWizXDisplay-Regular.otf') format('opentype');
+  src: url('ClassWizXDisplay-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -142,7 +142,7 @@ textarea { display: block; background: #fafbf8; color: var(--ink); width: 100%; 
 .assign-block { font: var(--key-size)/1.8 var(--mono); padding: 16px; background: #eff4e8; color: #294320; border: 1px solid #dce6cf; border-radius: 10px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0 0 20px; }
 @font-face {
   font-family: 'ClassWiz Hex';
-  src: url('fonts/ClassWizXDisplay-Hex.otf?v=2') format('opentype');
+  src: url('ClassWizXDisplay-Hex.otf?v=flat1') format('opentype');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -233,7 +233,7 @@ textarea { display: block; background: #fafbf8; color: var(--ink); width: 100%; 
 
 @font-face {
   font-family: 'CASIO Keycaps';
-  src: url('fonts/CASIO-ClassWiz.ttf') format('truetype');
+  src: url('CASIO-ClassWiz.ttf') format('truetype');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
