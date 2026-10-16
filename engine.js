@@ -142,11 +142,26 @@ function valueKeys(r,v){const [_,prefix,rules]=D.TEMPLATES[v],keys=[...prefix].f
 function boldChars(r){return [...r.cells.map(c=>c.value).join('')].filter(c=>PDF_BOLD_KEYS[c]);}
 function cleanupUnits(r){const out=[];for(let v=0;v<r.count;v++){if(v)for(const token of r.boundaries?.[v===1?6:14]||[null,null])out.push({hex:'01',padding:token===null,token,boundary:true});const cells=variableCells(r,v);for(let i=0;i<cells.length;i++){const c=cells[i];if(c.value.startsWith('F')&&!c.padding){if(cells[i+1]?.token!==c.token)throw Error('Ký tự hai byte bị tách.');out.push({hex:c.value+cells[++i].value,padding:false});}else out.push({hex:c.value,padding:c.padding,hidden:c.token===r.tokens.length-1});}}return out;}
 function cleanupKeys(r){if(r.f4Macros)throw Error('F4F4 cần xử lý bằng editPlan trước khi xóa rác.');const units=cleanupUnits(r);if(!units.some(u=>u.padding))return ['RIGHT'];let pending=0;const keys=[];for(const u of units.slice().reverse()){if(u.padding){keys.push(...repeat(['LEFT'],pending),'DEL');pending=0;}else pending++;}keys.push(...repeat(['LEFT'],pending));return keys;}
-function formatKeys(keys,compact=true){if(!compact)return keys.map(k=>`[${D.KEYBOARD[k]}]`).join(' ');
- function find(a,i){let best=null;for(const [n,min] of [[1,5],[2,4],[3,3]]){if(a.length-i<n*min)continue;const block=a.slice(i,i+n);if(block.some(x=>/×\d+$/.test(x)))continue;let count=1;while(block.every((x,j)=>a[i+count*n+j]===x))count++;if(count>=min&&(!best||n*count>best.covered))best={covered:n*count,block,count};}return best;}
- const items=[];let digits=[];
- function flush(){let pending=[];for(let i=0;i<digits.length;){const r=find(digits,i);if(r){if(pending.length)items.push('['+pending.join('')+']');pending=[];items.push('['+r.block.join('')+']×'+r.count);i+=r.covered;}else pending.push(digits[i++]);}if(pending.length)items.push('['+pending.join('')+']');digits=[];}
- for(const k of keys){if(/^\d$/.test(k))digits.push(k);else{flush();items.push(`[${D.KEYBOARD[k]}]`);}}flush();const out=[];for(let i=0;i<items.length;){const r=find(items,i);if(r){out.push((r.block.length>1?'('+r.block.join(' ')+')':r.block[0])+'×'+r.count);i+=r.covered;}else out.push(items[i++]);}return out.join(' ');
+function formatKeys(keys,compact=true){
+ const literal=a=>a.map(k=>`[${D.KEYBOARD[k]}]`).join(' ');
+ if(!compact)return literal(keys);
+ // Work on physical keys, before digits are rendered. This also recognizes
+ // long motifs such as 1234567890, without changing their order or count.
+ const n=keys.length,cost=Array(n+1).fill(0),choice=Array(n);
+ for(let i=n-1;i>=0;i--){
+  cost[i]=1+cost[i+1];choice[i]={size:1,count:1};
+  for(let size=1;size*2<=n-i;size++){
+   let count=1;
+   while(i+(count+1)*size<=n&&keys.slice(i,i+size).every((k,j)=>k===keys[i+count*size+j]))count++;
+   for(let times=2;times<=count;times++){
+    const score=size+0.75+cost[i+size*times];
+    if(score<cost[i]){cost[i]=score;choice[i]={size,count:times};}
+   }
+  }
+ }
+ const out=[];
+ for(let i=0;i<n;){const {size,count}=choice[i],block=literal(keys.slice(i,i+size));out.push(count>1?(size>1?'('+block+')':block)+'×'+count:block);i+=size*count;}
+ return out.join(' ');
 }
 // Search packing and editing together. Costs count physical keys, before formatting.
 const keyCount=g=>g.steps.reduce((n,s)=>n+s.segments.reduce((m,k)=>m+k.length,0),0);
@@ -317,6 +332,6 @@ function generate(raw,{center=true,f4=true,compressSpaces=true}={}){
  best.spacing=fitInput(input,{compressSpaces});
  return best;
 }
-function guideText(g,compact=true){return (g.assignments.length?g.assignments.join('\n')+'\n\n':'')+g.steps.map(s=>s.title+'\n'+s.segments.map(k=>formatKeys(k,compact)).join('\n')).join('\n\n');}
+function guideText(g,compact=true){return [g.summary,g.notes,g.assignments.join('\n'),...g.steps.map(s=>[s.title,s.note,...s.segments.map(k=>formatKeys(k,compact)),s.checkpoint].filter(Boolean).join('\n'))].filter(Boolean).join('\n\n');}
 root.Spell={DISPLAY_CAPACITY,COMPLETE_CELLS,cellThirds,lineThirds,paletteMatrix,fitInput,prepareLine,referenceFor,conversionKeys,entries,byHex,insertion,parseText,isWide,directKeys,f4SuffixKeys,f4ConversionKeys,packHex,assignmentLines,cleanupUnits,cleanupKeys,formatKeys,targetGaps,optimizePacking,editPlan,keyCount,generate,guideText};
 })(globalThis);

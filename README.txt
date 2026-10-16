@@ -1,28 +1,36 @@
-SPELL STUDIO — ZIP MỘT CẤP — 14/10/2026
+SPELL STUDIO — 15/10/2026 · BẢN GIAO DIỆN GỌN
 
-CÁCH DÙNG
-Giải nén ZIP. Mọi file nằm cùng một cấp, không có thư mục con.
-Mở index.html để dùng offline.
+CẬP NHẬT
+- Gộp các cụm phím lặp bằng ngoặc và số lần lặp, gồm cả mẫu dài như
+  (1 2 3 4 5 6 7 8 9 0) × 10. Không đổi số phím hoặc thứ tự thực hiện.
+- Bỏ đánh dấu hoàn thành bước và thống kê tiến độ.
+- Thống kê gọn: n bước · tổng cộng x nút.
+- Bỏ bộ chọn mode và các bảng thông số byte ở màn hình soạn.
+- Tự so sánh 194an/198an: ưu tiên ít CT2 nội dung hơn, sau đó ít phím
+  đã liệt kê hơn; khi bằng nhau ưu tiên ít bước và mode nhỏ hơn.
+- Chuỗi để đối chiếu được thu gọn trong từng bước.
+- Giữ chế độ 1–4 dòng, bảng ký tự, chặn ký tự không hợp lệ, sao chép,
+  TXT/PDF, font phím và chế độ sáng/tối.
 
-UPLOAD GITHUB / VERCEL
-1. Mở thư mục vừa giải nén, chọn TẤT CẢ 25 file.
-2. Upload vào thư mục gốc của repository GitHub đang kết nối với Vercel.
-3. Thay các file trùng tên, rồi Commit changes vào nhánh Vercel đang dùng.
-4. Chờ deployment Ready. Tải lại web bằng Ctrl+F5.
-Không upload riêng file ZIP. Không di chuyển font/PDF sang thư mục khác.
+THÔNG SỐ
+194an (100+60an): 94 byte nội dung, 125 byte Cache Area.
+198an (100+64an): 98 byte nội dung, 129 byte Cache Area.
+01 rộng 1/3 dấu cách; mỗi dòng tối đa 17 + 1/3 ô.
+z = ALPHA S⇔D; Cache Area tính cả z và đuôi 62 19 23.
+Chế độ một dòng giữ nguyên thuật toán của bản trước.
 
-Các file cần có ngay cạnh index.html:
-- ClassWizXDisplay-Regular.otf
-- ClassWizXDisplay-Hex.otf
-- CASIO-ClassWiz.ttf
-- all.pdf
+CÁCH DÙNG / CẬP NHẬT WEB
+Giải nén ZIP, mở index.html để dùng offline.
+Để cập nhật GitHub/Vercel: upload toàn bộ 27 file đã giải nén vào cùng
+thư mục chứa index.html, thay file trùng tên và commit vào nhánh deploy.
+Giữ các file cùng một cấp. Không upload riêng file ZIP.
+Chờ deployment hoàn thành rồi tải lại bằng Ctrl+F5.
 
-TÍNH NĂNG
-Giữ nguyên thuật toán và giao diện của bản khôi phục trước: F4F4/FxFx,
-CT1/CT2, tự co dấu cách, chặn ký tự không hợp lệ, dark mode, đánh dấu bước.
-Ctrl+Enter: tạo hướng dẫn. Tải PDF: chọn Lưu thành PDF trong hộp thoại in.
-Bản một cấp chỉ đổi vị trí file, đường dẫn và mã phiên bản tải tài nguyên.
-
-Font Hex được khôi phục từ các glyph có sẵn trong font Display người dùng
-cung cấp. Dữ liệu/thuật toán không thay đổi so với bản khôi phục trước.
-Đã kiểm tra các đường dẫn nội bộ và tính toàn vẹn ZIP. Chưa thử trên Casio thật.
+PHẠM VI KIỂM TRA
+Đã kiểm tra việc gộp có thể bung lại đúng từng phím, kể cả mẫu dài và
+phần dư; so sánh tự chọn mode; số nút không bị giảm do cách trình bày.
+Đã kiểm tra thao tác giao diện bằng DOM mô phỏng và các đường dẫn nội bộ.
+Chưa thử quy trình nhiều dòng trên máy Casio thật.
+Ở hướng dẫn nhiều dòng, tổng số nút đếm các phím đã liệt kê. Những thao tác
+phụ thuộc trạng thái máy (tìm vị trí con trỏ, nhập số đến khi đầy, điền
+các @ theo mô tả) chưa có số lần bấm cố định; chú giải nằm ở thống kê.

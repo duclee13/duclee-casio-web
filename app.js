@@ -1,9 +1,9 @@
 'use strict';
 const $=id=>document.getElementById(id),S=globalThis.Spell,M=globalThis.SpellMotion;
 let activeGroup='base',currentGuide=null,selection={start:0,end:0},toastTimer,selectedHex='41';
-const completedSteps=new Set();
 let composing=false,acceptedInput={value:'',start:0,end:0};
-function validInput(value){try{S.parseText(value);return true;}catch{return false;}}
+function validInput(value){try{value.replace(/\r\n?/g,'\n').split('\n').forEach(line=>S.parseText(line));return true;}catch{return false;}}
+function spellOptions(){return {lines:Number($('line-mode').value),center:$('center').checked,compressSpaces:$('compress-spaces').checked};}
 function rejectInput(){notify('Không nhận ký tự hoặc mã hex ngoài bảng Casio.');}
 
 function insertText(text,start=$('editor').selectionStart,end=$('editor').selectionEnd){
@@ -57,9 +57,9 @@ async function loadPaletteFont(){
   if(faces.length)document.documentElement.classList.add('palette-font-ready');
  }catch{ /* Offline/missing/corrupt font: the original PNGs remain usable. */ }
 }
-function saveDraft(){try{localStorage.setItem('casio-spell-draft',$('editor').value);}catch{}}
+function saveDraft(){try{localStorage.setItem('casio-spell-draft',$('editor').value);localStorage.setItem('casio-spell-layout',JSON.stringify({lines:$('line-mode').value}));}catch{}}
 function setKeyFontSize(value){const size=[16,18,20,22].includes(Number(value))?Number(value):18;$('key-font-size').value=String(size);document.documentElement.style.setProperty('--key-size',size+'px');try{localStorage.setItem('casio-spell-key-size',String(size));}catch{}}
-function invalidate(){currentGuide=null;completedSteps.clear();$('guide-meta').hidden=true;$('guide').hidden=true;$('guide-placeholder').hidden=false;$('copy-all').disabled=true;$('download').disabled=true;$('export-pdf').disabled=true;M?.invalidate();}
+function invalidate(){currentGuide=null;$('guide-meta').hidden=true;$('guide').hidden=true;$('guide-placeholder').hidden=false;$('copy-all').disabled=true;$('download').disabled=true;$('export-pdf').disabled=true;M?.invalidate();}
 function updateEditor(){
  const editor=$('editor');
  if(!validInput(editor.value)){
@@ -68,17 +68,35 @@ function updateEditor(){
  }
  acceptedInput={value:editor.value,start:editor.selectionStart,end:editor.selectionEnd};
  selection={start:editor.selectionStart,end:editor.selectionEnd};
- const previous=M?.capturePreview();saveDraft();invalidate();$('error').hidden=true;let input=[],line=[];
- const options={center:$('center').checked,compressSpaces:$('compress-spaces').checked};
- const fitted=S.fitInput(S.parseText(editor.value,{allowUnknown:true}),options);
+ const previous=M?.capturePreview();saveDraft();invalidate();$('error').hidden=true;
+ const options=spellOptions(),multi=options.lines>1;
+ $('multiline-hint').hidden=!multi;
+ editor.rows=multi?options.lines:2;
+ editor.placeholder=multi?'Dòng 1\nDòng 2'+(options.lines>2?'\nDòng 3':'')+(options.lines>3?'\nDòng 4':''):'Gõ văn bản hoặc chọn ký tự…';
  const width=thirds=>{const whole=Math.floor(thirds/3),fraction=['','⅓','⅔'][thirds%3];return (whole||!fraction?String(whole):'')+fraction;};
- $('character-count').textContent=(fitted.compressedSpaces?width(fitted.originalThirds)+' → ':'')+width(fitted.thirds)+' / 17⅓';
- $('character-count').title=fitted.compressedSpaces?`Đã co ${fitted.compressedSpaces} dấu cách`:'';
- $('character-count').classList.toggle('over-limit',!fitted.fits);$('editor').setAttribute('aria-invalid','false');
- try{input=S.parseText(editor.value);line=S.prepareLine(input,options);}catch(e){$('error').textContent=e.message;$('error').hidden=false;$('editor').setAttribute('aria-invalid','true');}
- $('preview').style.setProperty('--line-cells',String(Math.max(17,S.lineThirds(line)/3)));$('preview').replaceChildren();for(const e of line){const cell=document.createElement('span');cell.className='spell-cell';cell.classList.toggle('narrow-cell',e.hex==='01');cell.dataset.hex=e.hex;cell.append(paletteGlyph(e,'var(--glyph-size)',true));$('preview').append(cell);}
- $('preview').setAttribute('aria-label','Chữ sẽ spell: '+input.map(e=>e.char||`mã ${e.hex}`).join(''));
- $('generate').disabled=!$('error').hidden||!input.length||input.every(e=>e.hex==='20'||e.hex==='01');
+ const rawLines=editor.value.replace(/\r\n?/g,'\n').split('\n'),inputs=rawLines.map(t=>S.parseText(t));
+ let displayLines=[],fitted=inputs.map(a=>S.fitInput(a,options)),plan;
+ $('editor').setAttribute('aria-invalid','false');
+ try{
+  if(multi){plan=SpellMulti.prepare(editor.value,{...options,mode:'198'});displayLines=plan.displayLines;fitted=plan.spacing;
+  }else{
+   if(rawLines.length>1)throw Error('Văn bản có nhiều dòng. Hãy chọn chế độ 2, 3 hoặc 4 dòng.');
+   displayLines=[S.prepareLine(inputs[0],options)];
+  }
+ }catch(e){$('error').textContent=e.message;$('error').hidden=false;$('editor').setAttribute('aria-invalid','true');}
+ $('character-count').textContent=fitted.map((f,i)=>(multi?`D${i+1}: `:'')+(f.compressedSpaces?width(f.originalThirds)+' → ':'')+width(f.thirds)+' / 17⅓').join(' · ');
+ $('character-count').title='Mỗi dòng tối đa 17⅓ ô; 01 rộng ⅓ ô.';
+ $('character-count').classList.toggle('over-limit',fitted.some(f=>!f.fits)||!$('error').hidden);
+ const preview=$('preview');preview.classList.toggle('multi-preview',multi);preview.classList.toggle('spell-line',!multi);preview.replaceChildren();
+ for(const line of displayLines){
+  const row=multi?document.createElement('div'):preview;
+  if(multi)row.className='spell-line preview-row';
+  row.style.setProperty('--line-cells','17.3333333333');
+  for(const e of line){const cell=document.createElement('span');cell.className='spell-cell';cell.classList.toggle('narrow-cell',e.hex==='01');cell.dataset.hex=e.hex;cell.append(paletteGlyph(e,'var(--glyph-size)',true));row.append(cell);}
+  if(multi)preview.append(row);
+ }
+ preview.setAttribute('aria-label','Chữ sẽ spell: '+inputs.map(line=>line.map(e=>e.char||`mã ${e.hex}`).join('')).join('; dòng tiếp: '));
+ $('generate').disabled=!$('error').hidden||inputs.flat().every(e=>e.hex==='20'||e.hex==='01');
  M?.preview(previous);if(!$('error').hidden)M?.error();
 }
 function rememberSelection(){selection={start:$('editor').selectionStart,end:$('editor').selectionEnd};if($('editor').value===acceptedInput.value)Object.assign(acceptedInput,selection);}
@@ -132,23 +150,14 @@ function renderAssignments(node,rows){
 }
 function updateGuideMeta(){
  if(!currentGuide)return;
- const total=currentGuide.steps.length,done=completedSteps.size;
- $('guide-meta').textContent=`${total} bước · ${currentGuide.keyCount} lần bấm · Đã làm ${done}/${total}`;
+ const total=currentGuide.steps.length;
+ $('guide-meta').textContent=`${total} bước · tổng cộng ${currentGuide.keyCount} nút`;
+ $('guide-meta').title=currentGuide.guided?'Tính các phím trong hướng dẫn. Các thao tác tìm vị trí con trỏ và nhập số đến khi đầy chưa có số lần cố định.':'';
  $('guide-meta').hidden=false;
 }
 function renderGuide(){if(!currentGuide)return;const compact=$('compact').checked,g=currentGuide,root=$('guide');root.replaceChildren();const pre=document.createElement('pre');pre.className='assign-block';renderAssignments(pre,g.assignments);if(g.assignments.length)root.append(pre);
- for(const [index,s] of g.steps.entries()){const section=document.createElement('section');section.className='step';const head=document.createElement('div');head.className='step-head';const title=document.createElement('h3');title.textContent=s.title;const b=document.createElement('button');b.textContent='Sao chép';b.addEventListener('click',()=>copy(s.title+'\n'+s.segments.map(k=>S.formatKeys(k,compact)).join('\n')));const done=document.createElement('button');done.type='button';done.className='step-done';
- done.textContent=completedSteps.has(index)?'✓ Đã làm':'Đánh dấu xong';
- done.setAttribute('aria-pressed',String(completedSteps.has(index)));
- done.setAttribute('aria-label','Đánh dấu hoàn thành '+s.title);
- section.classList.toggle('is-complete',completedSteps.has(index));
- done.addEventListener('click',()=>{
-  if(completedSteps.has(index))completedSteps.delete(index);else completedSteps.add(index);
-  const checked=completedSteps.has(index);done.setAttribute('aria-pressed',String(checked));
-  done.textContent=checked?'✓ Đã làm':'Đánh dấu xong';section.classList.toggle('is-complete',checked);updateGuideMeta();
- });
- const actions=document.createElement('div');actions.className='step-actions';actions.append(done,b);
- head.append(title,actions);const keys=document.createElement('div');keys.className='step-keys';for(const segment of s.segments){const p=document.createElement('p');if(globalThis.SpellKeyFont)SpellKeyFont.renderInto(p,S.formatKeys(segment,compact));else p.textContent=S.formatKeys(segment,compact);keys.append(p);}section.append(head,keys);root.append(section);}
+ for(const [index,s] of g.steps.entries()){const section=document.createElement('section');section.className='step';const head=document.createElement('div');head.className='step-head';const title=document.createElement('h3');title.textContent=s.title;const b=document.createElement('button');b.textContent='Sao chép';b.addEventListener('click',()=>copy([s.title,s.note,...s.segments.map(k=>S.formatKeys(k,compact)),s.checkpoint].filter(Boolean).join('\n')));const actions=document.createElement('div');actions.className='step-actions';actions.append(b);
+ head.append(title,actions);const keys=document.createElement('div');keys.className='step-keys';for(const segment of s.segments){const p=document.createElement('p');if(globalThis.SpellKeyFont)SpellKeyFont.renderInto(p,S.formatKeys(segment,compact));else p.textContent=S.formatKeys(segment,compact);keys.append(p);}section.append(head);if(s.note){const note=document.createElement('p');note.className='step-note';note.textContent=s.note.replace(/ Đếm:.*? = \d+\./,'');section.append(note);}section.append(keys);if(s.checkpoint){const details=document.createElement('details');details.className='step-reference';const label=document.createElement('summary');label.textContent='Đối chiếu chuỗi';const check=document.createElement('pre');check.className='step-checkpoint';check.textContent=s.checkpoint;details.append(label,check);section.append(details);}root.append(section);}
  const printHeader=document.createElement('div');printHeader.className='print-heading';
  const printTitle=document.createElement('h1');printTitle.textContent='Hướng dẫn spell · fx-580VN X';
  const preview=$('preview').cloneNode(true);preview.removeAttribute('id');preview.classList.add('print-preview');
@@ -156,7 +165,7 @@ function renderGuide(){if(!currentGuide)return;const compact=$('compact').checke
  root.hidden=false;$('guide-placeholder').hidden=true;$('copy-all').disabled=false;$('download').disabled=false;$('export-pdf').disabled=false;
  M?.guide();
 }
-function generate(){try{completedSteps.clear();currentGuide=S.generate($('editor').value,{center:$('center').checked,compressSpaces:$('compress-spaces').checked});$('error').hidden=true;renderGuide();$('guide-scroll').scrollTop=0;M?.generated();}catch(e){$('error').textContent=e.message;$('error').hidden=false;invalidate();M?.error();}}
+function generate(){try{const options=spellOptions();currentGuide=options.lines>1?SpellMulti.generate($('editor').value,options):S.generate($('editor').value,options);$('error').hidden=true;renderGuide();$('guide-scroll').scrollTop=0;M?.generated();}catch(e){$('error').textContent=e.message;$('error').hidden=false;invalidate();M?.error();}}
 async function exportPDF(){
  if(!currentGuide)return;
  const guide=currentGuide,button=$('export-pdf');button.disabled=true;
@@ -179,13 +188,13 @@ function showReference(hex){
  const absent=r.formula_status==='documented'?'Không':'PDF không nêu';
  const renderFormula=(id,text)=>globalThis.SpellKeyFont?SpellKeyFont.renderInto($(id),text):($(id).textContent=text);
  renderFormula('formula-one',r.formula1.length?formulasText(r.formula1):absent);
- renderFormula('formula-two',r.formula2.length?formulasText(r.formula2)+' · cần FDFD':absent);
+ renderFormula('formula-two',r.formula2.length?formulasText(r.formula2)+' · cần bộ chuyển đổi (FDFD / Cache Area)':absent);
  const notes=[];
  if(r.correction)notes.push('Áp dụng: '+formulasText(r.effective_formula1)+'. '+r.correction);
  if(r.source_note)notes.push(r.source_note);
  if(r.spell_override)notes.push('Trong spell một dòng, dấu cách dùng '+S.formatKeys(r.spell_override.keys)+' (2 byte).');
  else if(r.must_pack)notes.push('Ký tự hai byte; có thể ghép cặp tiền tố F khi đủ điều kiện.');
- else if(!S.directKeys(e)&&r.formula2.length)notes.push('Trong luồng spell hiện tại: gán hex. Công thức 2 dùng khi đã chuẩn bị FDFD.');
+ else if(!S.directKeys(e)&&r.formula2.length)notes.push('Trong luồng spell hiện tại: gán hex. Chế độ nhiều dòng có thể dùng Cache Area để chuyển CT2.');
  else if(!S.directKeys(e))notes.push('Gán hex vào biến.');
  else notes.push('Dùng công thức 1 khi viết token, không cần gán hex.');
  $('reference-note').textContent=notes.join(' ');
@@ -208,7 +217,7 @@ $('editor').addEventListener('compositionstart',()=>{rememberSelection();composi
 $('editor').addEventListener('compositionend',()=>{composing=false;updateEditor();});
 $('editor').addEventListener('input',e=>{if(!composing&&!e.isComposing)updateEditor();});
 for(const event of ['select','click','keyup','blur'])$('editor').addEventListener(event,rememberSelection);
-for(const id of ['center','compress-spaces'])$(id).addEventListener('change',()=>{const hadGuide=!!currentGuide;updateEditor();if(hadGuide&&!$('generate').disabled)generate();});
+for(const id of ['center','compress-spaces','line-mode'])$(id).addEventListener('change',()=>{const hadGuide=!!currentGuide;updateEditor();if(hadGuide&&!$('generate').disabled)generate();});
 $('glyph-grid').addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.target.closest('button'))e.preventDefault();});
 $('glyph-grid').addEventListener('click',e=>{
  const button=e.target.closest('button[data-hex]');
@@ -229,6 +238,7 @@ $('generate').addEventListener('click',()=>{
 });$('compact').addEventListener('change',renderGuide);$('copy-all').addEventListener('click',()=>{if(currentGuide)copy(S.guideText(currentGuide,$('compact').checked));});$('download').addEventListener('click',()=>{if(!currentGuide)return;const blob=new Blob(['\ufeff'+S.guideText(currentGuide,$('compact').checked)],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='huong-dan-spell.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 $('key-font-size').addEventListener('change',e=>setKeyFontSize(e.target.value));
 try{setKeyFontSize(localStorage.getItem('casio-spell-key-size'));}catch{setKeyFontSize(18);}
+try{const layout=JSON.parse(localStorage.getItem('casio-spell-layout')||'{}');if(['1','2','3','4'].includes(layout.lines))$('line-mode').value=layout.lines;}catch{}
 try{const saved=localStorage.getItem('casio-spell-draft');if(saved!==null)$('editor').value=validInput(saved)?saved:'';}catch{}
 $('editor').selectionStart=$('editor').selectionEnd=$('editor').value.length;selection={start:$('editor').value.length,end:$('editor').value.length};renderPalette();updateEditor();showReference(selectedHex);M?.boot();
 loadPaletteFont();

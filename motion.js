@@ -71,7 +71,7 @@
   }
  }
  function keyedCells(){
-  const counts=new Map();return [...$('preview').children].filter(cell=>cell.dataset.hex&&cell.dataset.hex!=='20').map(cell=>{
+  const counts=new Map();return [...$('preview').querySelectorAll('.spell-cell')].filter(cell=>cell.dataset.hex&&cell.dataset.hex!=='20').map(cell=>{
    const hex=cell.dataset.hex,n=counts.get(hex)||0;counts.set(hex,n+1);return {cell,key:hex+':'+n};
   });
  }
@@ -96,7 +96,7 @@
  }
  function fly(snapshot,hex){
   if(!snapshot||reduced()||!$('error').hidden)return;
-  const target=[...$('preview').children].find(cell=>cell.dataset.hex===hex),from=snapshot.rect;
+  const target=[...$('preview').querySelectorAll('.spell-cell')].find(cell=>cell.dataset.hex===hex),from=snapshot.rect;
   if(!target||!from.width)return;
   const to=target.getBoundingClientRect();
   if(to.bottom<0||to.top>root.innerHeight)return;
