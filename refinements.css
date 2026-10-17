@@ -51,3 +51,8 @@ button:disabled { cursor:not-allowed; }
 .demo-gate .error{margin-bottom:0}
 .step-keys+.step-keys{margin-top:12px}
 @media print{.demo-gate{display:none!important}}
+
+/* Compact key-only copy action next to the guide heading. */
+.copy-keys { margin-left:auto; min-height:32px; font-size:13px; }
+@media (pointer:coarse) { .copy-keys { min-height:44px; } }
+@media print { .copy-keys { display:none!important; } }

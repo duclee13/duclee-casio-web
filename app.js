@@ -1,8 +1,9 @@
 'use strict';
 const $=id=>document.getElementById(id),S=globalThis.Spell,M=globalThis.SpellMotion;
 let activeGroup='base',currentGuide=null,selection={start:0,end:0},toastTimer,selectedHex='41';
-let demoUnlocked=false,pendingMode='2',generationVersion=0,unlockVersion=0;
+let demoUnlocked=true,pendingMode='2',generationVersion=0,unlockVersion=0;
 const demo=globalThis.SpellDemoTransport;
+let effectiveText='';
 let composing=false,acceptedInput={value:'',start:0,end:0};
 function validInput(value){try{value.replace(/\r\n?/g,'\n').split('\n').forEach(line=>S.parseText(line));return true;}catch{return false;}}
 function spellOptions(){return {lines:Number($('line-mode').value),center:$('center').checked,compressSpaces:$('compress-spaces').checked};}
@@ -59,9 +60,9 @@ async function loadPaletteFont(){
   if(faces.length)document.documentElement.classList.add('palette-font-ready');
  }catch{ /* Offline/missing/corrupt font: the original PNGs remain usable. */ }
 }
-function saveDraft(){try{localStorage.setItem('casio-spell-draft',$('editor').value);localStorage.setItem('casio-spell-layout',JSON.stringify({lines:$('line-mode').value}));}catch{}}
+function saveDraft(){try{localStorage.setItem('casio-spell-draft',$('editor').value);localStorage.setItem('casio-spell-layout',JSON.stringify({lines:$('line-mode').value,auto:$('auto-layout').checked}));}catch{}}
 function setKeyFontSize(value){const size=[16,18,20,22].includes(Number(value))?Number(value):18;$('key-font-size').value=String(size);document.documentElement.style.setProperty('--key-size',size+'px');try{localStorage.setItem('casio-spell-key-size',String(size));}catch{}}
-function invalidate(){generationVersion++;$('generate').removeAttribute('aria-busy');currentGuide=null;$('guide-meta').hidden=true;$('guide').hidden=true;$('guide-placeholder').hidden=false;$('copy-all').disabled=true;$('download').disabled=true;$('export-pdf').disabled=true;M?.invalidate();}
+function invalidate(){generationVersion++;$('generate').removeAttribute('aria-busy');currentGuide=null;$('guide-meta').hidden=true;$('guide').hidden=true;$('guide-placeholder').hidden=false;$('copy-all').disabled=true;$('copy-keys').disabled=true;$('download').disabled=true;$('export-pdf').disabled=true;M?.invalidate();}
 function updateEditor(){
  const editor=$('editor');
  if(!validInput(editor.value)){
@@ -71,16 +72,26 @@ function updateEditor(){
  acceptedInput={value:editor.value,start:editor.selectionStart,end:editor.selectionEnd};
  selection={start:editor.selectionStart,end:editor.selectionEnd};
  const previous=M?.capturePreview();saveDraft();invalidate();$('error').hidden=true;
+ let layoutError=null;effectiveText=editor.value;
+ const automatic=$('auto-layout').checked;$('line-mode').disabled=automatic;
+ if(automatic){
+  try{const layout=SpellLayout.arrange(editor.value,{compressSpaces:$('compress-spaces').checked});effectiveText=layout.text;$('line-mode').value=String(layout.lines);
+   if(layout.lines>1&&!demoUnlocked){pendingMode=String(layout.lines);$('demo-gate').hidden=false;}
+   else if(layout.lines===1){$('demo-gate').hidden=true;$('demo-password').value='';}
+  }catch(e){layoutError=e;}
+ }
+ saveDraft();
  const options=spellOptions(),multi=options.lines>1;
- $('multiline-hint').hidden=!multi;
+ $('multiline-hint').hidden=!multi;$('multiline-hint').textContent=automatic?'Web tự ngắt dòng; xem bố cục ở màn hình bên dưới.':'Mỗi dòng trong ô soạn là một dòng trên máy. Dùng Enter để xuống dòng.';
  editor.rows=multi?options.lines:2;
  editor.placeholder=multi?'Dòng 1\nDòng 2'+(options.lines>2?'\nDòng 3':'')+(options.lines>3?'\nDòng 4':''):'Gõ văn bản hoặc chọn ký tự…';
  const width=thirds=>{const whole=Math.floor(thirds/3),fraction=['','⅓','⅔'][thirds%3];return (whole||!fraction?String(whole):'')+fraction;};
- const rawLines=editor.value.replace(/\r\n?/g,'\n').split('\n'),inputs=rawLines.map(t=>S.parseText(t));
+ const rawLines=effectiveText.replace(/\r\n?/g,'\n').split('\n'),inputs=rawLines.map(t=>S.parseText(t));
  let displayLines=[],fitted=inputs.map(a=>S.fitInput(a,options)),plan;
  $('editor').setAttribute('aria-invalid','false');
  try{
-  if(multi){plan=SpellMulti.prepare(editor.value,{...options,mode:'198'});displayLines=plan.displayLines;fitted=plan.spacing;
+  if(layoutError)throw layoutError;
+  if(multi){plan=SpellMulti.prepare(effectiveText,{...options,mode:'198'});displayLines=plan.displayLines;fitted=plan.spacing;
   }else{
    if(rawLines.length>1)throw Error('Văn bản có nhiều dòng. Hãy chọn chế độ 2, 3 hoặc 4 dòng.');
    displayLines=[S.prepareLine(inputs[0],options)];
@@ -172,7 +183,7 @@ function renderGuide(){if(!currentGuide)return;const compact=$('compact').checke
  const printTitle=document.createElement('h1');printTitle.textContent='Hướng dẫn spell · fx-580VN X';
  const preview=$('preview').cloneNode(true);preview.removeAttribute('id');preview.classList.add('print-preview');
  printHeader.append(printTitle,preview);root.prepend(printHeader);updateGuideMeta();
- root.hidden=false;$('guide-placeholder').hidden=true;$('copy-all').disabled=false;$('download').disabled=false;$('export-pdf').disabled=false;
+ root.hidden=false;$('guide-placeholder').hidden=true;$('copy-all').disabled=false;$('copy-keys').disabled=false;$('download').disabled=false;$('export-pdf').disabled=false;
  M?.guide();
 }
 function requestDemo(mode){
@@ -182,7 +193,7 @@ function requestDemo(mode){
 async function generate(){
  const options=spellOptions();
  if(options.lines>1&&!demoUnlocked){requestDemo(options.lines);return;}
- const version=++generationVersion,text=$('editor').value;
+ const version=++generationVersion,text=effectiveText;
  $('generate').disabled=true;$('generate').setAttribute('aria-busy','true');
  try{
   const guide=options.lines>1?await demo.generate(text,options):S.generate(text,options);
@@ -206,8 +217,9 @@ $('demo-form').addEventListener('submit',async e=>{
  finally{if(version===unlockVersion)$('demo-submit').disabled=false;}
 });
 function cancelDemo(){unlockVersion++;$('demo-submit').disabled=false;$('demo-gate').hidden=true;$('demo-password').value='';$('line-mode').focus();}
-$('demo-cancel').addEventListener('click',cancelDemo);
-$('demo-password').addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();cancelDemo();}});
+function cancelDemoRequest(){if($('auto-layout').checked){$('auto-layout').checked=false;$('line-mode').value='1';updateEditor();}cancelDemo();}
+$('demo-cancel').addEventListener('click',cancelDemoRequest);
+$('demo-password').addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();cancelDemoRequest();}});
 async function exportPDF(){
  if(!currentGuide)return;
  const guide=currentGuide,button=$('export-pdf');button.disabled=true;
@@ -259,7 +271,7 @@ $('editor').addEventListener('compositionstart',()=>{rememberSelection();composi
 $('editor').addEventListener('compositionend',()=>{composing=false;updateEditor();});
 $('editor').addEventListener('input',e=>{if(!composing&&!e.isComposing)updateEditor();});
 for(const event of ['select','click','keyup','blur'])$('editor').addEventListener(event,rememberSelection);
-for(const id of ['center','compress-spaces'])$(id).addEventListener('change',()=>{const hadGuide=!!currentGuide;updateEditor();if(hadGuide&&!$('generate').disabled)generate();});
+for(const id of ['center','compress-spaces','auto-layout'])$(id).addEventListener('change',()=>{const hadGuide=!!currentGuide;updateEditor();if(hadGuide&&!$('generate').disabled)generate();});
 $('line-mode').addEventListener('change',()=>{
  const mode=$('line-mode').value;
  if(Number(mode)>1&&!demoUnlocked){requestDemo(mode);return;}
@@ -282,13 +294,20 @@ $('generate').addEventListener('click',async()=>{
   $('guide-section').focus({preventScroll:true});
   $('guide-section').scrollIntoView?.({behavior:'auto',block:'start'});
  }
-});$('compact').addEventListener('change',renderGuide);$('copy-all').addEventListener('click',()=>{if(currentGuide)copy(S.guideText(currentGuide,$('compact').checked));});$('download').addEventListener('click',()=>{if(!currentGuide)return;const blob=new Blob(['\ufeff'+S.guideText(currentGuide,$('compact').checked)],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='huong-dan-spell.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+});$('compact').addEventListener('change',renderGuide);$('copy-all').addEventListener('click',()=>{if(currentGuide)copy(S.guideText(currentGuide,$('compact').checked));});
+$('copy-keys').addEventListener('click',()=>{
+ if(!currentGuide)return;
+ const compact=$('compact').checked;
+ const segments=currentGuide.steps.flatMap(step=>(step.parts||[step]).flatMap(part=>part.segments));
+ return copy(segments.map(keys=>S.formatKeys(keys,compact)).join('\n'));
+});
+$('download').addEventListener('click',()=>{if(!currentGuide)return;const blob=new Blob(['\ufeff'+S.guideText(currentGuide,$('compact').checked)],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='huong-dan-spell.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 $('key-font-size').addEventListener('change',e=>setKeyFontSize(e.target.value));
 try{setKeyFontSize(localStorage.getItem('casio-spell-key-size'));}catch{setKeyFontSize(18);}
-try{const layout=JSON.parse(localStorage.getItem('casio-spell-layout')||'{}');if(['2','3','4'].includes(layout.lines))pendingMode=layout.lines;}catch{}
+try{const layout=JSON.parse(localStorage.getItem('casio-spell-layout')||'{}');$('auto-layout').checked=layout.auto===true;if(['2','3','4'].includes(layout.lines))pendingMode=layout.lines;}catch{}
 try{const saved=localStorage.getItem('casio-spell-draft');if(saved!==null)$('editor').value=validInput(saved)?saved:'';}catch{}
 $('editor').selectionStart=$('editor').selectionEnd=$('editor').value.length;selection={start:$('editor').value.length,end:$('editor').value.length};renderPalette();updateEditor();showReference(selectedHex);M?.boot();
 loadPaletteFont();
-demo.status().then(state=>{if(state.unlocked)demoUnlocked=true;}).catch(()=>{});
+demo.status().then(state=>{const changed=demoUnlocked!==(state.unlocked===true);demoUnlocked=state.unlocked===true;if(demoUnlocked)$('demo-gate').hidden=true;if(changed&&$('auto-layout').checked)updateEditor();}).catch(()=>{});
 
 $('editor').addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'&&!composing&&!$('generate').disabled){e.preventDefault();$('generate').click();}});

@@ -1,6 +1,6 @@
 'use strict';
 const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
-const api=require('./api/spell.js'),root=path.join(__dirname,'public');
+const api=require('./api-spell.js'),root=path.join(__dirname,'public');
 const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.png':'image/png','.pdf':'application/pdf','.otf':'font/otf','.ttf':'font/ttf'};
 http.createServer(async(req,res)=>{
  let pathname;try{pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);}catch{res.writeHead(400);return res.end();}

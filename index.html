@@ -4,14 +4,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Soạn ký tự và tạo hướng dẫn spell cho Casio fx-580VN X.">
 <meta name="theme-color" content="#0c1211">
-<script src="theme.js?v=20261017-demo"></script>
+<script src="theme.js?v=20261017-flat-v1"></script>
 <title>Spell Studio · fx-580VN X</title>
-<link rel="stylesheet" href="style.css?v=20261017-demo">
-<link rel="stylesheet" href="motion.css?v=20261017-demo">
-<link rel="stylesheet" href="responsive.css?v=20261017-demo">
-<link rel="stylesheet" href="theme.css?v=20261017-demo">
-<script defer src="data.js?v=20261017-demo"></script><script defer src="pdf-reference.js?v=20261017-demo"></script><script defer src="engine.js?v=20261017-demo"></script><script defer src="multiline.js?v=20261017-demo"></script><script defer src="motion.js?v=20261017-demo"></script><script defer src="palette-font.js?v=20261017-demo"></script><script defer src="key-font.js?v=20261017-demo"></script><script defer src="demo.js?v=20261017-demo"></script><script defer src="app.js?v=20261017-demo"></script>
-<link rel="stylesheet" href="refinements.css?v=20261017-demo"></head>
+<link rel="stylesheet" href="style.css?v=20261017-flat-v1">
+<link rel="stylesheet" href="motion.css?v=20261017-flat-v1">
+<link rel="stylesheet" href="responsive.css?v=20261017-flat-v1">
+<link rel="stylesheet" href="theme.css?v=20261017-flat-v1">
+<script defer src="data.js?v=20261017-flat-v1"></script><script defer src="pdf-reference.js?v=20261017-flat-v1"></script><script defer src="engine.js?v=20261017-flat-v1"></script><script defer src="layout.js?v=20261017-flat-v1"></script><script defer src="multiline.js?v=20261017-flat-v1"></script><script defer src="motion.js?v=20261017-flat-v1"></script><script defer src="palette-font.js?v=20261017-flat-v1"></script><script defer src="key-font.js?v=20261017-flat-v1"></script><script defer src="demo.js?v=20261017-flat-v1"></script><script defer src="app.js?v=20261017-flat-v1"></script>
+<link rel="stylesheet" href="refinements.css?v=20261017-flat-v1"></head>
 <body>
 <svg class="glyph-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false"><defs><filter id="spell-preview-ink" color-interpolation-filters="sRGB"><fecolormatrix type="matrix" values="0 0 0 0 .14  0 0 0 0 .18  0 0 0 0 .12  1.0714285714 0 0 0 -.0714285714"></fecolormatrix></filter><filter id="palette-png-ink" color-interpolation-filters="sRGB"><fecolormatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.0759493671 0 0 0 -.0759493671"></fecolormatrix></filter></defs></svg>
 <div class="motion-backdrop" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -22,6 +22,7 @@
 <div class="section-top"><h1>Văn bản spell</h1><button id="clear" class="text-button">Xóa hết</button></div>
 <div class="spell-settings">
 <label for="line-mode">Số dòng <select id="line-mode"><option value="1">1 dòng</option><option value="2">2 dòng · Demo</option><option value="3">3 dòng · Demo</option><option value="4">4 dòng · Demo</option></select></label>
+<label class="toggle auto-layout-toggle" for="auto-layout"><input id="auto-layout" type="checkbox"> Tự xếp dòng</label>
 
 </div>
 <div id="demo-gate" class="demo-gate" hidden>
@@ -52,7 +53,7 @@
 </details>
 </section>
 <section id="guide-section" class="guide-section card" aria-label="Hướng dẫn nút bấm" tabindex="-1">
-<div class="guide-top"><h2>Nút bấm</h2><div class="guide-actions"><button id="copy-all" class="secondary" disabled>Sao chép</button><details class="guide-options"><summary>Tùy chọn</summary><div class="guide-options-content"><label class="font-control" for="key-font-size">Cỡ chữ <select id="key-font-size"><option value="16">16px</option><option value="18" selected>18px</option><option value="20">20px</option><option value="22">22px</option></select></label><label class="toggle"><input id="compact" type="checkbox" checked> Gộp nút</label><button id="download" class="secondary" disabled>TXT ↓</button></div></details></div></div>
+<div class="guide-top"><h2>Nút bấm</h2><button id="copy-keys" class="text-button copy-keys" type="button" disabled>Copy toàn bộ nút</button><div class="guide-actions"><button id="copy-all" class="secondary" disabled>Sao chép</button><details class="guide-options"><summary>Tùy chọn</summary><div class="guide-options-content"><label class="font-control" for="key-font-size">Cỡ chữ <select id="key-font-size"><option value="16">16px</option><option value="18" selected>18px</option><option value="20">20px</option><option value="22">22px</option></select></label><label class="toggle"><input id="compact" type="checkbox" checked> Gộp nút</label><button id="download" class="secondary" disabled>TXT ↓</button></div></details></div></div>
 <div id="guide-meta" class="guide-meta" aria-live="polite" hidden=""></div><div class="guide-scroll" id="guide-scroll"><div id="guide-placeholder" class="guide-placeholder">Nhấn “Tạo hướng dẫn” để xem gán biến và nút bấm.</div><div id="guide" hidden=""></div></div>
 </section>
 </main><button id="export-pdf" class="primary pdf-fixed" type="button" title="Tạo hướng dẫn, rồi chọn Lưu thành PDF trong hộp thoại in" disabled><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"></path></svg><span>Tải PDF</span></button><div id="toast" role="status" class="toast" hidden=""></div>

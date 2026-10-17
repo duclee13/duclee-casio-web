@@ -1,6 +1,13 @@
 {
   "name": "casio-spell-studio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
-  "scripts": { "build": "node build.cjs", "start": "node build.cjs && node dev.cjs", "test": "node build.cjs && node tests/demo.cjs" }
+  "scripts": {
+    "build": "node build.cjs",
+    "start": "node build.cjs && node dev.cjs",
+    "test": "node build.cjs && node test-demo.cjs && node test-token-optimizer.cjs && node test-package.cjs"
+  },
+  "engines": {
+    "node": "22.x"
+  }
 }
