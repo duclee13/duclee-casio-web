@@ -135,7 +135,7 @@ function packHex(values){
 }
 function variableCells(r,v){const start=v===0?0:v===1?6:14;return r.cells.slice(start,start+D.TEMPLATES[v][2].length);}
 function assignmentLines(r){const rows=['𝓍'];for(let v=0;v<r.count;v++){const [name,prefix,rules]=D.TEMPLATES[v],cells=variableCells(r,v),parts=[];
- for(let i=0;i<cells.length;i++){if(i===rules.length-1)parts.push('×10');const c=cells[i];if(c.value.startsWith('F')&&!c.padding&&i+1<rules.length-1&&cells[i+1]?.token===c.token){parts.push(c.value+cells[++i].value);}else parts.push(c.value);}
+ for(let i=0;i<cells.length;i++){if(i===rules.length-1)parts.push('ˣ₁₀');const c=cells[i];if(c.value.startsWith('F')&&!c.padding&&i+1<rules.length-1&&cells[i+1]?.token===c.token){parts.push(c.value+cells[++i].value);}else parts.push(c.value);}
  rows.push(name+' = '+prefix+(v===0?' ':'')+parts.join(' '));}
  return rows.map((s,i)=>s+(i<rows.length-1?':':''));}
 function valueKeys(r,v){const [_,prefix,rules]=D.TEMPLATES[v],keys=[...prefix].flatMap(c=>D.TTK[c]);variableCells(r,v).forEach((cell,i)=>{if(i===rules.length-1)keys.push('EXP');keys.push(...[...cell.value].map(c=>PDF_BOLD_KEYS[c]?'RIGHT':c));});return keys;}
@@ -332,6 +332,19 @@ function generate(raw,{center=true,f4=true,compressSpaces=true}={}){
  best.spacing=fitInput(input,{compressSpaces});
  return best;
 }
-function guideText(g,compact=true){return [g.summary,g.notes,g.assignments.join('\n'),...g.steps.map(s=>[s.title,s.note,...s.segments.map(k=>formatKeys(k,compact)),s.checkpoint].filter(Boolean).join('\n'))].filter(Boolean).join('\n\n');}
-root.Spell={DISPLAY_CAPACITY,COMPLETE_CELLS,cellThirds,lineThirds,paletteMatrix,fitInput,prepareLine,referenceFor,conversionKeys,entries,byHex,insertion,parseText,isWide,directKeys,f4SuffixKeys,f4ConversionKeys,packHex,assignmentLines,cleanupUnits,cleanupKeys,formatKeys,targetGaps,optimizePacking,editPlan,keyCount,generate,guideText};
+function limitGuideSteps(g,maxSteps=15){
+ if(!Number.isInteger(maxSteps)||maxSteps<1)throw Error('Giới hạn bước không hợp lệ.');
+ if(g.steps.length<=maxSteps)return g;
+ const groups=g.steps.map(s=>({parts:s.parts||[s],weight:s.segments.reduce((n,k)=>n+k.length,0)}));
+ // Merge adjacent small groups only: never reorder or split a key sequence.
+ while(groups.length>maxSteps){
+  let at=0;
+  for(let i=1;i<groups.length-1;i++)if(groups[i].weight+groups[i+1].weight<groups[at].weight+groups[at+1].weight)at=i;
+  groups.splice(at,2,{parts:[...groups[at].parts,...groups[at+1].parts],weight:groups[at].weight+groups[at+1].weight});
+ }
+ return {...g,steps:groups.map((group,i)=>({title:'Bước '+(i+1),parts:group.parts,segments:group.parts.flatMap(p=>p.segments)}))};
+}
+function stepText(step,compact=true){return [step.title,...(step.parts||[step]).flatMap(p=>[p.note,...p.segments.map(k=>formatKeys(k,compact)),p.checkpoint])].filter(Boolean).join('\n');}
+function guideText(g,compact=true){return [g.summary,g.notes,g.assignments.join('\n'),...g.steps.map(s=>stepText(s,compact))].filter(Boolean).join('\n\n');}
+root.Spell={DISPLAY_CAPACITY,COMPLETE_CELLS,cellThirds,lineThirds,paletteMatrix,fitInput,prepareLine,referenceFor,conversionKeys,entries,byHex,insertion,parseText,isWide,directKeys,f4SuffixKeys,f4ConversionKeys,packHex,assignmentLines,cleanupUnits,cleanupKeys,formatKeys,targetGaps,optimizePacking,editPlan,keyCount,generate,limitGuideSteps,stepText,guideText};
 })(globalThis);

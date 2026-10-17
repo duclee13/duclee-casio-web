@@ -1,0 +1,8 @@
+{
+  "framework": null,
+  "buildCommand": "node build.cjs",
+  "outputDirectory": "public",
+  "functions": {
+    "api/spell.js": { "includeFiles": "server/**", "maxDuration": 10 }
+  }
+}

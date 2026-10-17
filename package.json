@@ -1,0 +1,6 @@
+{
+  "name": "casio-spell-studio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": { "build": "node build.cjs", "start": "node build.cjs && node dev.cjs", "test": "node build.cjs && node tests/demo.cjs" }
+}

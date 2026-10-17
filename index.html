@@ -4,14 +4,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Soạn ký tự và tạo hướng dẫn spell cho Casio fx-580VN X.">
 <meta name="theme-color" content="#0c1211">
-<script src="theme.js?v=20261015-clean2"></script>
+<script src="theme.js?v=20261017-demo"></script>
 <title>Spell Studio · fx-580VN X</title>
-<link rel="stylesheet" href="style.css?v=20261015-clean2">
-<link rel="stylesheet" href="motion.css?v=20261015-clean2">
-<link rel="stylesheet" href="responsive.css?v=20261015-clean2">
-<link rel="stylesheet" href="theme.css?v=20261015-clean2">
-<script defer src="data.js?v=20261015-clean2"></script><script defer src="pdf-reference.js?v=20261015-clean2"></script><script defer src="engine.js?v=20261015-clean2"></script><script defer src="multiline.js?v=20261015-clean2"></script><script defer src="motion.js?v=20261015-clean2"></script><script defer src="palette-font.js?v=20261015-clean2"></script><script defer src="key-font.js?v=20261015-clean2"></script><script defer src="app.js?v=20261015-clean2"></script>
-<link rel="stylesheet" href="refinements.css?v=20261015-clean2"></head>
+<link rel="stylesheet" href="style.css?v=20261017-demo">
+<link rel="stylesheet" href="motion.css?v=20261017-demo">
+<link rel="stylesheet" href="responsive.css?v=20261017-demo">
+<link rel="stylesheet" href="theme.css?v=20261017-demo">
+<script defer src="data.js?v=20261017-demo"></script><script defer src="pdf-reference.js?v=20261017-demo"></script><script defer src="engine.js?v=20261017-demo"></script><script defer src="multiline.js?v=20261017-demo"></script><script defer src="motion.js?v=20261017-demo"></script><script defer src="palette-font.js?v=20261017-demo"></script><script defer src="key-font.js?v=20261017-demo"></script><script defer src="demo.js?v=20261017-demo"></script><script defer src="app.js?v=20261017-demo"></script>
+<link rel="stylesheet" href="refinements.css?v=20261017-demo"></head>
 <body>
 <svg class="glyph-defs" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false"><defs><filter id="spell-preview-ink" color-interpolation-filters="sRGB"><fecolormatrix type="matrix" values="0 0 0 0 .14  0 0 0 0 .18  0 0 0 0 .12  1.0714285714 0 0 0 -.0714285714"></fecolormatrix></filter><filter id="palette-png-ink" color-interpolation-filters="sRGB"><fecolormatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.0759493671 0 0 0 -.0759493671"></fecolormatrix></filter></defs></svg>
 <div class="motion-backdrop" aria-hidden="true"><span></span><span></span><span></span></div>
@@ -21,8 +21,15 @@
 <section id="composer" class="composer card" aria-label="Soạn văn bản">
 <div class="section-top"><h1>Văn bản spell</h1><button id="clear" class="text-button">Xóa hết</button></div>
 <div class="spell-settings">
-<label for="line-mode">Số dòng <select id="line-mode"><option value="1">1 dòng</option><option value="2">2 dòng</option><option value="3">3 dòng</option><option value="4">4 dòng</option></select></label>
+<label for="line-mode">Số dòng <select id="line-mode"><option value="1">1 dòng</option><option value="2">2 dòng · Demo</option><option value="3">3 dòng · Demo</option><option value="4">4 dòng · Demo</option></select></label>
 
+</div>
+<div id="demo-gate" class="demo-gate" hidden>
+<form id="demo-form">
+<label for="demo-password">Mật khẩu bản demo nhiều dòng</label>
+<div class="demo-controls"><input id="demo-password" type="password" autocomplete="current-password" maxlength="256" required aria-describedby="demo-error"><button id="demo-submit" type="submit" class="secondary">Mở demo</button><button id="demo-cancel" type="button" class="text-button">Hủy</button></div>
+<p id="demo-error" class="error" role="alert" hidden></p>
+</form>
 </div><p id="multiline-hint" class="editor-hint" hidden>Mỗi dòng trong ô soạn là một dòng trên máy. Dùng Enter để xuống dòng.</p>
 <label class="sr-only" for="editor">Nội dung cần spell</label><textarea aria-describedby="character-count error" id="editor" rows="2" spellcheck="false" placeholder="Gõ văn bản hoặc chọn ký tự…" aria-invalid="false" autocomplete="off" autocapitalize="off"></textarea>
 <div class="editor-meter"><span id="character-count" role="status" aria-live="polite" aria-atomic="true" title=""></span></div>

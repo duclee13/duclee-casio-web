@@ -1,6 +1,8 @@
 'use strict';
 const $=id=>document.getElementById(id),S=globalThis.Spell,M=globalThis.SpellMotion;
 let activeGroup='base',currentGuide=null,selection={start:0,end:0},toastTimer,selectedHex='41';
+let demoUnlocked=false,pendingMode='2',generationVersion=0,unlockVersion=0;
+const demo=globalThis.SpellDemoTransport;
 let composing=false,acceptedInput={value:'',start:0,end:0};
 function validInput(value){try{value.replace(/\r\n?/g,'\n').split('\n').forEach(line=>S.parseText(line));return true;}catch{return false;}}
 function spellOptions(){return {lines:Number($('line-mode').value),center:$('center').checked,compressSpaces:$('compress-spaces').checked};}
@@ -59,7 +61,7 @@ async function loadPaletteFont(){
 }
 function saveDraft(){try{localStorage.setItem('casio-spell-draft',$('editor').value);localStorage.setItem('casio-spell-layout',JSON.stringify({lines:$('line-mode').value}));}catch{}}
 function setKeyFontSize(value){const size=[16,18,20,22].includes(Number(value))?Number(value):18;$('key-font-size').value=String(size);document.documentElement.style.setProperty('--key-size',size+'px');try{localStorage.setItem('casio-spell-key-size',String(size));}catch{}}
-function invalidate(){currentGuide=null;$('guide-meta').hidden=true;$('guide').hidden=true;$('guide-placeholder').hidden=false;$('copy-all').disabled=true;$('download').disabled=true;$('export-pdf').disabled=true;M?.invalidate();}
+function invalidate(){generationVersion++;$('generate').removeAttribute('aria-busy');currentGuide=null;$('guide-meta').hidden=true;$('guide').hidden=true;$('guide-placeholder').hidden=false;$('copy-all').disabled=true;$('download').disabled=true;$('export-pdf').disabled=true;M?.invalidate();}
 function updateEditor(){
  const editor=$('editor');
  if(!validInput(editor.value)){
@@ -152,12 +154,20 @@ function updateGuideMeta(){
  if(!currentGuide)return;
  const total=currentGuide.steps.length;
  $('guide-meta').textContent=`${total} bước · tổng cộng ${currentGuide.keyCount} nút`;
- $('guide-meta').title=currentGuide.guided?'Tính các phím trong hướng dẫn. Các thao tác tìm vị trí con trỏ và nhập số đến khi đầy chưa có số lần cố định.':'';
+ $('guide-meta').title='';
  $('guide-meta').hidden=false;
 }
 function renderGuide(){if(!currentGuide)return;const compact=$('compact').checked,g=currentGuide,root=$('guide');root.replaceChildren();const pre=document.createElement('pre');pre.className='assign-block';renderAssignments(pre,g.assignments);if(g.assignments.length)root.append(pre);
- for(const [index,s] of g.steps.entries()){const section=document.createElement('section');section.className='step';const head=document.createElement('div');head.className='step-head';const title=document.createElement('h3');title.textContent=s.title;const b=document.createElement('button');b.textContent='Sao chép';b.addEventListener('click',()=>copy([s.title,s.note,...s.segments.map(k=>S.formatKeys(k,compact)),s.checkpoint].filter(Boolean).join('\n')));const actions=document.createElement('div');actions.className='step-actions';actions.append(b);
- head.append(title,actions);const keys=document.createElement('div');keys.className='step-keys';for(const segment of s.segments){const p=document.createElement('p');if(globalThis.SpellKeyFont)SpellKeyFont.renderInto(p,S.formatKeys(segment,compact));else p.textContent=S.formatKeys(segment,compact);keys.append(p);}section.append(head);if(s.note){const note=document.createElement('p');note.className='step-note';note.textContent=s.note.replace(/ Đếm:.*? = \d+\./,'');section.append(note);}section.append(keys);if(s.checkpoint){const details=document.createElement('details');details.className='step-reference';const label=document.createElement('summary');label.textContent='Đối chiếu chuỗi';const check=document.createElement('pre');check.className='step-checkpoint';check.textContent=s.checkpoint;details.append(label,check);section.append(details);}root.append(section);}
+ for(const [index,s] of g.steps.entries()){const section=document.createElement('section');section.className='step';const head=document.createElement('div');head.className='step-head';const title=document.createElement('h3');title.textContent=s.title;const b=document.createElement('button');b.textContent='Sao chép';b.addEventListener('click',()=>copy(S.stepText(s,compact)));const actions=document.createElement('div');actions.className='step-actions';actions.append(b);
+ head.append(title,actions);section.append(head);
+ for(const part of s.parts||[s]){
+  const keys=document.createElement('div');keys.className='step-keys';
+  for(const segment of part.segments){const p=document.createElement('p');if(globalThis.SpellKeyFont)SpellKeyFont.renderInto(p,S.formatKeys(segment,compact));else p.textContent=S.formatKeys(segment,compact);keys.append(p);}
+  section.append(keys);
+  if(part.checkpoint){const details=document.createElement('details');details.className='step-reference';const label=document.createElement('summary');label.textContent='Đối chiếu chuỗi';const check=document.createElement('pre');check.className='step-checkpoint';check.textContent=part.checkpoint;details.append(label,check);section.append(details);}
+ }
+ root.append(section);}
+
  const printHeader=document.createElement('div');printHeader.className='print-heading';
  const printTitle=document.createElement('h1');printTitle.textContent='Hướng dẫn spell · fx-580VN X';
  const preview=$('preview').cloneNode(true);preview.removeAttribute('id');preview.classList.add('print-preview');
@@ -165,7 +175,39 @@ function renderGuide(){if(!currentGuide)return;const compact=$('compact').checke
  root.hidden=false;$('guide-placeholder').hidden=true;$('copy-all').disabled=false;$('download').disabled=false;$('export-pdf').disabled=false;
  M?.guide();
 }
-function generate(){try{const options=spellOptions();currentGuide=options.lines>1?SpellMulti.generate($('editor').value,options):S.generate($('editor').value,options);$('error').hidden=true;renderGuide();$('guide-scroll').scrollTop=0;M?.generated();}catch(e){$('error').textContent=e.message;$('error').hidden=false;invalidate();M?.error();}}
+function requestDemo(mode){
+ pendingMode=String(mode);$('line-mode').value='1';updateEditor();
+ $('demo-gate').hidden=false;$('demo-error').hidden=true;$('demo-password').value='';$('demo-password').focus();
+}
+async function generate(){
+ const options=spellOptions();
+ if(options.lines>1&&!demoUnlocked){requestDemo(options.lines);return;}
+ const version=++generationVersion,text=$('editor').value;
+ $('generate').disabled=true;$('generate').setAttribute('aria-busy','true');
+ try{
+  const guide=options.lines>1?await demo.generate(text,options):S.generate(text,options);
+  if(version!==generationVersion)return;
+  currentGuide=S.limitGuideSteps(guide,15);$('error').hidden=true;renderGuide();$('guide-scroll').scrollTop=0;M?.generated();
+ }catch(e){
+  if(version!==generationVersion)return;
+  if(e.status===401){demoUnlocked=false;requestDemo(options.lines);}
+  else{invalidate();$('generate').disabled=false;$('error').textContent=e.message;$('error').hidden=false;M?.error();}
+ }finally{if(version===generationVersion){$('generate').removeAttribute('aria-busy');$('generate').disabled=$('editor').getAttribute('aria-invalid')==='true'||!$('editor').value.trim();}}
+}
+$('demo-form').addEventListener('submit',async e=>{
+ e.preventDefault();if($('demo-submit').disabled)return;
+ const version=++unlockVersion,password=$('demo-password').value;
+ $('demo-submit').disabled=true;$('demo-error').hidden=true;
+ try{
+  await demo.unlock(password);
+  if(version!==unlockVersion)return;
+  demoUnlocked=true;$('demo-gate').hidden=true;$('demo-password').value='';$('line-mode').value=pendingMode;updateEditor();$('editor').focus();
+ }catch(error){if(version===unlockVersion){$('demo-error').textContent=error.message;$('demo-error').hidden=false;$('demo-password').focus();}}
+ finally{if(version===unlockVersion)$('demo-submit').disabled=false;}
+});
+function cancelDemo(){unlockVersion++;$('demo-submit').disabled=false;$('demo-gate').hidden=true;$('demo-password').value='';$('line-mode').focus();}
+$('demo-cancel').addEventListener('click',cancelDemo);
+$('demo-password').addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();cancelDemo();}});
 async function exportPDF(){
  if(!currentGuide)return;
  const guide=currentGuide,button=$('export-pdf');button.disabled=true;
@@ -217,7 +259,12 @@ $('editor').addEventListener('compositionstart',()=>{rememberSelection();composi
 $('editor').addEventListener('compositionend',()=>{composing=false;updateEditor();});
 $('editor').addEventListener('input',e=>{if(!composing&&!e.isComposing)updateEditor();});
 for(const event of ['select','click','keyup','blur'])$('editor').addEventListener(event,rememberSelection);
-for(const id of ['center','compress-spaces','line-mode'])$(id).addEventListener('change',()=>{const hadGuide=!!currentGuide;updateEditor();if(hadGuide&&!$('generate').disabled)generate();});
+for(const id of ['center','compress-spaces'])$(id).addEventListener('change',()=>{const hadGuide=!!currentGuide;updateEditor();if(hadGuide&&!$('generate').disabled)generate();});
+$('line-mode').addEventListener('change',()=>{
+ const mode=$('line-mode').value;
+ if(Number(mode)>1&&!demoUnlocked){requestDemo(mode);return;}
+ cancelDemo();const hadGuide=!!currentGuide;updateEditor();if(hadGuide&&!$('generate').disabled)generate();
+});
 $('glyph-grid').addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.target.closest('button'))e.preventDefault();});
 $('glyph-grid').addEventListener('click',e=>{
  const button=e.target.closest('button[data-hex]');
@@ -229,8 +276,8 @@ for(const event of ['pointerover','focusin'])$('glyph-grid').addEventListener(ev
 $('search').addEventListener('input',()=>{const previousGroup=activeGroup,q=$('search').value.trim().toUpperCase().replace(/^0X/,'');if(/^F[04][0-9A-F]{0,2}$/.test(q))selectGroup(q.startsWith('F4')?'f4':'f0');renderPalette(previousGroup!==activeGroup);});
 document.querySelectorAll('[data-group]').forEach(b=>b.addEventListener('click',()=>{selectGroup(b.dataset.group);renderPalette();}));
 $('clear').addEventListener('click',()=>{$('editor').value='';$('editor').selectionStart=$('editor').selectionEnd=0;selection={start:0,end:0};updateEditor();$('editor').focus();});
-$('generate').addEventListener('click',()=>{
- generate();
+$('generate').addEventListener('click',async()=>{
+ await generate();
  if(currentGuide&&globalThis.matchMedia?.('(max-width: 1100px)').matches){
   $('guide-section').focus({preventScroll:true});
   $('guide-section').scrollIntoView?.({behavior:'auto',block:'start'});
@@ -238,9 +285,10 @@ $('generate').addEventListener('click',()=>{
 });$('compact').addEventListener('change',renderGuide);$('copy-all').addEventListener('click',()=>{if(currentGuide)copy(S.guideText(currentGuide,$('compact').checked));});$('download').addEventListener('click',()=>{if(!currentGuide)return;const blob=new Blob(['\ufeff'+S.guideText(currentGuide,$('compact').checked)],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='huong-dan-spell.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 $('key-font-size').addEventListener('change',e=>setKeyFontSize(e.target.value));
 try{setKeyFontSize(localStorage.getItem('casio-spell-key-size'));}catch{setKeyFontSize(18);}
-try{const layout=JSON.parse(localStorage.getItem('casio-spell-layout')||'{}');if(['1','2','3','4'].includes(layout.lines))$('line-mode').value=layout.lines;}catch{}
+try{const layout=JSON.parse(localStorage.getItem('casio-spell-layout')||'{}');if(['2','3','4'].includes(layout.lines))pendingMode=layout.lines;}catch{}
 try{const saved=localStorage.getItem('casio-spell-draft');if(saved!==null)$('editor').value=validInput(saved)?saved:'';}catch{}
 $('editor').selectionStart=$('editor').selectionEnd=$('editor').value.length;selection={start:$('editor').value.length,end:$('editor').value.length};renderPalette();updateEditor();showReference(selectedHex);M?.boot();
 loadPaletteFont();
+demo.status().then(state=>{if(state.unlocked)demoUnlocked=true;}).catch(()=>{});
 
 $('editor').addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'&&!composing&&!$('generate').disabled){e.preventDefault();$('generate').click();}});

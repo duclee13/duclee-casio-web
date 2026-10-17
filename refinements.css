@@ -41,3 +41,13 @@ button:disabled { cursor:not-allowed; }
 .step-head .step-actions { width:auto; }
 @media print { .step-reference { display:none; } }
 @media print { .step-reference { display:block; } .step-reference summary { display:none; } .step-reference > pre { display:block; } }
+
+.demo-gate{margin:12px 0;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+.demo-gate[hidden]{display:none}
+.demo-gate label{display:block;margin-bottom:9px;font-weight:600;font-size:14px}
+.demo-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.demo-controls input{flex:1 1 140px;min-width:0;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:16px}
+.demo-controls button{min-height:44px}
+.demo-gate .error{margin-bottom:0}
+.step-keys+.step-keys{margin-top:12px}
+@media print{.demo-gate{display:none!important}}
