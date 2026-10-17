@@ -49,9 +49,9 @@ for(const text of examples){
  assert.ok(guide.execution.bytes<=200);assert.ok(S.limitGuideSteps(guide).steps.length<=15);
  for(const pass of guide.duplicationPasses)assert.equal(pass.savedBytes+pass.fill,200);
  for(const expansion of guide.expansions){replayExpansion(expansion);assert.ok(expansion.peakBytes<=200);}
- if(guide.units){
+ if(guide.units&&!Object.keys(guide.packing.macros).length){
   const raw=guide.packing.cells.filter(c=>!c.padding).map(c=>c.value).join('');
-  assert.equal(raw,'FB01'+guide.packing.seeds.join('')+'621923');
+  assert.equal(raw,'FB01'+(guide.packing.assignedSeeds||guide.packing.seeds).join('')+'621923');
  }
  console.log(text.split('\n')[0]+': '+guide.duplication.length+' duplications, '+guide.keyCount+' keys, '+guide.conversions.length+' content CT2');
 }

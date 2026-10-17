@@ -56,3 +56,11 @@ button:disabled { cursor:not-allowed; }
 .copy-keys { margin-left:auto; min-height:32px; font-size:13px; }
 @media (pointer:coarse) { .copy-keys { min-height:44px; } }
 @media print { .copy-keys { display:none!important; } }
+
+.generation-loading { display:flex;align-items:center;gap:10px;margin-top:12px;color:var(--muted);font-size:13px;line-height:1.5; }
+.generation-loading img { flex:0 0 28px; }
+.loading-still { display:none;font-size:24px;line-height:28px;width:28px;text-align:center; }
+[data-motion="reduced"] .generation-loading img { display:none; }
+[data-motion="reduced"] .generation-loading .loading-still { display:inline-block; }
+@media (prefers-reduced-motion:reduce) { .generation-loading img { display:none; } .generation-loading .loading-still { display:inline-block; } }
+@media print { .generation-loading { display:none!important; } }

@@ -1,4 +1,4 @@
-# Spell Studio — 20261017-flat-v1
+# Spell Studio — 20261017-base-v4
 
 Toàn bộ mã nguồn nằm cùng một cấp. Đọc README.txt để triển khai.
 

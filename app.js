@@ -62,7 +62,13 @@ async function loadPaletteFont(){
 }
 function saveDraft(){try{localStorage.setItem('casio-spell-draft',$('editor').value);localStorage.setItem('casio-spell-layout',JSON.stringify({lines:$('line-mode').value,auto:$('auto-layout').checked}));}catch{}}
 function setKeyFontSize(value){const size=[16,18,20,22].includes(Number(value))?Number(value):18;$('key-font-size').value=String(size);document.documentElement.style.setProperty('--key-size',size+'px');try{localStorage.setItem('casio-spell-key-size',String(size));}catch{}}
-function invalidate(){generationVersion++;$('generate').removeAttribute('aria-busy');currentGuide=null;$('guide-meta').hidden=true;$('guide').hidden=true;$('guide-placeholder').hidden=false;$('copy-all').disabled=true;$('copy-keys').disabled=true;$('download').disabled=true;$('export-pdf').disabled=true;M?.invalidate();}
+function setGenerating(busy){
+ $('generation-loading').hidden=!busy;
+ $('generate').querySelector('.button-label').textContent=busy?'Đang tìm dãy base…':'Tạo hướng dẫn';
+ if(busy){$('generate').disabled=true;$('generate').setAttribute('aria-busy','true');}
+ else $('generate').removeAttribute('aria-busy');
+}
+function invalidate(){generationVersion++;setGenerating(false);currentGuide=null;$('guide-meta').hidden=true;$('guide').hidden=true;$('guide-placeholder').hidden=false;$('copy-all').disabled=true;$('copy-keys').disabled=true;$('download').disabled=true;$('export-pdf').disabled=true;M?.invalidate();}
 function updateEditor(){
  const editor=$('editor');
  if(!validInput(editor.value)){
@@ -194,8 +200,11 @@ async function generate(){
  const options=spellOptions();
  if(options.lines>1&&!demoUnlocked){requestDemo(options.lines);return;}
  const version=++generationVersion,text=effectiveText;
- $('generate').disabled=true;$('generate').setAttribute('aria-busy','true');
+ setGenerating(true);
  try{
+  // Allow the loading indicator to paint before any synchronous work.
+  await new Promise(resolve=>setTimeout(resolve,0));
+  if(version!==generationVersion)return;
   const guide=options.lines>1?await demo.generate(text,options):S.generate(text,options);
   if(version!==generationVersion)return;
   currentGuide=S.limitGuideSteps(guide,15);$('error').hidden=true;renderGuide();$('guide-scroll').scrollTop=0;M?.generated();
@@ -203,7 +212,7 @@ async function generate(){
   if(version!==generationVersion)return;
   if(e.status===401){demoUnlocked=false;requestDemo(options.lines);}
   else{invalidate();$('generate').disabled=false;$('error').textContent=e.message;$('error').hidden=false;M?.error();}
- }finally{if(version===generationVersion){$('generate').removeAttribute('aria-busy');$('generate').disabled=$('editor').getAttribute('aria-invalid')==='true'||!$('editor').value.trim();}}
+ }finally{if(version===generationVersion){setGenerating(false);$('generate').disabled=$('editor').getAttribute('aria-invalid')==='true'||!$('editor').value.trim();}}
 }
 $('demo-form').addEventListener('submit',async e=>{
  e.preventDefault();if($('demo-submit').disabled)return;

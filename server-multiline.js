@@ -17,7 +17,8 @@ const sum=(a,f)=>a.reduce((n,x)=>n+f(x),0);
 const rawBytes=h=>h.length/2;
 const shortest=a=>a?.length?a.reduce((x,y)=>y.length<x.length?y:x).slice():null;
 const ct2=h=>shortest(P.rows[h]?.formula2);
-const Z=['ALPHA','S_D'];
+const GUARD_KEYS=['1'];
+const GUARD_HEX='31';
 const atName=e=>e.hex==='20'?'dấu cách':e.hex==='01'?'khoảng trắng ⅓':(e.char||'ký hiệu');
 const describe=e=>`${atName(e)} {${e.hex}}`;
 const hexList=a=>a.map(x=>typeof x==='string'?x:x.hex).join(' ');
@@ -72,7 +73,7 @@ function packSeeds(seeds,weights={},allowCT2=false,{pairPrefixes=true}={}){
     if(leftKeys){
      const bytes=[g.hex.slice(0,2),next.hex.slice(0,2),...(rightKeys?[]:[next.hex.slice(2)])],stop=p+bytes.length;
      if(stop<=limit&&D.SLOTS[p][0]===D.SLOTS[stop-1][0]&&bytes.every((b,i)=>fits(b,D.SLOTS[p+i][2])))
-      offer(solve(t+2,stop),bytes.map(value=>({value,padding:false,token:t})),[],0,bytes.length+leftKeys.length+(rightKeys?.length||1)+4,
+      offer(solve(t+2,stop),bytes.map(value=>({value,padding:false,token:t})),[],0,bytes.length+sum(bytes,b=>[...b].filter(c=>/[A-F]/.test(c)).length*7)+leftKeys.length+(rightKeys?.length||1)+4,
        {[p]:{left:g.hex,right:next.hex,leftKeys,rightKeys,bytes:bytes.length}});
     }
    }
@@ -149,29 +150,144 @@ function rawUnits(items,kind){
  }
  return units;
 }
+// Exact slot-aware feasibility search for fixed raw-token targets. A final
+// target after k doublings is a subsequence of seed^(2^k). Search consecutive
+// target partitions as a common supersequence in actual ABC slots, including
+// the two real 01 tokens produced at each variable boundary.
+function seedSearch(target,{budget=240000,maxRounds=2,maxResults=24,deadline=Infinity}={}){
+ const key=target.join(',')+'/'+budget+'/'+maxRounds+'/'+maxResults;
+ if(seedSearch.cache.has(key))return seedSearch.cache.get(key);
+ const results=[],stats={states:0,partitions:0,completeThrough:-1,truncated:false,reason:null};
+ const stopped=()=>{if(stats.states+stats.partitions>budget){stats.truncated=true;stats.reason="state-budget";}else if(Date.now()>deadline){stats.truncated=true;stats.reason="time-budget";}return stats.truncated;};
+ const endPosition=(p,hex)=>{const bytes=hex.match(/../g);for(;p+bytes.length<=22;p++)if(D.SLOTS[p][0]===D.SLOTS[p+bytes.length-1][0]&&bytes.every((b,i)=>fits(b,D.SLOTS[p+i][2])))return p+bytes.length;return 99;};
+ const finish=p=>['62','19','23'].reduce(endPosition,p);
+ const counts=a=>{const v={};for(const h of a)v[h]=(v[h]||0)+1;return v};
+ const unique=[...new Set(target)];
+ function attempt(chunks){
+  const suffix=chunks.map(a=>a.map((_,i)=>counts(a.slice(i))).concat([{}]));
+  const dead=new Set();
+  const advance=(at,h)=>at.map((x,i)=>x+(chunks[i][x]===h?1:0));
+  function dfs(at,p,processed=false){
+   stats.states++;if(stopped())return null;
+   if(at.every((x,i)=>x===chunks[i].length))return finish(p)<=22?[]:null;
+   if(p>=19)return null;
+   const id=at.join(',')+':'+p+':'+processed;if(dead.has(id))return null;
+   const free=2*([6,14].filter(x=>x>p||(x===p&&!processed)).length);
+   const need=sum(unique,h=>Math.max(0,Math.max(...at.map((x,i)=>suffix[i][x][h]||0))-(h==='01'?free:0))*rawBytes(h));
+   if(p+need+3>22){dead.add(id);return null;}
+   if((p===6||p===14)&&!processed){
+    const one=advance(at,'01'),two=advance(one,'01');
+    for(const [next,n] of [[two,2],[one,1],[at,0]]){
+     if(n&&next.every((v,i)=>v===at[i]))continue;
+     if(n===2&&two.every((v,i)=>v===one[i]))continue;
+     const rest=dfs(next,p,true);if(rest)return [{boundary:p,count:n},...rest];if(stats.truncated)return null;
+    }
+    dead.add(id);return null;
+   }
+   const heads=[...new Set(at.flatMap((x,i)=>x<chunks[i].length?[chunks[i][x]]:[]))];
+   heads.sort((a,b)=>at.filter((x,i)=>chunks[i][x]===b).length-at.filter((x,i)=>chunks[i][x]===a).length||rawBytes(b)-rawBytes(a));
+   for(const h of heads){
+    const bytes=h.match(/../g),end=p+bytes.length;
+    if(end+3>22||D.SLOTS[p][0]!==D.SLOTS[end-1][0]||!bytes.every((b,i)=>fits(b,D.SLOTS[p+i][2])))continue;
+    const rest=dfs(advance(at,h),end);if(rest)return [{hex:h},...rest];if(stats.truncated)return null;
+   }
+   const rest=dfs(at,p+1);if(rest)return [{padding:true},...rest];
+   dead.add(id);return null;
+  }
+  const operations=dfs(chunks.map(()=>0),2);if(!operations)return null;
+  const cells=[{value:'FB',padding:false,token:0},{value:'01',padding:false,token:0}],seeds=[],assignedSeeds=[],boundaryKeeps={};let token=1;
+  for(const o of operations){
+   if(o.boundary){boundaryKeeps[D.SLOTS[o.boundary][0]]=o.count;seeds.push(...Array(o.count).fill('01'));}
+   else if(o.padding)cells.push({value:'20',padding:true,token:null});
+   else{assignedSeeds.push(o.hex);seeds.push(o.hex);for(const value of o.hex.match(/../g))cells.push({value,padding:false,token});token++;}
+  }
+  for(const h of ['62','19','23']){while(!fits(h,D.SLOTS[cells.length][2]))cells.push({value:'20',padding:true,token:null});cells.push({value:h,padding:false,token:token++});}
+  const count=D.SLOTS[cells.length-1][0]+1;
+  return {cells,seeds,assignedSeeds,boundaryKeeps,count,padding:cells.filter(c=>c.padding).length,macros:{},omitted:[],conversions:0,
+   cost:count*10+sum(cells,c=>c.padding?2:1+[...c.value].filter(x=>/[A-F]/.test(x)).length*7),tokens:['FB01',...assignedSeeds,'62','19','23']};
+ }
+ const totalCounts=counts(target);
+ for(let rounds=0;rounds<=Math.min(maxRounds,Math.ceil(Math.log2(Math.max(1,target.length))));rounds++){
+  const copies=Math.min(2**rounds,target.length||1);
+  if(!target.length)break;
+  // A frequency lower bound is cheap and independent of token order.
+  const frequencyBound=sum(unique,h=>Math.max(0,Math.ceil(totalCounts[h]/copies)-(h==='01'?4:0))*rawBytes(h));
+  if(frequencyBound>17){stats.completeThrough=rounds;continue;}
+  const partitions=[];
+  const lower=x=>sum(unique,h=>Math.max(0,Math.max(...x.map(c=>c.filter(v=>v===h).length))-(h==='01'?4:0))*rawBytes(h));
+  const visit=chunks=>{
+   stats.partitions++;if(stopped())return;
+   if(lower(chunks)>17)return;
+   const packing=attempt(chunks);
+   if(packing&&!results.some(r=>hexList(r.seeds)===hexList(packing.seeds)&&JSON.stringify(r.boundaryKeeps)===JSON.stringify(packing.boundaryKeeps)))results.push(packing);
+  };
+  function partition(start,left,chunks){
+   if(stopped()||results.length>=maxResults)return;
+   if(left===1){const last=target.slice(start);if(sum(last,h=>h==='01'?0:rawBytes(h))<=17){if(copies<=4)partitions.push([...chunks,last]);else visit([...chunks,last]);}return;}
+   const cuts=[];
+   for(let end=start+1;end<=target.length-left+1;end++){
+    const chunk=target.slice(start,end);if(sum(chunk,h=>h==='01'?0:rawBytes(h))>17)break;
+    // The remaining tokens must fit into the remaining copies of a base.
+    if(sum(target.slice(end),h=>h==='01'?0:rawBytes(h))>17*(left-1))continue;
+    cuts.push(end);
+   }
+   if(copies>4){const ideal=start+(target.length-start)/left;cuts.sort((a,b)=>Math.abs(a-ideal)-Math.abs(b-ideal));}
+   for(const end of cuts){
+    stats.partitions++;if(stopped())return;
+    const next=[...chunks,target.slice(start,end)];if(lower(next)<=17)partition(end,left-1,next);
+    if(stats.truncated||results.length>=maxResults)return;
+   }
+  }
+  partition(0,copies,[]);
+  if(copies<=4&&!stats.truncated){
+   const scored=partitions.map(chunks=>({chunks,bound:lower(chunks),max:Math.max(...chunks.map(c=>sum(c,rawBytes)))}));
+   scored.sort((a,b)=>a.bound-b.bound||a.max-b.max);
+   for(const p of scored){visit(p.chunks);if(stats.truncated||results.length>=maxResults)break;}
+  }
+  if(stats.truncated||results.length)break;
+  stats.completeThrough=rounds;
+ }
+ const result={packings:results,stats};
+ if(!stats.truncated){if(seedSearch.cache.size>=48)seedSearch.cache.clear();seedSearch.cache.set(key,result);}return result;
+}
+seedSearch.cache=new Map();
+
 function optimizedPlans(raw,options={}){
  const base=prepare(raw,options),result=[],seen=new Set();
  if(base.input.flat().every(e=>e.hex==='20'||e.hex==='01'))throw Error('Nhập văn bản hoặc chọn ký tự để bắt đầu.');
- for(const kind of ['literal','pairs','single']){
-  const allUnits=rawUnits(base.items,kind),target=allUnits.map(u=>u.raw),weights={};target.forEach(h=>weights[h]=(weights[h]||0)+1);
+ variantsLoop: for(const kind of ['literal','pairs','single'])for(const deferCT2 of [false,true]){
+  if(Date.now()>(options.searchDeadline||Infinity))break variantsLoop;
+  const forced=deferCT2?new Set(base.items.filter(e=>e.method==='packed'&&e.hex.length===2&&ct2(e.hex)).map(e=>e.hex)):new Set();
+  if(deferCT2&&!forced.size)continue;
+  const planningItems=base.items.map(e=>forced.has(e.hex)?{...e,method:'ct2',keys:ct2(e.hex)}:e);
+  const allUnits=rawUnits(planningItems,kind),target=allUnits.map(u=>u.raw),weights={};target.forEach(h=>weights[h]=(weights[h]||0)+1);
   const cache=new Map(),local=[];
-  const offer=bank=>{
-   const id=hexList(bank);if(cache.has(id))return cache.get(id);
-   if(sum(bank,h=>h.length===2&&ct2(h)?0:rawBytes(h))>17){cache.set(id,null);return null;}
-   let packing=packSeeds(bank,weights,true,{pairPrefixes:false});
+  const offerOne=(bank,exact=null,preExpand=false)=>{
+   const id=hexList(bank)+'/'+preExpand+(exact?'/'+JSON.stringify(exact.boundaryKeeps)+'/'+exact.cells.map(c=>c.value).join(''):'');if(cache.has(id))return cache.get(id);
+   // A paired F prefix can encode two logical seed symbols in two bytes.
+   // The old raw-byte bound incorrectly rejected banks such as 9 x F470.
+   const lowerBytes=sum(bank,h=>h.length===2&&ct2(h)?0:preExpand&&/^F[0-9A-F]{3}$/.test(h)?1:rawBytes(h));
+   if(lowerBytes>17){cache.set(id,null);return null;}
+   let packing=exact||packSeeds(bank,weights,true,{pairPrefixes:preExpand});
    if(!packing){cache.set(id,null);return null;}
-   const omitted=new Set(packing.omitted);
-   if(omitted.size){const clean=packSeeds(bank.filter(h=>!omitted.has(h)),weights,false,{pairPrefixes:false});if(!clean){cache.set(id,null);return null;}packing={...clean,omitted:[...omitted],conversions:sum([...omitted],h=>weights[h])};}
+   const omitted=new Set([...packing.omitted,...forced]);
+   if(omitted.size&&!exact){const clean=packSeeds(bank.filter(h=>!omitted.has(h)),weights,false,{pairPrefixes:preExpand});if(!clean){cache.set(id,null);return null;}packing={...clean,omitted:[...omitted],conversions:sum([...omitted],h=>weights[h])};}
+   if(exact)packing={...packing,omitted:[...omitted],conversions:sum([...omitted],h=>weights[h]||1)};
    const units=allUnits.filter(u=>!omitted.has(u.raw)),items=base.items.map(e=>({...e}));
    for(const e of items)if(e.method==='packed'&&omitted.has(e.hex)){e.method='ct2';e.keys=ct2(e.hex);}
    let duplication;try{duplication=duplicatePlan(packing.seeds,units.map(u=>u.raw),base.config);}catch{cache.set(id,null);return null;}
    const conversions=items.filter(e=>e.method==='ct2');
    const estimate=packing.cost+sum(duplication,d=>404+4*d.before.length-2*sum(d.before,rawBytes))+sum(units,u=>u.keys?.length||0);
-   const p={...base,items,packing,duplication,units,conversions,estimate,templateKind:kind};
+   const p={...base,items,packing,duplication,units,conversions,estimate,templateKind:kind,preExpand};
    cache.set(id,p);local.push(p);return p;
+  };
+  const offer=(bank,exact=null)=>{
+   const candidates=exact?[offerOne(bank,exact)]:[offerOne(bank),offerOne(bank,null,true)];
+   return candidates.filter(Boolean).sort((a,b)=>a.duplication.length-b.duplication.length||a.conversions.length-b.conversions.length||a.estimate-b.estimate)[0]||null;
   };
   const unique=[...new Set(target)],last=[...new Set(target.slice().reverse())].reverse();
   offer(target);offer(unique);offer(last);offer(unique.slice().reverse());
+  for(const packing of seedSearch(target,{deadline:options.searchDeadline||Infinity}).packings)offer(packing.assignedSeeds,packing);
   offer(unique.slice().sort((a,b)=>weights[b]-weights[a]));
   // Exact two-piece merges for every split; balanced merges for larger copy
   // counts provide seed orders that also preserve useful repeated symbols.
@@ -201,7 +317,7 @@ function optimizedPlans(raw,options={}){
     }
    }
   }
-  const order=(a,b)=>a.conversions.length-b.conversions.length||a.estimate-b.estimate;
+  const order=(a,b)=>a.duplication.length-b.duplication.length||a.conversions.length-b.conversions.length||a.estimate-b.estimate;
   // Spend remaining assignment bytes on an extra occurrence if it reduces
   // full physical-key cost. Preserve multiple promising starting orders.
   let frontier=local.slice().sort(order).slice(0,3);
@@ -217,12 +333,79 @@ function optimizedPlans(raw,options={}){
    }
    frontier=[...new Set(next)].sort(order).slice(0,2);
   }
-  for(const p of local.sort(order).slice(0,3)){
-   const id=hexList(p.packing.seeds)+'/'+p.units.map(u=>u.output.join(',')).join(';');
+  const finalists=[...local.slice().sort(order).slice(0,8),...local.slice().sort((a,b)=>a.conversions.length-b.conversions.length||a.estimate-b.estimate).slice(0,3)];
+  for(const p of finalists){
+   const id=hexList(p.packing.seeds)+'/'+p.units.map(u=>u.output.join(',')).join(';')+'/'+p.packing.cells.map(c=>c.value).join('');
    if(!seen.has(id)){seen.add(id);result.push(p);}
   }
  }
- return result.sort((a,b)=>a.conversions.length-b.conversions.length||a.estimate-b.estimate).slice(0,7);
+ return result.sort((a,b)=>a.duplication.length-b.duplication.length||a.conversions.length-b.conversions.length||a.estimate-b.estimate).slice(0,18);
+}
+
+// CT1 characters never enter the seed search. CT2-only base bytes are
+// optional: solve the mandatory core first, then try selective restorations.
+function tokenVariants(base,{width=10,limit=36,deadline=Infinity}={}){
+ const optional=[...new Set(base.items.filter(e=>e.method==='packed'&&e.hex.length===2&&ct2(e.hex)).map(e=>e.hex))];
+ const masks=[];
+ const addMask=a=>{const id=a.slice().sort().join(',');if(!masks.some(x=>x.id===id))masks.push({id,omit:new Set(a)});};
+ addMask(optional);addMask([]);
+ if(optional.length<=4){for(let mask=0;mask<2**optional.length;mask++)addMask(optional.filter((_,i)=>mask&(1<<i)));}
+ else for(const h of optional){addMask([h]);addMask(optional.filter(x=>x!==h));}
+ const variants=[],seen=new Map();let representationsTruncated=false;
+ const add=(items,units,kind)=>{
+  const id=items.filter(e=>e.method==='ct2').map(e=>e.index).join(',')+'/'+units.map(u=>u.raw).join(',');
+  const candidate={items,units,kind},old=seen.get(id);
+  if(old){if(sum(units,u=>u.keys?.length||0)<sum(old.units,u=>u.keys?.length||0)){old.units=units;old.kind=kind;}return;}
+  seen.set(id,candidate);variants.push(candidate);
+ };
+ for(const mask of masks){
+  if(Date.now()>deadline){representationsTruncated=true;break;}
+  const items=base.items.map(e=>mask.omit.has(e.hex)?{...e,method:'ct2',keys:ct2(e.hex)}:{...e});
+  for(const kind of ['pairs','literal','single'])add(items,rawUnits(items,kind),kind);
+  const anchors=items.filter(e=>e.method==='packed'),paths=Array.from({length:anchors.length+1},()=>[]);paths[0]=[[]];
+  const score=units=>sum([...new Set(units.map(u=>u.raw))],rawBytes)+sum(units,u=>rawBytes(u.raw))*0.08+sum(units,u=>u.keys?.length||0)*0.002;
+  const prune=at=>{
+   const unique=new Map();for(const u of paths[at]){const id=u.map(x=>x.raw).join(',');const old=unique.get(id);if(!old||score(u)<score(old))unique.set(id,u);}
+   const all=[...unique.values()].sort((a,b)=>score(a)-score(b));if(all.length>width)representationsTruncated=true;paths[at]=all.slice(0,width);
+  };
+  for(let i=0;i<anchors.length;i++){
+   if(Date.now()>deadline){representationsTruncated=true;break;}
+   prune(i);const e=anchors[i],left=e.hex.length===4?S.f4SuffixKeys(e.hex.slice(2)):null;
+   const choices=[{take:1,unit:{raw:e.hex,output:[e.hex],indices:[e.index]}}];
+   if(left){
+    choices.push({take:1,unit:{raw:e.hex.slice(0,2).repeat(2),output:[e.hex],indices:[e.index],keys:['RIGHT',...left,'LEFT','9','DEL','RIGHT']}});
+    const next=anchors[i+1],right=next?.hex.length===4?S.f4SuffixKeys(next.hex.slice(2)):null;
+    if(right)choices.push({take:2,unit:{raw:e.hex.slice(0,2)+next.hex.slice(0,2),output:[e.hex,next.hex],indices:[e.index,next.index],keys:['RIGHT',...right,'LEFT',...left,'RIGHT']}});
+   }
+   for(const path of paths[i])for(const c of choices)paths[i+c.take].push([...path,c.unit]);
+  }
+  prune(anchors.length);for(const path of paths.at(-1))add(items,path,'mixed');
+ }
+ // Round-robin methods/CT2 choices so one representation cannot consume
+ // the entire budget. Mandatory-only candidates lead each round.
+ variants.sort((a,b)=>a.items.filter(e=>e.method==='packed'&&e.hex.length===2&&ct2(e.hex)).length-b.items.filter(e=>e.method==='packed'&&e.hex.length===2&&ct2(e.hex)).length||sum(a.units,u=>rawBytes(u.raw))-sum(b.units,u=>rawBytes(u.raw)));
+ if(variants.length>limit)representationsTruncated=true;
+ return {variants:variants.slice(0,limit),representationsTruncated,ct2SubsetsComplete:optional.length<=4};
+}
+function advancedPlans(raw,options,upperBound,deadline){
+ const base=prepare(raw,options),catalog=tokenVariants(base,{deadline}),plans=[];
+ const bound=Math.min(6,upperBound);
+ for(const variant of catalog.variants){
+  if(Date.now()>deadline)break;
+  const target=variant.units.map(u=>u.raw);
+  if(!target.length){
+   const packing=packSeeds([]);plans.push({...base,items:variant.items,packing,duplication:[],units:[],conversions:variant.items.filter(e=>e.method==='ct2'),templateKind:variant.kind,
+    optimization:{status:'minimum-for-fixed-token-target',rounds:0,scope:'fixed raw-token representation',representationsTruncated:catalog.representationsTruncated}});continue;
+  }
+  const search=seedSearch(target,{budget:45000,maxRounds:bound,maxResults:3,deadline});
+  for(const packing of search.packings){
+   let duplication;try{duplication=duplicatePlan(packing.seeds,target,base.config);}catch{continue;}
+   const proven=search.stats.completeThrough>=duplication.length-1;
+   plans.push({...base,items:variant.items,packing,duplication,units:variant.units,conversions:variant.items.filter(e=>e.method==='ct2'),templateKind:variant.kind,
+    optimization:{status:proven?'minimum-for-fixed-token-target':'best-found',rounds:duplication.length,scope:'fixed raw-token representation',search:search.stats,representationsTruncated:catalog.representationsTruncated,ct2SubsetsComplete:catalog.ct2SubsetsComplete}});
+  }
+ }
+ return plans;
 }
 
 function plan(raw,options={}){
@@ -272,7 +455,7 @@ class InputTape{
   this.tokens.splice(this.cursor-n,n);this.cursor-=n;this.keys.push(...repeat(['DEL'],n));
  }
  q(){const i=this.tokens.findLastIndex(t=>t.role==='q');if(i<0)throw Error('Thiếu đuôi 62 19 23.');return i;}
- guard(){if(this.tokens[0]?.role!=='guard'){this.move(0);this.insert([{hex:'4B',bytes:1,role:'guard'}],Z);}}
+ guard(){if(this.tokens[0]?.role!=='guard'){this.move(0);this.insert([{hex:GUARD_HEX,bytes:1,role:'guard'}],GUARD_KEYS);}}
  numbers(n,role){
   if(!Number.isInteger(n)||n<0)throw Error('Số chữ số đệm không hợp lệ.');
   const keys=digits(n);this.insert(keys.map(k=>({hex:'3'+k,bytes:1,role})),keys);
@@ -331,7 +514,7 @@ function generateForMode(raw,options={},chosen=null){
  add('Thực thi và mở chuỗi đã xuất','Phải thấy FB01, bộ ký tự và đuôi Q( + 19; 23 vẫn có ở cuối dù không thấy.',[['CALC',...repeat(['EXEC'],9),'AC','DOWN']]);
  const units=[];
  for(let v=0;v<r.count;v++){
-  if(v)units.push({hex:'01',padding:true},{hex:'01',padding:true});
+  if(v)for(let b=0;b<2;b++)units.push({hex:'01',padding:b>=(r.boundaryKeeps?.[v]||0)});
   const start=[0,6,14][v],cells=r.cells.slice(start,start+D.TEMPLATES[v][2].length);
   for(let i=0;i<cells.length;i++){const c=cells[i],macro=r.macros[start+i];
    if(macro){units.push({macro});i+=macro.bytes-1;}
@@ -345,12 +528,16 @@ function generateForMode(raw,options={},chosen=null){
   else cleanup.push('RIGHT');
  }
  add('Ghép tiền tố F và xóa byte đệm','Chuỗi phím đã tính cả lần chuyển từ cuối về đầu và xóa các byte đệm giữa hai biến.',[['RIGHT',...cleanup]],{checkpoint:hexList(['FB01',...r.seeds,'62','19','23'])});
- add('Lưu bộ ký tự trước lần edit thứ hai','Nhập liên tiếp các nhóm phím dưới đây.',[['RIGHT',...Z],repeat(['EXEC'],23)]);
+ // Cleanup ends AFTER the final 23. Move across every actual token back
+ // to position zero; RIGHT after 19 is not the beginning of the input.
+ const startCursor=r.seeds.length+4; // FB01 + expanded seeds + 62 19 23.
+ add('Về đầu dãy, nhập 1 và lưu trước lần edit thứ hai','Lùi về vị trí đầu tiên, trước FB01, rồi nhập số 1.',[repeat(['LEFT'],startCursor),GUARD_KEYS.slice(),repeat(['EXEC'],23)],
+  {checkpoint:hexList([GUARD_HEX,'FB01',...r.seeds,'62','19','23'])});
  add(`Vào edit lần hai · ${p.config.label}`,'Thực hiện Basic overflow đầy đủ; = và AC phải bấm nhanh.',[D.BASIC_OVERFLOW,modeKeys(p.config.extra)]);
- add('Mở dữ liệu và bỏ FB01','Dữ liệu đã nhập vẫn xuất hiện là đúng. Chuỗi phím dưới xóa dấu đầu FB01 theo PDF. Giữ nguyên các ký tự và đuôi 62 19 23.',[['DOWN','RIGHT','RIGHT','RIGHT','DEL']],{checkpoint:'z + '+hexList([...r.seeds,'62','19','23'])});
+ add('Mở dữ liệu và bỏ FB01','Dữ liệu đã nhập vẫn xuất hiện là đúng. Chuỗi phím dưới xóa dấu đầu FB01 theo PDF. Giữ nguyên các ký tự và đuôi 62 19 23.',[['DOWN','RIGHT','RIGHT','RIGHT','DEL']],{checkpoint:'1 + '+hexList([...r.seeds,'62','19','23'])});
 
  const tape=new InputTape([
-  {id:'guard',hex:'4B',bytes:1,role:'guard'},
+  {id:'guard',hex:GUARD_HEX,bytes:1,role:'guard'},
   ...r.seeds.map((hex,i)=>({id:'seed'+i,hex,bytes:rawBytes(hex),role:'content'})),
   {id:'q',hex:'62',bytes:1,role:'q'},
   {id:'19',hex:'19',bytes:1,role:'19'},
@@ -408,10 +595,10 @@ function generateForMode(raw,options={},chosen=null){
   const extra=INPUT_CAPACITY-tape.bytes();tape.numbers(extra,'input-pad');tape.openCache();
   emit('Mở vùng chuyển đổi · '+label);
   // The confirmed boundary points BEFORE the complete saved sequence,
-  // including its leading z. Remove that guard explicitly in the copy.
-  if(tape.tokens[tape.cursor]?.role!=='guard')throw Error('Bản lưu thiếu z ở đầu.');
+  // including its leading 1. Remove that guard explicitly in the copy.
+  if(tape.tokens[tape.cursor]?.role!=='guard')throw Error('Bản lưu thiếu số 1 ở đầu.');
   tape.move(tape.cursor+1);tape.erase();
-  emit('Bỏ z trong bản lưu · '+label);
+  emit('Bỏ số 1 đầu bản lưu · '+label);
   for(const target of targets){tape.convert(target.id);emit('Chuyển '+target.label);}
   tape.recallCacheStart();
   // AC RIGHT recalls the saved copy: only the first group of digits is
@@ -505,17 +692,28 @@ function generateForMode(raw,options={},chosen=null){
 }
 
 function generate(raw,options={}){
+ const started=Date.now(),deadline=started+Math.max(200,Math.min(2600,options.searchTimeMs||2200));
  const candidates=[],errors=[],modes=options.mode&&options.mode!=='auto'?[options.mode]:['194','198'];
  for(const mode of modes){
-  const opts={...options,mode};
+  const opts={...options,mode,searchDeadline:deadline};
   try{candidates.push(generateForMode(raw,opts));}catch(e){errors.push(e);}
   try{for(const p of optimizedPlans(raw,opts)){
    try{candidates.push(generateForMode(raw,opts,p));}catch(e){errors.push(e);}
   }}catch(e){errors.push(e);}
  }
+ for(const mode of modes.slice().reverse()){
+  if(Date.now()>deadline)break;
+  const opts={...options,mode},bound=candidates.length?Math.min(...candidates.map(c=>c.duplication.length)):6;
+  try{for(const p of advancedPlans(raw,opts,bound,deadline)){
+   try{candidates.push(generateForMode(raw,opts,p));}catch(e){errors.push(e);}
+  }}catch(e){errors.push(e);}
+ }
  if(!candidates.length)throw errors.at(-1);
- candidates.sort((a,b)=>a.conversions.length-b.conversions.length||a.keyCount-b.keyCount||a.steps.length-b.steps.length||a.config.extra-b.config.extra);
- const best=candidates[0];best.automaticMode=!options.mode||options.mode==='auto';return best;
+ candidates.sort((a,b)=>a.duplication.length-b.duplication.length||a.conversions.length-b.conversions.length||a.keyCount-b.keyCount||a.steps.length-b.steps.length||a.config.extra-b.config.extra||Number(!a.optimization)-Number(!b.optimization));
+ const best=candidates[0];best.automaticMode=!options.mode||options.mode==='auto';
+ if(!best.optimization)best.optimization={status:best.duplication.length===0?'minimum-for-fixed-token-target':'best-found',rounds:best.duplication.length,scope:'fixed raw-token representation'};
+ best.optimization.elapsedMs=Date.now()-started;best.optimization.globalOptimalityProven=false;
+ return best;
 }
-root.SpellMulti={INPUT_CAPACITY,InputTape,MODES,prepare,plan,packSeeds,duplicatePlan,optimizedPlans,rawUnits,generate,modeKeys};
+root.SpellMulti={INPUT_CAPACITY,InputTape,MODES,prepare,plan,packSeeds,duplicatePlan,optimizedPlans,rawUnits,seedSearch,tokenVariants,advancedPlans,generate,modeKeys};
 })(globalThis);

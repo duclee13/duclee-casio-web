@@ -1,104 +1,93 @@
-SPELL STUDIO — 17/10/2026 · TỐI ƯU TOKEN VÀ TỰ XẾP DÒNG
+SPELL STUDIO — 20261017-base-v4
 
-CẬP NHẬT
-- Tạm tắt yêu cầu mật khẩu: dùng trực tiếp tính năng 2–4 dòng.
-- Nút nhỏ “Copy toàn bộ nút”: sao chép riêng toàn bộ chuỗi phím theo thứ tự,
-  giữ tùy chọn Gộp nút; không kèm tiêu đề bước, gán biến hay chú thích.
-- Checkbox “Tự xếp dòng” cạnh ô nhập: tự chọn ít dòng nhất trong 1–4 dòng,
-  ưu tiên ngắt theo từ và cân bằng độ dài; mỗi dòng tối đa 17⅓ ô.
-  Văn bản gốc vẫn giữ trong ô nhập; bố cục tự động thể hiện ở màn hình xem
-  trước và được dùng khi tạo hướng dẫn. Tắt checkbox để chọn dòng thủ công.
-- Nhân đôi chọn token cần giữ trên toàn bộ hai bản sao, không chỉ nối tiền tố.
-  Với một dãy mẫu cố định, số lần nhân đôi đạt giới hạn tối thiểu của mô hình
-  “nhân đôi rồi xóa”. Dãy mẫu được tìm bằng nhiều thứ tự và cách ghép đoạn;
-  chưa khẳng định tối ưu toàn cục trên mọi cách thao tác máy Casio.
-- Có thể giữ F4F4 trong dãy mẫu, nhân trước rồi điền hậu tố CT1 sau cùng.
-  Thử cả token nguyên, cặp tiền tố, token mẫu lặp; chọn theo CT2 rồi tổng nút.
-- Mẫu 4 dòng Casio / Việt Nam / Lê Minh Đức / Xin chào, không căn giữa:
-  từ 7 lần nhân đôi và 5209 nút xuống 2 lần và 3070 nút.
-- Mẫu ảnh Dường như nắng đã / làm má em thêm hồng, / Làn mây bay đã /
-  yêu tóc em: tạo được hướng dẫn, 3 lần nhân đôi, 3505 nút (không căn giữa).
-  Bật tự xếp dòng: 2 lần nhân đôi, 3054 nút (không căn giữa).
-- Thông báo riêng khi mở bằng file hoặc khi API chưa được triển khai.
-- Bỏ chữ chú thích nhỏ trong ô bước; vẫn đủ phím và tối đa 15 bước.
-- Gán hex dùng đúng ký tự ˣ₁₀ bằng font ClassWiz X Display.
-- Mở trực tiếp chế độ 2–4 dòng, xử lý thuật toán trên server.
-- Hướng dẫn tối đa 15 bước, gộp các bước liền nhau và dùng tiêu đề ngắn.
-  Giữ nguyên thứ tự phím, tổng nút và chuỗi đối chiếu.
-  Giới hạn áp dụng đồng thời trên web, sao chép, TXT và PDF.
-- Giới hạn vùng nhập: 200 byte, tính cả z và đuôi 62 19 23.
-- Sau khi lưu đầy Cache, nhập bổ sung đúng 75 chữ số ở 194an hoặc
-  71 chữ số ở 198an. Nhân đôi dùng 200 trừ số byte của dãy hiện có.
-- Sinh đủ phím di chuyển, thêm z, lưu dãy, chuyển CT2, xóa số đệm,
-  chọn ký tự trong hai bản sao và ghép hackstring 2/3/4 dòng.
-- Sau AC RIGHT chỉ xóa nhóm số đệm đã lưu trong Cache; nhóm nhập
-  bổ sung nằm trong vùng nhập đã bị bỏ, không xóa lần thứ hai.
-- Con trỏ và DEL đếm theo token; giới hạn nhập đếm theo byte.
-  Ký tự Fxxx hai byte vẫn chỉ cần một lần di chuyển/xóa.
-- Thống kê: n bước · tổng cộng x nút. Không còn thao tác tìm vị trí
-  hay nhập đến khi đầy nằm ngoài chuỗi phím.
-- Gộp pattern bằng ngoặc; tổng nút vẫn tính đủ từng lần bấm.
-- Tự chọn 194an/198an: ưu tiên ít CT2 nội dung, sau đó ít phím,
-  ít bước, cuối cùng mode nhỏ hơn.
-- Đuôi 62 19 23 có thể tách qua A/B hoặc B/C, kết thúc trước ô số mũ.
-  23 là byte cuối; ký tự Fxxx không bị tách qua hai biến.
-- Giữ chế độ 1–4 dòng, bảng ký tự, chặn ký tự không hợp lệ, sao chép,
-  TXT/PDF, font phím và chế độ sáng/tối.
+CẬP NHẬT BẢN NÀY
+- Spell 2/3/4 dòng dùng số 1 (hex 31, một byte) thay cho z ở đầu dãy.
+- Sau ghép tiền tố và xóa đệm, lùi LEFT qua toàn bộ token để về vị trí
+  đầu tiên, trước FB01; nhập 1 rồi nhấn = 23 lần. Không nhập sau 19.
+- Mọi lần thêm lại hoặc xóa ký tự đầu trong quy trình Cache cũng dùng 1.
+- So sánh cả mở rộng FxFy trước và sau nhân đôi; hỗ trợ một tiền tố mẫu
+  thành hai ký tự Fx?? / Fy?? hoặc thành một ký tự F???.
+- Dãy base được chọn theo số lượt nhân đôi, số CT2 rồi tổng phím.
+  Ký tự nhập trực tiếp không chiếm chỗ base. Thử đưa toàn bộ hoặc từng
+  nhóm ký tự có CT2 sang bước sau để dành chỗ cho token bắt buộc.
+- Tìm cả base có ký tự lặp, nhiều thứ tự, cách ghép và biểu diễn trộn;
+  tính các ô A/B/C thực tế và 01 tự sinh giữa các biến.
+- Sửa cận byte để không loại nhầm base có thể nén bằng cặp tiền tố F.
+- Tính chi phí tạo chữ hex đậm cho cả cặp tiền tố khi so sánh cách gán.
+- GIF loading hiện trong lúc tìm phương án; nút đổi thành Đang tìm dãy base.
+  Tự tắt khi xong, có lỗi hoặc sửa nội dung. Kết quả cũ không ghi đè lần mới.
+  Khi tắt hiệu ứng hoặc bật giảm chuyển động, dùng chỉ báo đứng yên.
+- Tất cả file trong ZIP nằm cùng cấp; không có thư mục bọc ngoài.
 
-QUY TẮC ĐÃ ÁP DỤNG
-194an (100+60an): 94 byte nội dung, 125 byte Cache Area.
-198an (100+64an): 98 byte nội dung, 129 byte Cache Area.
-01 rộng 1/3 dấu cách; mỗi dòng tối đa 17 + 1/3 ô.
-z = ALPHA S⇔D, một byte. Đuôi 62 19 23 là ba byte.
-CALC lưu dãy. Khi màn hình clear, RIGHT gọi lại ở đầu, LEFT ở cuối.
-Sau khi đủ 200 byte, RIGHT RIGHT DEL mở ranh giới:
-  dãy hiện tại + số đệm + 62 19 | dãy đã lưu
-Bản lưu gồm z đầu dãy; chương trình xóa z đó bằng RIGHT DEL trong
-bản lưu khi chuyển CT2. Khi nhân đôi chỉ giữ một z ở đầu kết quả.
-Sau lấy F, CALC AC RIGHT lưu và đưa con trỏ về đầu trước khi ghép đuôi.
+VÍ DỤ 34 CHỮ À (2 DÒNG, MỖI DÒNG 17 CHỮ, KHÔNG CĂN GIỮA)
+A = 1.0000 FB01 F470 F4 ˣ₁₀ 70:
+B = 1.F470 F470 F470 F4 ˣ₁₀ 70:
+C = 1.F470 F4F4 62 19 23
+Bảy F470 và một F4F4 tách thành hai F470: base có 9 chữ à.
+Nhân lần 1: 9 -> 18. Nhân lần 2: 18 -> 36, giữ 34 và xóa 2 chữ dư.
+Tổng cộng 2 thao tác nhân đôi; 2120 phím trong bản này, CT2 nội dung 0.
+Bản trước chọn base 5 và cần 3 thao tác nhân đôi, 2462 phím.
+Mẫu thơ 4 dòng Dường như nắng đã / làm má em thêm hồng, / Làn mây bay đã /
+yêu tóc em: 2 lượt nhân đôi, 3107 phím, 8 CT2 (không căn giữa, co dấu cách).
+Số phím đã tính lại việc lùi về đúng đầu và thay z bằng số 1.
 
-CÁCH DÙNG / CẬP NHẬT WEB — BẢN CÙNG MỘT CẤP 20261017-flat-v1
-Giải nén ZIP, chọn toàn bộ file rồi upload vào gốc repo GitHub và commit.
-ZIP không có thư mục con. Không upload nguyên ZIP.
-Vercel: Framework Other; Root Directory là gốc repo; Build Command node build.cjs.
-Output Directory: tắt Override, để mặc định. Không chọn public hoặc dấu chấm.
-vercel.json dùng Build Output API; build tự tạo cấu trúc .vercel/output gồm
-static và functions/api/spell.func. Không cần tự tạo hay upload các thư mục đó.
-Đợi deployment mới Ready và được gán Production.
-Kiểm tra /version.json và /api/spell: cả hai phải hiện 20261017-flat-v1;
-/api/spell phải trả unlocked:true khi không bật biến môi trường khóa demo.
-Nếu vẫn thấy phiên bản cũ: kiểm tra commit, nhánh Production và Build Logs.
-Các file server-*.js/cjs/json không được đưa vào phần web tĩnh.
-Repo GitHub công khai vẫn cho người khác đọc mã nguồn; dùng repo Private
-nếu cần giữ kín thuật toán. Bản này không thay đổi quyền repo.
+GIỚI HẠN TỐI ƯU
+Với base và biểu diễn cố định, bộ chọn giữ token tìm số lượt tối thiểu
+trong mô hình nhân đôi rồi xóa. Bộ tìm xét các base và cách biểu diễn khác
+nhau với ngân sách thời gian/trạng thái; không tuyên bố tối ưu toàn cục
+trên mọi kỹ thuật Casio. optimization.globalOptimalityProven luôn false.
+Chỉ báo chứng minh riêng cho raw-token cố định khi đã xét đầy đủ mức nhỏ hơn.
+Không hứa dùng hết 100% token nhân ra trong mọi trường hợp: ký tự hiếm
+vẫn có thể tạo bản dư. Thứ tự token đầu ra luôn được giữ đúng.
+
+CẬP NHẬT GITHUB / VERCEL
+1. Giải nén ZIP, chọn toàn bộ file, upload vào gốc repo GitHub và commit.
+   Không upload nguyên ZIP; không tạo thêm folder bọc ngoài.
+2. Vercel: Framework Preset Other; Root Directory là gốc repo.
+   Build Command: node build.cjs. Output Directory: tắt Override.
+3. Build tự tạo .vercel/output/static và functions/api/spell.func.
+   Không cần tự tạo/upload các thư mục sinh ra này; giữ đầy đủ server-*.
+4. Đợi deployment mới Ready và được gán Production.
+   /version.json và /api/spell phải cùng hiện 20261017-base-v4.
+   /api/spell trả unlocked:true khi không bật khóa demo.
+Nếu vẫn ra bản cũ, kiểm tra commit, nhánh Production và Build Logs.
+Bản ZIP này chưa tự triển khai lên GitHub/Vercel của bạn.
+
+CHẠY VÀ KIỂM TRA TẠI MÁY
+Node.js 22.x. Chạy npm start, mở http://localhost:3000.
+Không cần npm install vì ứng dụng không có dependency ngoài.
+Chạy npm test để kiểm tra thuật toán, API, bản đóng gói và trạng thái loading.
+Mở thẳng index.html chỉ chạy một dòng; 2–4 dòng cần API.
+
+QUY TẮC ĐƯỢC GIỮ
+- Giới hạn nhập 200 byte; số 1 đầu dãy một byte; đuôi 62 19 23 ba byte.
+- 194an (100+60an): 94 byte nội dung, 125 byte Cache Area.
+- 198an (100+64an): 98 byte nội dung, 129 byte Cache Area.
+- 01 rộng 1/3 ô; mỗi dòng tối đa 17 + 1/3 ô.
+- Con trỏ và DEL đếm token; giới hạn nhập đếm byte. 23 vô hình vẫn tính.
+- CALC lưu dãy; khi clear, RIGHT gọi lại ở đầu, LEFT ở cuối.
+- Đủ 200 byte rồi RIGHT RIGHT DEL mở ranh giới:
+  dãy hiện tại + số đệm + 62 19 | dãy đã lưu.
+- Bản lưu có số 1 ở đầu; xóa nó bằng RIGHT DEL khi chuyển CT2 trong bản lưu.
+  Khi nhân đôi chỉ giữ một số 1 ở đầu kết quả.
+- Sau AC RIGHT chỉ xóa số đệm đã lưu, không xóa lần hai phần đã bị bỏ.
+- Gán Fxxx không tách qua hai biến; đuôi 62 19 23 được tách qua ranh giới.
+- Hướng dẫn tối đa 15 bước; đủ mọi phím, sao chép/TXT/PDF dùng cùng kết quả.
+- Giữ tự xếp dòng, bảng glyph, font Casio, căn giữa, co dấu cách, sáng/tối.
 
 CHẾ ĐỘ DEMO
-- Hiện tại không cần mật khẩu cho 2–4 dòng.
-- Muốn bật lại khóa: đặt SPELL_DEMO_REQUIRE_PASSWORD=true rồi redeploy.
-  Khi bật khóa, mật khẩu mặc định là apple123; phiên mở khóa kéo dài 8 giờ.
-- Khi bật khóa, mật khẩu được kiểm tra trên server; cookie HttpOnly có chữ ký.
-- Thuật toán nhiều dòng chỉ chạy trong API, không nằm trong JS công khai.
-- Giao diện, xem trước chữ và thuật toán một dòng vẫn là mã công khai.
-- Bản build không công khai README, server-*, cấu hình khóa, PDF nhiều dòng.
-- Có thể đặt SPELL_DEMO_PASSWORD và SPELL_SESSION_SECRET trong Environment
-  Variables trên Vercel rồi redeploy để thay mật khẩu/khóa phiên.
-  SPELL_SESSION_SECRET nên là chuỗi ngẫu nhiên dài ít nhất 32 ký tự.
-- Bản mặc định có khóa riêng trong server-config.json. Không chia sẻ file này
-  hoặc ZIP nguồn cho người không được phép truy cập thuật toán.
-- Mã đã công khai ở bản triển khai hoặc lịch sử Git cũ không tự biến mất.
-
-CHẠY TRÊN MÁY TÍNH
-Cài Node.js, mở terminal ở thư mục đã giải nén, chạy npm start.
-Mở http://localhost:3000. Không cần npm install vì không có dependency.
-Mở thẳng index.html chỉ dùng được tính năng một dòng; demo cần API.
-Chạy npm test để kiểm tra API, xác thực, đầu ra và file công khai.
+Mặc định không yêu cầu mật khẩu cho 2–4 dòng.
+Đặt SPELL_DEMO_REQUIRE_PASSWORD=true để bật khóa demo rồi redeploy.
+Có thể đặt SPELL_DEMO_PASSWORD và SPELL_SESSION_SECRET trên Vercel.
+Phiên mở khóa có cookie HttpOnly, hiệu lực 8 giờ.
+Thuật toán nhiều dòng chạy ở API; build không đưa server-* vào web tĩnh.
+Repo GitHub công khai vẫn cho người khác đọc toàn bộ mã nguồn đã commit.
 
 PHẠM VI KIỂM TRA
-Kiểm tra toàn bộ chuỗi ngắn trên các bộ mẫu nhỏ để đối chiếu số lần nhân đôi;
-phát lại công thức F4F4 ở mức byte; kiểm tra thứ tự toàn bộ token cuối, số nút,
-giới hạn bộ nhớ; tự xếp dòng, từ dài, hex nhiều byte và kết hợp khóa demo.
-Đã kiểm tra mô hình con trỏ và phát lại độc lập phím di chuyển/xóa
-trong bước nhân đôi; giới hạn 200 byte; phép tính Cache; số đệm cần xóa;
-nội dung và hackstring cuối; tổng phím; gộp pattern; tự chọn mode;
-giao diện bằng DOM mô phỏng; chuỗi phím một dòng giữ nguyên.
-Chưa thử quy trình trên máy Casio thật.
+Kiểm tra số lượt trên các dãy nhỏ bằng đối chiếu độc lập; phát lại byte
+khi tách FxFy, xóa đệm và lùi về vị trí đầu tiên để nhập 1; đối chiếu nội dung
+2/3/4 dòng, chọn token từ cả hai bản sao, dung lượng Cache, tổng phím,
+giới hạn 15 bước, API đóng gói độc lập và trạng thái loading/lỗi/kết quả cũ.
+Ví dụ 34 à được kiểm tra cận ô ABC: tối đa 12 à trước nhân; một lượt
+nhân không thể tạo đủ 34 trong mô hình gán literal/cặp tiền tố đang dùng.
+Chưa thử chuỗi phím trên Casio thật. Kiểm tra giao diện dùng DOM mô phỏng.
