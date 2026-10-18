@@ -4,9 +4,13 @@ for(const f of ['data','pdf-reference','engine','server-multiline'])require('./'
 const M=SpellMulti,S=Spell,D=SPELL_DATA;
 const poem='Dường như nắng đã\nlàm má em thêm hồng,\nLàn mây bay đã\nyêu tóc em';
 const g=M.generate(poem,{lines:4,center:false}),r=g.packing;
-assert.equal(g.duplication.length,2);assert.ok(g.keyCount<3505);assert.equal(g.conversions.length,8);
+assert.equal(g.duplication.length,2);assert.ok(g.keyCount<3107);
+assert.equal(g.cachePasses.length,1);assert.equal(g.cachePasses[0].contentConverted,g.conversions.length);assert.equal(g.cachePasses[0].launcherConverted,7);
 assert.ok(g.conversions.some(x=>x.hex==='4C'),'L is deferred to CT2');
-assert.ok(Object.values(r.boundaryKeeps).some(n=>n>0),'Use boundary spaces');
+// Boundary 01 remains available even when the winning poem base does not
+// need it. Eighteen literal 01 cannot fit beside FB01/621923 without it.
+const spaces=M.seedSearch(Array(18).fill('01'),{maxRounds:0,maxResults:1}).packings[0];
+assert.ok(spaces);assert.ok(Object.values(spaces.boundaryKeeps).some(n=>n>0),'Use boundary spaces when needed');
 // Validate emitted assignment slots without calling the packer.
 for(const [i,c] of r.cells.entries()){
  assert.match(c.value,/^[0-9A-F]{2}$/);
@@ -47,6 +51,6 @@ assert.equal(lower,18);assert.equal(M.seedSearch(state).stats.completeThrough,1)
 const limited=M.seedSearch(state,{budget:1});assert.equal(limited.stats.truncated,true);
 assert.ok(limited.stats.completeThrough<2);
 // Check full final content, including all compressed and padded spaces.
-assert.deepEqual(g.execution.tokens.filter(t=>t.role==='content').map(t=>t.hex),g.displayLines.slice().reverse().flat().map(t=>t.hex));
+assert.deepEqual(g.execution.tokens.filter(t=>t.role==='content').map(t=>t.hex),g.displayLines.flat().map(t=>t.hex));
 assert.equal(g.keyCount,g.steps.flatMap(s=>s.segments).flat().length);assert.ok(S.limitGuideSteps(g).steps.length<=15);
 console.log('PASS: poem 2 doublings, compulsory symbols, real ABC slot rules, preserved boundary 01, cleanup replay, both-copy order, one-round lower bound, bounded-search honesty.');

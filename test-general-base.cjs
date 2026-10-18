@@ -2,16 +2,14 @@
 const assert=require('node:assert/strict');
 for(const f of ['data','pdf-reference','engine','server-multiline'])require('./'+f+'.js');
 const M=SpellMulti,D=SPELL_DATA;
-// All CT1 symbols must stay outside every proposed raw base. CT2-only
-// symbols can be entirely deferred, entirely retained or selectively kept.
+// CT1 and CT2 symbols stay outside every proposed mandatory raw base.
 const base=M.prepare('ALMabàá\nNghàê',{lines:2,center:false});
 const {variants}=M.tokenVariants(base,{limit:100});
-const optional=base.items.filter(e=>e.method==='packed'&&e.hex.length===2&&PDF_REFERENCE.rows[e.hex]?.formula2?.length);
+const optional=base.items.filter(e=>e.method==='ct2'&&e.hex.length===2&&PDF_REFERENCE.rows[e.hex]?.formula2?.length);
 assert.ok(optional.length>=2);
-assert.ok(variants.some(v=>optional.every(e=>v.items[e.index].method==='ct2')));
-assert.ok(variants.some(v=>optional.some(e=>v.items[e.index].method==='packed')&&optional.some(e=>v.items[e.index].method==='ct2')));
+assert.ok(variants.every(v=>optional.every(e=>v.items[e.index].method==='ct2')));
 for(const v of variants){
- for(const u of v.units)for(const index of u.indices){assert.equal(v.items[index].method,'packed');assert.equal(Spell.directKeys(v.items[index]),null);}
+ for(const u of v.units)for(const index of u.indices){assert.equal(v.items[index].method,'packed');assert.equal(Spell.directKeys(v.items[index]),null);assert.ok(!PDF_REFERENCE.rows[v.items[index].hex]?.formula2?.length);}
  assert.deepEqual(v.units.flatMap(u=>u.indices),v.items.filter(e=>e.method==='packed').map(e=>e.index));
  assert.deepEqual(v.units.flatMap(u=>u.output),v.items.filter(e=>e.method==='packed').map(e=>e.hex));
 }
@@ -41,4 +39,4 @@ const guide=M.generate('Dường như nắng đã\nlàm má em thêm hồng,\nL�
 assert.equal(guide.duplication.length,2);assert.ok(guide.keyCount<=3107);
 assert.equal(guide.optimization.globalOptimalityProven,false);
 assert.equal(guide.optimization.scope,'fixed raw-token representation');
-console.log('PASS: CT1 exclusion, selective CT2, mixed representations, exact 3-round fixture, bounded partition generation and scoped optimality metadata.');
+console.log('PASS: CT1/CT2 exclusion, mixed representations, exact 3-round fixture, bounded partition generation and scoped optimality metadata.');

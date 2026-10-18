@@ -6,7 +6,7 @@ module.exports=async function handler(req,res){
  res.setHeader('Content-Type','application/json; charset=utf-8');
  res.setHeader('X-Content-Type-Options','nosniff');
  const send=(status,body)=>{res.statusCode=status;res.end(JSON.stringify(body));};
- if(req.method==='GET')return send(200,{unlocked:!requirePassword||auth.authorized(req),version:'20261018-direct-v5'});
+ if(req.method==='GET')return send(200,{unlocked:!requirePassword||auth.authorized(req),version:'20261018-base-v6'});
  if(req.method!=='POST'){res.setHeader('Allow','GET, POST');return send(405,{error:'Phương thức không được hỗ trợ.'});}
  if(req.headers.origin){
   try{if(new URL(req.headers.origin).host!==req.headers.host)return send(403,{error:'Yêu cầu không hợp lệ.'});}

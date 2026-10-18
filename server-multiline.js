@@ -33,11 +33,16 @@ function prepare(raw,{lines=2,mode='198',center=true,compressSpaces=true}={}){
  const input=source.map((t,i)=>{try{return S.parseText(t);}catch(e){throw Error(`Dòng ${i+1}: ${e.message}`);}});
  const spacing=input.map(a=>S.fitInput(a,{compressSpaces}));
  const displayLines=input.map((a,i)=>{try{return S.prepareLine(a,{center,compressSpaces});}catch(e){throw Error(`Dòng ${i+1}: ${e.message}`);}});
- const ordered=displayLines.flatMap((_,i)=>displayLines[lines-1-i].map((e,j)=>({...e,displayLine:lines-i,column:j+1})));
- const items=ordered.map((e,index)=>({...e,index,method:S.directKeys(e)?'direct':'packed',keys:S.directKeys(e),bytes:e.hex==='20'?2:rawBytes(e.hex)}));
+ // Export is always 4D, 4E, 4F, regardless of assignment order. Keep
+ // the literal reading order, including repeated mandatory characters.
+ const ordered=displayLines.flatMap((line,i)=>line.map((e,j)=>({...e,displayLine:i+1,column:j+1})));
+ const items=ordered.map((e,index)=>{
+  const direct=S.directKeys(e),conversion=!direct&&ct2(e.hex);
+  return {...e,index,method:direct?'direct':conversion?'ct2':'packed',keys:direct||conversion,bytes:e.hex==='20'?2:rawBytes(e.hex)};
+ });
  const initialBytes=sum(items,e=>e.bytes),need=Math.max(0,initialBytes-config.capacity);
- // Each converted ordinary space saves exactly one byte. CT2-only base
- // characters are initially assigned as raw bytes, avoiding conversion.
+ // Each converted ordinary space saves one byte. CT2-only characters
+ // stay out of the base and share the launcher's conversion pass.
  const spaces=items.filter(e=>e.hex==='20');
  if(need>spaces.length)throw Error(`Nội dung cần tối thiểu ${initialBytes-spaces.length} byte, vượt ${config.capacity} byte của ${config.label}, kể cả sau khi chuyển hết dấu cách. Hãy rút ngắn nội dung${mode==='194'?' hoặc chọn 198an':''}.`);
  spaces.slice(0,need).forEach(e=>{e.method='ct2';e.keys=ct2('20');e.bytes=1;});
@@ -283,7 +288,7 @@ function optimizedPlans(raw,options={}){
   };
   const offer=(bank,exact=null)=>{
    const candidates=exact?[offerOne(bank,exact)]:[offerOne(bank),offerOne(bank,null,true)];
-   return candidates.filter(Boolean).sort((a,b)=>a.duplication.length-b.duplication.length||a.conversions.length-b.conversions.length||a.estimate-b.estimate)[0]||null;
+   return candidates.filter(Boolean).sort((a,b)=>a.duplication.length-b.duplication.length||a.estimate-b.estimate)[0]||null;
   };
   const unique=[...new Set(target)],last=[...new Set(target.slice().reverse())].reverse();
   offer(target);offer(unique);offer(last);offer(unique.slice().reverse());
@@ -317,7 +322,7 @@ function optimizedPlans(raw,options={}){
     }
    }
   }
-  const order=(a,b)=>a.duplication.length-b.duplication.length||a.conversions.length-b.conversions.length||a.estimate-b.estimate;
+  const order=(a,b)=>a.duplication.length-b.duplication.length||a.estimate-b.estimate;
   // Spend remaining assignment bytes on an extra occurrence if it reduces
   // full physical-key cost. Preserve multiple promising starting orders.
   let frontier=local.slice().sort(order).slice(0,3);
@@ -333,17 +338,17 @@ function optimizedPlans(raw,options={}){
    }
    frontier=[...new Set(next)].sort(order).slice(0,2);
   }
-  const finalists=[...local.slice().sort(order).slice(0,8),...local.slice().sort((a,b)=>a.conversions.length-b.conversions.length||a.estimate-b.estimate).slice(0,3)];
+  const finalists=[...local.slice().sort(order).slice(0,8),...local.slice().sort((a,b)=>a.estimate-b.estimate).slice(0,3)];
   for(const p of finalists){
    const id=hexList(p.packing.seeds)+'/'+p.units.map(u=>u.output.join(',')).join(';')+'/'+p.packing.cells.map(c=>c.value).join('');
    if(!seen.has(id)){seen.add(id);result.push(p);}
   }
  }
- return result.sort((a,b)=>a.duplication.length-b.duplication.length||a.conversions.length-b.conversions.length||a.estimate-b.estimate).slice(0,18);
+ return result.sort((a,b)=>a.duplication.length-b.duplication.length||a.estimate-b.estimate).slice(0,18);
 }
 
-// CT1 characters never enter the seed search. CT2-only base bytes are
-// optional: solve the mandatory core first, then try selective restorations.
+// Prepared inputs exclude CT1 and CT2 from the mandatory core. The catalog
+// explores literal, single-prefix, paired-prefix and mixed representations.
 function tokenVariants(base,{width=10,limit=36,deadline=Infinity}={}){
  const optional=[...new Set(base.items.filter(e=>e.method==='packed'&&e.hex.length===2&&ct2(e.hex)).map(e=>e.hex))];
  const masks=[];
@@ -496,22 +501,22 @@ function generateForMode(raw,options={},chosen=null){
  const add=(title,note='',segments=[],extra={})=>{steps.push({title:`B${steps.length+1}: ${title}`,note,segments:segments.filter(k=>k.length),...extra});};
  const textOf=e=>`${describe(e)} — dòng ${e.displayLine}, vị trí ${e.column}`;
  add('Reset máy và chọn LineI/O','Reset sẽ xóa dữ liệu đang có trên máy tính.',[D.RESET,D.LINE_IO]);
- add('Vào Basic overflow','Bấm = rồi AC nhanh như hướng dẫn gốc.',[D.BASIC_OVERFLOW]);
+ // Enter the edit mode first, then assign the export variables directly.
+ // 4D/4E/4F export in fixed address order, never in assignment order.
+ add(`Vào ${p.config.label}`,'Giữ đúng hai nhóm 100 và '+p.config.extra+' chữ số, có dấu + ở giữa.',[D.BASIC_OVERFLOW,modeKeys(p.config.extra)]);
+ add('Vào Basic overflow để gán @','Bấm ON rồi thực hiện overflow; = và AC bấm nhanh.',[['ON'],D.BASIC_OVERFLOW]);
+ const exportOrder=['4D','4E','4F'].slice(0,r.count);
+ const extraction=[...'ABC'.slice(0,r.count)];
  const bold=[...r.cells.map(c=>c.value).join('')].filter(c=>/[A-F]/.test(c));
- const assign=[...D.TTK[':']];
- for(let v=0;v<r.count;v++)assign.push(...(v?D.TTK[':']:[]),...D.TTK['ABC'[v]],...D.TTK['='],...valueKeys(r,v));
- const paddingPositions=r.cells.flatMap((c,i)=>c.padding?[`${'ABC'[D.SLOTS[i][0]]}, byte ${D.SLOTS[i][1]+1}`]:[]);
- add('Gán bộ ký tự vào A/B/C','FB01 ở đầu; 62 19 23 ở cuối. '+(paddingPositions.length?'Byte 20 được chèn làm đệm tại: '+paddingPositions.join('; ')+'. Chỉ các vị trí đệm này sẽ bị xóa.':'Không có byte 20 đệm trong các biến.'),[
-  [...D.BOLD_START,...bold.flatMap(c=>D.BOLD_HEX_KEYS[c])],repeat(D.BOLD_RECOVER,bold.length),repeat(['DEL'],10),assign,['CALC',...repeat(['EXEC'],r.count+1)]
- ]);
- add(`Vào ${p.config.label}`,'Giữ đúng hai nhóm 100 và '+p.config.extra+' chữ số, có dấu + ở giữa.',[D.HALF_BASIC_OVERFLOW,modeKeys(p.config.extra)]);
- add('Vào lại Basic overflow','Bấm ON trước, rồi thực hiện overflow.',[['ON'],D.BASIC_OVERFLOW]);
- const extraction=[...'ABC'.slice(0,r.count)].reverse();
- const extractAssignments=extraction.flatMap(c=>[...D.TTK[':'],'RIGHT',...D.TTK['='],...D.TTK[c]]);
- add('Lấy các @ để xuất biến','Nhập liên tiếp các nhóm phím dưới đây.',
-  [[...D.BOLD_START,...extraction.flatMap(c=>D.EXTRACT_KEYS[c])],repeat(D.BOLD_RECOVER,r.count),repeat(['DEL'],10),extractAssignments],
-  {checkpoint:['x:',...extraction.map((c,i)=>`@ {${{A:'4D',B:'4E',C:'4F'}[c]}} = ${c}${i<extraction.length-1?':':''}`)].join('\n')});
- add('Thực thi và mở chuỗi đã xuất','Phải thấy FB01, bộ ký tự và đuôi Q( + 19; 23 vẫn có ở cuối dù không thấy.',[['CALC',...repeat(['EXEC'],9),'AC','DOWN']]);
+ const assign=[...'1234567890','X'];
+ for(let v=0;v<r.count;v++)assign.push(...D.TTK[':'],'RIGHT',...D.TTK['='],...valueKeys(r,v));
+ const assignments=S.assignmentLines(r).map((row,i)=>i===0?'1234567890𝓍:':row.replace(/^[ABC]/,'@<'+exportOrder[i-1]+'>'));
+ add('Gán hex trực tiếp vào @<4D>, @<4E>, @<4F>','Xuất theo địa chỉ 4D → 4E → 4F; FB01 ở đầu, 62 19 23 ở cuối.',[
+  [...D.BOLD_START,...extraction.flatMap(c=>D.EXTRACT_KEYS[c]),...bold.flatMap(c=>D.BOLD_HEX_KEYS[c])],
+  repeat(D.BOLD_RECOVER,r.count+bold.length),repeat(['DEL'],11),assign
+ ],{checkpoint:assignments.join('\n')});
+ const exportExecutions=2*(r.count+1)+1;
+ add('Thực thi và mở chuỗi đã xuất','Đi qua các biểu thức hai lượt rồi mở dãy xuất.',[['CALC',...repeat(['EXEC'],exportExecutions),'AC','DOWN']]);
  const units=[];
  for(let v=0;v<r.count;v++){
   if(v)for(let b=0;b<2;b++)units.push({hex:'01',padding:b>=(r.boundaryKeeps?.[v]||0)});
@@ -521,11 +526,16 @@ function generateForMode(raw,options={},chosen=null){
    else if(c.value.startsWith('F')&&!c.padding)units.push({hex:c.value+cells[++i].value,padding:false});
    else units.push({hex:c.value,padding:c.padding});}
  }
- const cleanup=[];
+ const cleanup=[];let previousHex=null;
  for(const u of units){
-  if(u.macro){const m=u.macro;cleanup.push('RIGHT',...(m.rightKeys||['RIGHT']),'LEFT',...m.leftKeys,'RIGHT');}
-  else if(u.padding)cleanup.push('RIGHT','DEL');
-  else cleanup.push('RIGHT');
+  if(u.macro){const m=u.macro;cleanup.push('RIGHT',...(m.rightKeys||['RIGHT']),'LEFT',...m.leftKeys,'RIGHT');previousHex=m.right;}
+  else if(u.padding){
+   // Backspace immediately after an unresolved FxFy may consume its
+   // trailing prefix with the padding. Reject this candidate; a literal
+   // or pre-expanded packing avoids that ambiguous byte boundary.
+   if(previousHex?.slice(-2).startsWith('F'))throw Error('Không xóa đệm ngay sau cặp tiền tố F chưa mở rộng.');
+   cleanup.push('RIGHT','DEL');
+  }else{cleanup.push('RIGHT');previousHex=u.hex;}
  }
  add('Ghép tiền tố F và xóa byte đệm','Chuỗi phím đã tính cả lần chuyển từ cuối về đầu và xóa các byte đệm giữa hai biến.',[['RIGHT',...cleanup]],{checkpoint:hexList(['FB01',...r.seeds,'62','19','23'])});
  // Cleanup ends AFTER the final 23. Move across every actual token back
@@ -534,7 +544,7 @@ function generateForMode(raw,options={},chosen=null){
  add('Về đầu dãy, nhập 1 và lưu trước lần edit thứ hai','Lùi về vị trí đầu tiên, trước FB01, rồi nhập số 1.',[repeat(['LEFT'],startCursor),GUARD_KEYS.slice(),repeat(['EXEC'],23)],
   {checkpoint:hexList([GUARD_HEX,'FB01',...r.seeds,'62','19','23'])});
  add(`Vào edit lần hai · ${p.config.label}`,'Thực hiện Basic overflow đầy đủ; = và AC phải bấm nhanh.',[D.BASIC_OVERFLOW,modeKeys(p.config.extra)]);
- add('Mở dữ liệu và bỏ FB01','Dữ liệu đã nhập vẫn xuất hiện là đúng. Chuỗi phím dưới xóa dấu đầu FB01 theo PDF. Giữ nguyên các ký tự và đuôi 62 19 23.',[['DOWN','RIGHT','RIGHT','RIGHT','DEL']],{checkpoint:'1 + '+hexList([...r.seeds,'62','19','23'])});
+ add('Mở dữ liệu và bỏ FB01','Sau edit lần hai, nhấn UP để gọi lại dãy như hướng dẫn ảnh. Xóa FB01, giữ số 1 đầu dãy cùng đuôi 62 19 23.',[['UP','RIGHT','RIGHT','RIGHT','DEL']],{checkpoint:'1 + '+hexList([...r.seeds,'62','19','23'])});
 
  const tape=new InputTape([
   {id:'guard',hex:GUARD_HEX,bytes:1,role:'guard'},
@@ -606,25 +616,36 @@ function generateForMode(raw,options={},chosen=null){
   tape.move(tape.q());
   if(tape.tokens.slice(tape.cursor-fill,tape.cursor).some(t=>t.role!=='cache-pad'))throw Error('Vị trí số đệm Cache không khớp.');
   tape.erase(fill);
-  cachePasses.push({label,sourceBytes,firstFill:fill,saveBytes:p.config.cache,secondFill:extra,fullBytes:INPUT_CAPACITY,deletedFiller:fill,converted:targets.length,afterBytes:tape.bytes()});
+  cachePasses.push({label,sourceBytes,firstFill:fill,saveBytes:p.config.cache,secondFill:extra,fullBytes:INPUT_CAPACITY,deletedFiller:fill,converted:targets.length,contentConverted:targets.filter(t=>t.id.startsWith('item')).length,launcherConverted:targets.filter(t=>t.id.startsWith('control')).length,targetIds:targets.map(t=>t.id),afterBytes:tape.bytes()});
   emit('Xóa số đệm Cache · '+label);
  };
 
+ // Insert launcher CT2 before batching so content and launcher can share
+ // one cache opening. Delay direct typing until conversions are finished;
+ // it consumes no cache space during the conversion phase.
+ const controls=p.lines===2?[{label:'D',keys:D.BOLD_HEX_KEYS.D}]:Array.from({length:2*p.lines-1},(_,i)=>i%2?{label:'D',keys:D.BOLD_HEX_KEYS.D}:{label:'@',keys:['SHIFT','8','1','NEG']});
+ tape.move(tape.q());
+ controls.forEach((c,i)=>tape.insert([{id:'control'+i,hex:c.label,bytes:2,role:'control'}],c.keys));
+ emit('Chèn CT2 launcher trước đợt chuyển chung');
+ const controlTargets=controls.map((c,i)=>({id:'control'+i,label:c.label+' launcher số '+(i+1)}));
  let pending=p.conversions.slice(),batchNumber=0;
- while(pending.length){
+ do{
   const targets=[];
-  let contentBytes=sum(tape.tokens.filter(t=>t.role==='content'),t=>t.bytes);
-  while(pending.length&&contentBytes+2+4<=p.config.cache){
+  // Leave room for a leading guard even after a prior conversion pass.
+  while(pending.length&&tape.bytes()+(tape.tokens[0]?.role==='guard'?0:1)+2<=p.config.cache){
    const e=pending.shift();
    const next=tape.tokens.findIndex(t=>t.role==='content'&&t.index>e.index);
-   tape.move(next<0?tape.q():next);
+   tape.move(next<0?tape.tokens.findIndex(t=>t.id==='control0'):next);
    tape.insert([{id:'item'+e.index,index:e.index,hex:e.hex,bytes:2,role:'content'}],e.keys);
    emit('Chèn CT2 cho '+textOf(e));
-   targets.push({id:'item'+e.index,label:textOf(e)});contentBytes+=2;
+   targets.push({id:'item'+e.index,label:textOf(e)});
   }
-  if(!targets.length)throw Error('Không đủ chỗ tạm cho CT2 trong Cache Area.');
-  cacheBatch('nội dung '+(++batchNumber),targets);
- }
+  if(pending.length&&!targets.length)throw Error('Không đủ chỗ tạm cho CT2 trong Cache Area.');
+  // Only the final batch converts the launcher, together with the remaining
+  // content. Extra content batches are necessary only when cache is full.
+  if(!pending.length)targets.push(...controlTargets);
+  cacheBatch(!pending.length?'nội dung + launcher':'nội dung '+(++batchNumber),targets);
+ }while(pending.length);
 
  tape.move(tape.tokens[0]?.role==='guard'?1:0);
  for(const e of p.items){
@@ -634,16 +655,9 @@ function generateForMode(raw,options={},chosen=null){
    tape.move(tape.cursor+1);
   }
  }
- emit('Hoàn thiện nội dung từ dòng cuối lên dòng đầu',{
-  checkpoint:p.displayLines.slice().reverse().map((a,i)=>'Dòng '+(p.lines-i)+': '+hexList(a)).join('\n')
+ emit('Hoàn thiện nội dung theo thứ tự dòng 1 đến dòng cuối',{
+  checkpoint:p.displayLines.map((a,i)=>'Dòng '+(i+1)+': '+hexList(a)).join('\n')
  });
-
- // D/@ here are labels of control tokens, not hex spellings of text.
- const controls=p.lines===2?[{label:'D',keys:D.BOLD_HEX_KEYS.D}]:Array.from({length:2*p.lines-1},(_,i)=>i%2?{label:'D',keys:D.BOLD_HEX_KEYS.D}:{label:'@',keys:['SHIFT','8','1','NEG']});
- tape.move(tape.q());
- controls.forEach((c,i)=>tape.insert([{id:'control'+i,hex:c.label,bytes:2,role:'control'}],c.keys));
- emit('Chèn token điều khiển cuối chuỗi');
- cacheBatch('token điều khiển',controls.map((c,i)=>({id:'control'+i,label:c.label+' điều khiển số '+(i+1)})));
 
  if(p.nums){
   tape.move(tape.tokens.findIndex(t=>t.id==='control0'));tape.numbers(p.nums,'nums');
@@ -686,7 +700,7 @@ function generateForMode(raw,options={},chosen=null){
  }
  if(tape.tokens.some(t=>['guard','cache-pad','input-pad','duplicate-pad','19'].includes(t.role)))throw Error('Còn token đệm chưa được xóa.');
  add('Chạy spell','',[['CALC','EXEC']]);
- return {...p,line:p.items,assignments:S.assignmentLines(r),steps,strategy:'multiline-cache',guided:false,keyCount:sum(steps,s=>sum(s.segments,k=>k.length)),
+ return {...p,line:p.items,assignments,exportOrder,exportExecutions,steps,strategy:'multiline-cache',guided:false,keyCount:sum(steps,s=>sum(s.segments,k=>k.length)),
   cachePasses,duplicationPasses,expansions,execution:{tokens:tape.tokens,cursor:tape.cursor,bytes:tape.bytes()},
   summary:p.lines+' dòng · '+p.config.label+' · '+p.contentBytes+'/'+p.config.capacity+' byte · nums '+p.nums+' · chuyển '+p.conversions.length+' CT2 nội dung',notes:''};
 }
@@ -709,7 +723,7 @@ function generate(raw,options={}){
   }}catch(e){errors.push(e);}
  }
  if(!candidates.length)throw errors.at(-1);
- candidates.sort((a,b)=>a.duplication.length-b.duplication.length||a.conversions.length-b.conversions.length||a.keyCount-b.keyCount||a.steps.length-b.steps.length||a.config.extra-b.config.extra||Number(!a.optimization)-Number(!b.optimization));
+ candidates.sort((a,b)=>a.duplication.length-b.duplication.length||a.cachePasses.length-b.cachePasses.length||a.keyCount-b.keyCount||a.steps.length-b.steps.length||a.config.extra-b.config.extra||Number(!a.optimization)-Number(!b.optimization));
  const best=candidates[0];best.automaticMode=!options.mode||options.mode==='auto';
  if(!best.optimization)best.optimization={status:best.duplication.length===0?'minimum-for-fixed-token-target':'best-found',rounds:best.duplication.length,scope:'fixed raw-token representation'};
  best.optimization.elapsedMs=Date.now()-started;best.optimization.globalOptimalityProven=false;

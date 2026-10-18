@@ -11,7 +11,7 @@ for(const file of files)fs.copyFileSync(path.join(root,file),path.join(staticDir
 for(const file of privateFiles)fs.copyFileSync(path.join(root,file),path.join(funcDir,file));
 fs.writeFileSync(path.join(funcDir,'.vc-config.json'),JSON.stringify({runtime:'nodejs22.x',handler:'api-spell.js',launcherType:'Nodejs',shouldAddHelpers:true,maxDuration:10},null,2));
 fs.writeFileSync(path.join(out,'config.json'),JSON.stringify({version:3,routes:[{src:'/',dest:'/index.html'},{handle:'filesystem'}]},null,2));
-fs.writeFileSync(path.join(staticDir,'version.json'),JSON.stringify({version:'20261018-direct-v5'}));
+fs.writeFileSync(path.join(staticDir,'version.json'),JSON.stringify({version:'20261018-base-v6'}));
 // public is only for the local Node server; Vercel uses the Build Output API above.
 const local=path.join(root,'public');fs.rmSync(local,{recursive:true,force:true});fs.cpSync(staticDir,local,{recursive:true});
-console.log('Build complete: 20261018-direct-v5; static assets and /api/spell ready.');
+console.log('Build complete: 20261018-base-v6; static assets and /api/spell ready.');
