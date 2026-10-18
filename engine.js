@@ -288,13 +288,16 @@ function f4EditPlan(r,line){
  return {keys,operations,mode:{kind:'f4-forward',cost:keys.length},source,cursor:source.length};
 }
 
+function anModeSegments(overflow=D.BASIC_OVERFLOW){
+ return [overflow,D.AN_TAKE_KEYS,repeat(D.BOLD_RECOVER,4),repeat(['DEL'],10),D.AN_ASSIGN_KEYS,D.AN_ACTIVATE_KEYS];
+}
 function buildGuide(input,line,r,editing){
  const steps=[];const add=(title,...segments)=>steps.push({title,segments:segments.filter(a=>a.length)});
  add('B1 + B2: Reset máy + Vào mode LineI/O',D.RESET,D.LINE_IO);
  if(r.count>1){add('B3: Vào Basic overflow',D.BASIC_OVERFLOW);const bold=boldChars(r),assign=[...D.TTK[':']];for(let v=0;v<r.count;v++){if(v)assign.push(...D.TTK[':']);assign.push(...D.TTK['ABC'[v]],...D.TTK['='],...valueKeys(r,v));}
  add('B4: Gán biến',[...D.BOLD_START,...bold.flatMap(c=>PDF_BOLD_KEYS[c])],repeat(D.BOLD_RECOVER,bold.length),repeat(['DEL'],10),assign,['CALC',...repeat(['EXEC'],r.count+1)]);}
  const b=r.count===1?3:5;
- add(`B${b}: Vào mode 110an`,r.count===1?D.BASIC_OVERFLOW:D.HALF_BASIC_OVERFLOW,D.AN_TAKE_KEYS,repeat(D.BOLD_RECOVER,4),repeat(['DEL'],10),D.AN_ASSIGN_KEYS,D.AN_ACTIVATE_KEYS);
+ add(`B${b}: Vào mode 110an`,...anModeSegments(r.count===1?D.BASIC_OVERFLOW:D.HALF_BASIC_OVERFLOW));
  const bold=r.count===1?boldChars(r):[],take=[...D.HALF_BASIC_OVERFLOW,...D.BOLD_START,...[...'ABC'.slice(0,r.count)].flatMap(c=>PDF_EXTRACT_KEYS[c]),...bold.flatMap(c=>PDF_BOLD_KEYS[c])],ex=[...'123456789','X'];
  for(let v=0;v<r.count;v++)ex.push(...D.TTK[':'],'RIGHT',...D.TTK['='],...(r.count===1?valueKeys(r,v):D.TTK['ABC'[v]]));
  add(`B${b+1}: Xuất hex`,take,repeat(D.BOLD_RECOVER,r.count+bold.length),repeat(['DEL'],11),ex,['CALC',...repeat(['EXEC'],r.count+1),'UP']);
@@ -309,6 +312,21 @@ function generate(raw,{center=true,f4=true,compressSpaces=true}={}){
  const input=parseText(raw);if(!input.length||input.every(e=>e.hex==='20'||e.hex==='01'))throw Error('Nhập văn bản hoặc chọn ký tự để bắt đầu.');
  const line=prepareLine(input,{center,compressSpaces}),nums=34-line.reduce((n,e)=>n+(e.hex==='20'||isWide(e.hex)?2:1),0);
  if(nums<0)throw Error('Dãy token vượt 34 byte. Hãy giảm số khoảng trắng hẹp {01}.');
+ if(line.every(e=>directKeys(e))){
+  // Direct typing still requires the spelling mode. Activate 110an first,
+  // then reopen overflow to recover C (3C), before typing any content.
+  // Recovery leaves x|3C. Remove x, append the real invisible 23 token,
+  // then return before 3C. No content needs assignment into A/B/C.
+  const setup=[...D.HALF_BASIC_OVERFLOW,...D.BOLD_START,...PDF_BOLD_KEYS.C,...D.BOLD_RECOVER,...repeat(['DEL'],11),'RIGHT',...D.TTK[':'],'LEFT','LEFT'];
+  const g={input,line,nums,packing:{tokens:['3C','23'],cells:[],count:0,padding:0,boundaries:{}},assignments:[],strategy:'direct-overflow',mode:'110an',
+   editing:{keys:line.flatMap(directKeys),operations:line.map(e=>({insert:e.hex,keys:directKeys(e).slice()})),source:[{hex:'3C'},{hex:'23',hidden:true}],cursor:0},
+   steps:[{title:'B1 + B2: Reset máy + Vào mode LineI/O',segments:[D.RESET,D.LINE_IO]},
+    {title:'B3: Vào mode 110an',segments:anModeSegments()},
+    {title:'B4: Lấy C (hex 3C) ở cuối',segments:[setup],checkpoint:'Con trỏ ở đầu, trước C (3C); đuôi 3C 23 đã sẵn sàng.'},
+    {title:'B5: Viết token',segments:[line.flatMap(directKeys),[...Array.from({length:nums},(_,i)=>'1234567890'[i%10]),...D.SPELL_END.slice(0,-2)]]},
+    {title:'B6: Hoàn tất',segments:[D.SPELL_END.slice(-2)]}]};
+  g.keyCount=keyCount(g);g.spacing=fitInput(input,{compressSpaces});return g;
+ }
  let best=null;
  const candidates=optimizePacking(line,{allowEmpty:true});
  if(f4&&line.some(e=>isWide(e.hex)&&(f4SuffixKeys(e.hex.slice(2))||f4ConversionKeys(e.hex.slice(2)))))candidates.push(...optimizePacking(line,{f4:true,allowEmpty:true}).filter(r=>r.f4Macros));
@@ -316,18 +334,6 @@ function generate(raw,{center=true,f4=true,compressSpaces=true}={}){
  for(const r of candidates){
   const g=buildGuide(input,line,r,editPlan(r,line));g.keyCount=keyCount(g);g.strategy=r.f4Macros?'f4f4':'variables';
   if(!best||g.keyCount<best.keyCount)best=g;
- }
- if(line.every(e=>directKeys(e))){
-  // Recovery leaves x|3C. Remove x, append the real 23 token with ALPHA integral,
-  // then return before 3C. The invisible terminator is not omitted.
-  const setup=[...D.BASIC_OVERFLOW,...D.BOLD_START,...PDF_BOLD_KEYS.C,...D.BOLD_RECOVER,...repeat(['DEL'],11),'RIGHT',...D.TTK[':'],'LEFT','LEFT'];
-  const g={input,line,nums,packing:{tokens:['3C','23'],cells:[],count:0,padding:0,boundaries:{}},assignments:[],strategy:'direct-overflow',
-   editing:{keys:line.flatMap(directKeys),operations:line.map(e=>({insert:e.hex,keys:directKeys(e).slice()})),source:[{hex:'3C'},{hex:'23',hidden:true}],cursor:0},
-   steps:[{title:'B1 + B2: Reset máy + Vào mode LineI/O',segments:[D.RESET,D.LINE_IO]},
-    {title:'B3: Vào Basic overflow + Lấy token',segments:[setup]},
-    {title:'B4: Viết token',segments:[line.flatMap(directKeys),[...Array.from({length:nums},(_,i)=>'1234567890'[i%10]),...D.SPELL_END.slice(0,-2)]]},
-    {title:'B5: Hoàn tất',segments:[D.SPELL_END.slice(-2)]}]};
-  g.keyCount=keyCount(g);if(g.keyCount<best.keyCount)best=g;
  }
  best.spacing=fitInput(input,{compressSpaces});
  return best;

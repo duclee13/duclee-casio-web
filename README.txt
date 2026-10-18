@@ -1,6 +1,17 @@
-SPELL STUDIO — 20261017-base-v4
+SPELL STUDIO — 20261018-direct-v5
 
-CẬP NHẬT BẢN NÀY
+CẬP NHẬT V5 — NHẬP TRỰC TIẾP MỘT DÒNG
+- Khi toàn bộ ký tự có CT1, bắt buộc vào mode 110an trước.
+- Sau khi kích hoạt mode, lấy C (hex 3C) và chuẩn bị đuôi 3C 23.
+- Chỉ sau đó mới nhập token, số đệm và hoàn tất spell.
+- Giao diện, sao chép và TXT/PDF đều có ba bước tách biệt:
+  Vào mode 110an -> Lấy C (hex 3C) -> Viết token.
+- Nhánh này không cần gán hex nội dung vào A/B/C. Các ký tự cần hex
+  hoặc 01 do co dấu cách vẫn dùng nhánh gán tương ứng.
+- Có kiểm thử riêng cho toàn bộ ký tự CT1, mẫu l và 1, căn giữa và
+  không căn giữa; kiểm tra thứ tự mode/C/nhập token và tổng phím.
+
+CẬP NHẬT V4 ĐƯỢC GIỮ LẠI
 - Spell 2/3/4 dòng dùng số 1 (hex 31, một byte) thay cho z ở đầu dãy.
 - Sau ghép tiền tố và xóa đệm, lùi LEFT qua toàn bộ token để về vị trí
   đầu tiên, trước FB01; nhập 1 rồi nhấn = 23 lần. Không nhập sau 19.
@@ -48,7 +59,7 @@ CẬP NHẬT GITHUB / VERCEL
 3. Build tự tạo .vercel/output/static và functions/api/spell.func.
    Không cần tự tạo/upload các thư mục sinh ra này; giữ đầy đủ server-*.
 4. Đợi deployment mới Ready và được gán Production.
-   /version.json và /api/spell phải cùng hiện 20261017-base-v4.
+   /version.json và /api/spell phải cùng hiện 20261018-direct-v5.
    /api/spell trả unlocked:true khi không bật khóa demo.
 Nếu vẫn ra bản cũ, kiểm tra commit, nhánh Production và Build Logs.
 Bản ZIP này chưa tự triển khai lên GitHub/Vercel của bạn.
