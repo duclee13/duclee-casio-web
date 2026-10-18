@@ -1,5 +1,7 @@
 /* Offline restoration · 2026-10-14 */
 [hidden] { display:none !important; }
+.assignment-address { font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;font-size:.65em;font-weight:400;letter-spacing:0;color:#7d857b;vertical-align:baseline; }
+html[data-theme="dark"] .assignment-address { color:#909b8d; }
 .guide-meta { padding:10px 20px; border-bottom:1px solid var(--line); color:var(--muted); font-size:13px; }
 .step-actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
 .step-head h3 { overflow-wrap:anywhere; }

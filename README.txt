@@ -1,4 +1,8 @@
-SPELL STUDIO — 20261018-base-v6
+SPELL STUDIO — 20261018-ui-v7
+
+GIAO DIỆN V7
+- Nhãn <4D>, <4E>, <4F> dùng font monospace thường, cỡ 65%, màu xám dịu.
+- Giữ nguyên thuật toán, nội dung gán và dữ liệu sao chép.
 
 BẢN SỬA THEO ẢNH HƯỚNG DẪN
 - Vào mode 194an/198an trước, rồi gán hex trực tiếp vào các @.
@@ -76,7 +80,7 @@ Build Command: node build.cjs. Output Directory: tắt Override.
 Build tự tạo cấu trúc .vercel/output/static và functions/api/spell.func.
 Giữ toàn bộ file server-*; build không đưa các file này vào web tĩnh.
 Đợi deployment mới Ready và gán Production.
-/version.json và /api/spell phải cùng hiện 20261018-base-v6.
+/version.json và /api/spell phải cùng hiện 20261018-ui-v7.
 Nếu vẫn thấy bản cũ: kiểm tra commit, nhánh Production và Build Logs.
 Bản này chưa được tự đẩy lên GitHub/Vercel của bạn.
 

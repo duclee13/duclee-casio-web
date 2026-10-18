@@ -1,4 +1,4 @@
-# Spell Studio — 20261018-base-v6
+# Spell Studio — 20261018-ui-v7
 
 Toàn bộ mã nguồn nằm cùng một cấp. Đọc README.txt để triển khai.
 

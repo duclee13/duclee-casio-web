@@ -155,7 +155,11 @@ function renderAssignments(node,rows){
   const text=row.replaceAll('𝓍',globalThis.SPELL_PALETTE_FONT?.['10']||'𝒙').replaceAll('×10','ˣ₁₀'),equals=text.indexOf('=');
   if(equals<0){node.append(document.createTextNode(text));return;}
   // Variable names stay plain. Only A–F in the numeric value are hex glyphs.
-  node.append(document.createTextNode(text.slice(0,equals+1)));
+  for(const part of text.slice(0,equals+1).split(/(<[0-9A-F]{2}>)/)){
+   if(/^<[0-9A-F]{2}>$/.test(part)){
+    const address=document.createElement('span');address.className='assignment-address';address.textContent=part;node.append(address);
+   }else node.append(document.createTextNode(part));
+  }
   for(const part of text.slice(equals+1).split(/([A-F]|ˣ₁₀)/)){
    if(!part)continue;
    if(/^[A-F]$/.test(part)){
