@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://meuz-casio.vercel.app/sitemap.xml
